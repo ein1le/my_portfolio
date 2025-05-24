@@ -1,0 +1,29 @@
+.project-card {
+  background: #23232b;
+  border: 1px solid #31313a;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: box-shadow 0.2s, border 0.2s;
+}
+.project-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.16);
+  border: 1.5px solid #007acc;
+}
+.project-card h3 {
+  margin: 0 0 8px 0;
+  color: #b5cea8;
+}
+.project-card p {
+  margin: 0 0 12px 0;
+  color: #d4d4d4;
+}
+.project-card a {
+  color: #007acc;
+  text-decoration: none;
+  font-weight: bold;
+}
+.project-card a:hover {
+  text-decoration: underline;
+} 

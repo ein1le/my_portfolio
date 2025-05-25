@@ -25,7 +25,8 @@ const explorerStructure = [
     name: "experiences",
     children: [
       { type: "file", name: "professional_exp.ipynb" },
-      { type: "file", name: "other_exp.py" },
+      { type: "file", name: "academic_exp.py" },
+      { type: "file", name: "extracurricular_exp.py" },
       { type: "file", name: "volunteering.py" }
     ]
   },

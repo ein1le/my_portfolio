@@ -9,12 +9,23 @@ export default function EducationCard({ title, subheader, date, location, public
   if (title.includes("Harrow")) cardClass += " harrow";
   const [expanded, setExpanded] = useState(false);
   const [openPdf, setOpenPdf] = useState(null);
+  // Logo selection
+  let logo = null;
+  if (title.includes("Bristol")) {
+    logo = "https://upload.wikimedia.org/wikipedia/en/3/3a/University_of_Bristol_logo.svg";
+  } else if (title.includes("Harrow")) {
+    logo = "https://www.harrowschool.ac.th/wp-content/uploads/2020/09/harrow-logo.png";
+  }
   return (
     <div className={cardClass + (expanded ? " expanded" : "")}
          onClick={() => setExpanded(e => !e)}
          tabIndex={0}
          style={{ cursor: "pointer" }}>
       <div className="education-card-main">
+        {/* Left logo */}
+        {logo && (
+          <img src={logo} alt="logo" className="education-card-logo" />
+        )}
         <div>
           <div className="education-title">{title}</div>
           <div className="education-subheader">{subheader}</div>

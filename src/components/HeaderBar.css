@@ -54,4 +54,14 @@
 }
 .header-right a:hover {
   color: #007acc;
+}
+.headerbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  z-index: 2000;
+  background: #23232b;
+  box-shadow: 0 2px 8px #0004;
 } 

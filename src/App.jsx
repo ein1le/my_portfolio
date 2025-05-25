@@ -12,7 +12,7 @@ import { VscFiles, VscSearch, VscSourceControl, VscRunAll, VscExtensions, VscTer
 import "./App.css";
 import { fetchPublicRepos } from "./utils/github"; // adjust path as needed
 import GithubCalendarSection from "./components/GitHubCalendar";
-import GithubActivity from "./components/GithubActivity"; // if you want activity
+import GithubActivity from "./components/GitHubActivity";
 import StaticSidebar from "./components/StaticSidebar";
 import { getChatbotResponse } from "./utils/openai";
 import wunbotIcon from './assets/wunbot.png'; // adjust path as needed

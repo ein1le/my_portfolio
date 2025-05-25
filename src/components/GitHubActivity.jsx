@@ -1,159 +1,71 @@
 import React, { useEffect, useState } from "react";
-import { FaCodeBranch, FaRegCommentDots, FaRegStar, FaRegCheckCircle, FaRegQuestionCircle } from "react-icons/fa";
-
-const eventIcon = (type) => {
-  // Map event types to icons
-  if (type.startsWith("Push")) return <FaCodeBranch color="#a259f7" />;
-  if (type.startsWith("PullRequest")) return <FaRegCheckCircle color="#b5cea8" />;
-  if (type.startsWith("Issues")) return <FaRegCommentDots color="#ffd700" />;
-  if (type.startsWith("Watch")) return <FaRegStar color="#007acc" />;
-  return <FaRegQuestionCircle color="#888" />;
-};
+import { FaGithub, FaClock } from "react-icons/fa";
 
 export default function GithubActivity() {
   const [events, setEvents] = useState([]);
-  const [hovered, setHovered] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch("https://api.github.com/users/ein1le/events/public")
-      .then(res => res.json())
-      .then(data => setEvents(data.slice(0, 7)));
+      .then(res => {
+        if (!res.ok) throw new Error("Failed to fetch GitHub activity");
+        return res.json();
+      })
+      .then(data => {
+        setEvents(data.slice(0, 10));
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err.message);
+        setLoading(false);
+      });
   }, []);
 
   return (
     <div style={{ marginBottom: 32, overflowX: "auto" }}>
-      <h3 style={{ color: "#b5cea8", marginBottom: 18 }}>Recent GitHub Activity</h3>
-      <div style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 0,
-        padding: "40px 0 32px 0",
-        position: "relative",
-        minHeight: 120
-      }}>
-        {/* SVG connectors */}
-        <svg
-          width={events.length * 180}
-          height={40}
-          style={{ position: "absolute", top: 56, left: 0, zIndex: 0, pointerEvents: "none" }}
-        >
-          {events.map((_, idx) =>
-            idx < events.length - 1 ? (
-              <line
-                key={idx}
-                x1={idx * 180 + 40}
-                y1={20}
-                x2={(idx + 1) * 180}
-                y2={20}
-                stroke="#007acc"
-                strokeWidth={4}
-                strokeLinecap="round"
-              />
-            ) : null
-          )}
-        </svg>
-        {events.map((event, idx) => (
-          <div
-            key={event.id}
-            style={{
-              position: "relative",
-              zIndex: 1,
-              minWidth: 180,
-              marginLeft: idx === 0 ? 0 : 0,
-              marginRight: idx === events.length - 1 ? 0 : 0,
-              textAlign: "center"
-            }}
-            onMouseEnter={() => setHovered(idx)}
-            onMouseLeave={() => setHovered(null)}
-          >
-            {/* Node */}
-            <div style={{
-              width: 44,
-              height: 44,
-              background: "#23232b",
-              border: "5px solid #007acc",
-              borderRadius: "50%",
-              margin: "0 auto",
-              boxShadow: hovered === idx ? "0 4px 16px #007acc88" : "0 2px 8px #0003",
+      <h3 style={{ color: "#b5cea8", marginBottom: 18 }}>
+        <FaGithub style={{ marginRight: 8 }} /> Recent GitHub Activity
+      </h3>
+      {loading && <div style={{ color: "#a259f7" }}>Loading activity...</div>}
+      {error && <div style={{ color: "#ff4d4f" }}>Error: {error}</div>}
+      {!loading && !error && (
+        <ul style={{
+          listStyle: "none",
+          padding: 0,
+          margin: 0,
+          background: "#23232b",
+          borderRadius: 8,
+          boxShadow: "0 1px 4px #0002",
+          border: "1.5px solid #31313a"
+        }}>
+          {events.map(event => (
+            <li key={event.id} style={{
+              padding: "14px 18px",
+              borderBottom: "1px solid #31313a",
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              fontWeight: 700,
-              color: "#b5cea8",
-              fontSize: "1.5em",
-              transition: "box-shadow 0.2s, border 0.2s"
+              gap: 16
             }}>
-              {eventIcon(event.type.replace(/Event$/, ""))}
-            </div>
-            {/* Info */}
-            <div style={{
-              marginTop: 12,
-              background: "#23232b",
-              borderRadius: 8,
-              padding: "8px 10px",
-              color: "#d4d4d4",
-              fontSize: "0.98em",
-              boxShadow: "0 1px 4px #0002",
-              border: hovered === idx ? "1.5px solid #007acc" : "1.5px solid transparent",
-              transition: "border 0.2s"
-            }}>
-              <div style={{ color: "#007acc", fontWeight: 600, fontSize: "0.95em" }}>
+              <span style={{ color: "#a259f7", fontWeight: 600, minWidth: 120 }}>
                 {event.type.replace(/Event$/, "")}
-              </div>
+              </span>
               <a
                 href={`https://github.com/${event.repo.name}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  color: "#b5cea8",
-                  fontWeight: 700,
-                  fontSize: "1.05em",
-                  textDecoration: "none"
-                }}
+                style={{ color: "#b5cea8", textDecoration: "none", fontWeight: 500 }}
               >
                 {event.repo.name}
               </a>
-              <div style={{ color: "#888", fontSize: "0.92em", marginTop: 2 }}>
-                {new Date(event.created_at).toLocaleDateString()}
-              </div>
-            </div>
-            {/* Tooltip on hover */}
-            {hovered === idx && (
-              <div style={{
-                position: "absolute",
-                top: -70,
-                left: "50%",
-                transform: "translateX(-50%)",
-                background: "#1e1e1e",
-                color: "#b5cea8",
-                padding: "10px 18px",
-                borderRadius: 8,
-                boxShadow: "0 4px 24px #0008",
-                fontSize: "0.98em",
-                zIndex: 10,
-                minWidth: 180,
-                pointerEvents: "none"
-              }}>
-                <div style={{ fontWeight: 700, marginBottom: 4 }}>{event.type.replace(/Event$/, "")}</div>
-                <div>{event.repo.name}</div>
-                <div style={{ color: "#a259f7" }}>{new Date(event.created_at).toLocaleString()}</div>
-                {event.payload && event.payload.commits && event.payload.commits.length > 0 && (
-                  <div style={{ marginTop: 6 }}>
-                    <span style={{ color: "#ffd700" }}>Commits:</span>
-                    <ul style={{ margin: 0, paddingLeft: 16 }}>
-                      {event.payload.commits.map((c, i) => (
-                        <li key={i} style={{ color: "#b5cea8", fontSize: "0.95em" }}>
-                          {c.message}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+              <span style={{ color: "#d4d4d4", marginLeft: "auto", fontSize: 13, display: "flex", alignItems: "center", gap: 4 }}>
+                <FaClock style={{ color: "#007acc" }} />
+                {new Date(event.created_at).toLocaleString()}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

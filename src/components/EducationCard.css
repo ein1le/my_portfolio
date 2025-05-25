@@ -1,0 +1,211 @@
+.education-card {
+  background: #23232b;
+  border: 1.5px solid #31313a;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  padding: 40px 32px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  transition: box-shadow 0.2s, border 0.2s, transform 0.2s, background 0.3s;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+}
+.education-card.expanded {
+  box-shadow: 0 8px 32px rgba(0,122,204,0.22);
+}
+.education-card:hover {
+  box-shadow: 0 6px 24px rgba(0,122,204,0.18);
+  border: 1.5px solid #007acc;
+  transform: translateY(-2px) scale(1.01);
+}
+.education-card.bristol:hover::before,
+.education-card.harrow:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.25;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  border-radius: 12px;
+}
+.education-card.bristol:hover::before {
+  background-image: linear-gradient(120deg, #007acc99 0%, #b5cea899 100%), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+}
+.education-card.harrow:hover::before {
+  background-image: linear-gradient(120deg, #007acc99 0%, #b5cea899 100%), url('https://www.harrowschool.ac.th/wp-content/uploads/2020/09/harrow-bangkok-campus.jpg');
+}
+.education-card-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.education-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #b5cea8;
+}
+.education-subheader {
+  font-size: 1.1em;
+  color: #d4d4d4;
+  margin-top: 4px;
+}
+.education-card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.education-date, .education-location {
+  color: #d4d4d4;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.education-date svg, .education-location svg {
+  color: #007acc;
+  font-size: 1.1em;
+}
+.education-expand-icon {
+  margin-top: 8px;
+  color: #b5cea8;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.education-card-expandable {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.education-card-expandable.expanded {
+  max-height: 2000px;
+  margin-top: 18px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  overflow: visible;
+}
+.education-publications {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #23232b;
+  border-radius: 8px;
+  padding: 12px 0 0 0;
+}
+.education-pub-header {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #b5cea8;
+  margin-bottom: 8px;
+  padding-left: 2px;
+}
+.education-publication {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #23232b;
+  border-radius: 6px;
+  padding: 8px 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.education-pub-icon {
+  color: #007acc;
+  font-size: 1.3em;
+  margin-top: 2px;
+}
+.education-pub-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.education-pub-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+.education-pub-title {
+  font-weight: 500;
+  color: #d4d4d4;
+  font-size: 1.08em;
+}
+.education-pub-date {
+  color: #b5cea8;
+  font-size: 0.98em;
+  margin-left: 16px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+.education-pub-course {
+  font-size: 0.98em;
+  color: #a259f7;
+  margin-top: 2px;
+}
+.education-pub-authors {
+  font-size: 0.97em;
+  color: #b5cea8;
+  margin-bottom: 2px;
+}
+.education-pub-desc {
+  font-size: 0.98em;
+}
+.experience-responsibilities {
+  margin: 16px 0 0 0;
+  padding-left: 24px;
+  color: #b5cea8;
+  font-size: 1.05em;
+  line-height: 1.6;
+}
+.experience-responsibilities li {
+  margin-bottom: 6px;
+  list-style: disc inside;
+}
+.education-awards {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  margin-left: 2px;
+  flex-wrap: wrap;
+}
+.education-award-tag {
+  display: flex;
+  align-items: center;
+  background: #23232b;
+  border: 1px solid #a259f7;
+  border-radius: 16px;
+  padding: 3px 12px 3px 8px;
+  font-size: 0.98em;
+  color: #b5cea8;
+  box-shadow: 0 1px 4px #0002;
+  gap: 6px;
+  transition: background 0.2s, border 0.2s;
+}
+.education-award-tag:hover {
+  background: #2d1e4a;
+  border: 1.5px solid #ffd700;
+}
+.education-award-icon {
+  color: #ffd700;
+  font-size: 1.1em;
+  vertical-align: middle;
+  filter: drop-shadow(0 1px 2px #0008);
+  margin-right: 4px;
+}
+.education-award-text {
+  color: #b5cea8;
+  font-size: 0.98em;
+  font-weight: 500;
+} 

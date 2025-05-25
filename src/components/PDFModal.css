@@ -1,0 +1,42 @@
+.pdf-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(30,30,30,0.85);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pdf-modal-content {
+  background: #23232b;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px #000a;
+  width: 80vw;
+  max-width: 700px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+.pdf-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #1e1e1e;
+  color: #b5cea8;
+  border-bottom: 1px solid #222;
+}
+.pdf-modal-close {
+  background: none;
+  border: none;
+  color: #b5cea8;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.pdf-modal-body {
+  padding: 16px;
+  overflow: auto;
+  background: #23232b;
+  display: flex;
+  justify-content: center;
+} 

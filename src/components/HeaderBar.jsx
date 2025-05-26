@@ -1,5 +1,6 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaTelegram, FaEnvelope, FaPhone, FaCommentDots } from "react-icons/fa";
+import { FaCommentDots } from "react-icons/fa";
+import { VscFiles, VscSearch, VscSourceControl, VscRunAll, VscExtensions, VscChromeMinimize, VscChromeRestore, VscChromeClose } from "react-icons/vsc";
 import "./HeaderBar.css";
 
 export default function HeaderBar({ onChatbotClick, showChatbot }) {
@@ -33,12 +34,12 @@ export default function HeaderBar({ onChatbotClick, showChatbot }) {
           />
         )}
       </div>
-      <div className="header-right">
-        <a href="https://github.com/ein1le" target="_blank" rel="noopener noreferrer" title="GitHub"><FaGithub /></a>
-        <a href="https://linkedin.com/in/wishawin/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><FaLinkedin /></a>
-        <a href="https://t.me/einle1" target="_blank" rel="noopener noreferrer" title="Telegram"><FaTelegram /></a>
-        <a href="mailto:wishawin@gmail.com" title="Email me!"><FaEnvelope /></a>
-        <a href="tel:+44 7534578468" title="Phone"><FaPhone /></a>
+      <div className="header-right" style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+        <span style={{ marginLeft: 24, display: 'flex', alignItems: 'center', gap: 8 }}>
+          <VscChromeMinimize style={{ color: '#b5cea8', fontSize: 18, cursor: 'default' }} />
+          <VscChromeRestore style={{ color: '#b5cea8', fontSize: 18, cursor: 'default' }} />
+          <VscChromeClose style={{ color: '#b5cea8', fontSize: 18, cursor: 'default' }} />
+        </span>
       </div>
     </div>
   );

@@ -23,6 +23,8 @@ import education from "./constants/education";
 import professionalExperiences from "./constants/professional_exp";
 import SkillsSQLTable from "./components/SkillsSQLTable.jsx";
 import ReactMarkdown from "react-markdown";
+import tangleSlime from './assets/tangleslime.png';
+import projects from "./constants/projects";
 
 const files = [
   "about.md",
@@ -37,37 +39,11 @@ const files = [
 ];
 
 function ProjectsPage() {
-  const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchPublicRepos("ein1le")
-      .then(data => {
-        setRepos(data.filter(repo => !repo.fork));
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
-
-  if (loading) return <div>Loading projects...</div>;
-
   return (
-    <div>
-      <div className="projects-grid">
-        {repos.map((repo) => (
-          <div className="project-grid-card" key={repo.id}>
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-              <img
-                src={repo.owner.avatar_url}
-                alt={repo.name}
-                className="project-grid-img"
-              />
-              <div className="project-grid-title">{repo.name}</div>
-              <div className="project-grid-desc">{repo.description || "No description"}</div>
-            </a>
-          </div>
-        ))}
-      </div>
+    <div className="projects-grid">
+      {projects.map((project, idx) => (
+        <ProjectCard key={idx} {...project} />
+      ))}
     </div>
   );
 }
@@ -138,14 +114,27 @@ const experiences = [
   }
 ];
 
-function ExperienceCard({ title, subheader, date, location, responsibilities }) {
+function ExperienceCard({ title, subheader, date, location, skills = [], languages = [], responsibilities = [], links = [], contributors = "", logo, description }) {
   const [expanded, setExpanded] = useState(false);
-  let cardClass = "education-card experience-card";
-  if (expanded) cardClass += " expanded";
+  const [openImg, setOpenImg] = useState(null);
+  let displayLogo = logo;
+  if (!displayLogo) {
+    displayLogo = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
+  }
+  const hasDetailedRoles = Array.isArray(responsibilities) && responsibilities.length > 0 && typeof responsibilities[0] === 'object' && responsibilities[0] !== null && responsibilities[0].role;
+
   return (
-    <div className={cardClass} onClick={() => setExpanded(e => !e)} tabIndex={0} style={{ cursor: "pointer" }}>
+    <div className={"education-card experience-card" + (expanded ? " expanded" : "")}
+         onClick={() => setExpanded(e => !e)}
+         tabIndex={0}
+         style={{ cursor: "pointer" }}>
       <div className="education-card-main">
-        <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+        {/* Left logo, if provided */}
+        {displayLogo && (
+          <img src={displayLogo} alt="logo" className="education-card-logo" />
+        )}
+        {/* Title and subtitle anchored to right of image, left-aligned */}
+        <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', marginLeft: 0 }}>
           <div className="education-title">{title}</div>
           <div className="education-subheader">{subheader}</div>
         </div>
@@ -157,11 +146,98 @@ function ExperienceCard({ title, subheader, date, location, responsibilities }) 
       </div>
       <div className={`education-card-expandable${expanded ? " expanded" : ""}`}>
         {expanded && (
-          <ul className="experience-responsibilities">
-            {responsibilities.map((item, idx) => (
-              <li key={idx}>{item}</li>
-            ))}
-          </ul>
+          <>
+            {(skills && skills.length > 0) && (
+              <div className="experience-skills">
+                {skills.map((skill, idx) => (
+                  <span key={idx} className="experience-skill-tag">{skill}</span>
+                ))}
+              </div>
+            )}
+            {(languages && languages.length > 0) && (
+              <div className="experience-languages">
+                {languages.map((lang, idx) => (
+                  <span key={idx} className="experience-lang-icon" title={lang.name}>{lang.icon}</span>
+                ))}
+              </div>
+            )}
+            {description && (
+              <div style={{ color: '#d4d4d4', fontSize: '1em', marginBottom: 12, marginLeft: 2, marginRight: 2 }}>{description}</div>
+            )}
+            {Array.isArray(responsibilities) && responsibilities.length > 0 && (
+              <div className="experience-roles-list" style={{ position: 'relative', paddingLeft: 32 }}>
+                {/* Vertical line */}
+                <div style={{
+                  position: 'absolute',
+                  left: 12,
+                  top: 0,
+                  bottom: 0,
+                  width: 2,
+                  background: 'linear-gradient(to bottom, #007acc 0%, #a259f7 100%)',
+                  borderRadius: 2,
+                  zIndex: 0
+                }} />
+                {hasDetailedRoles ? (
+                  responsibilities.map((role, idx) => (
+                    <div key={idx} className="experience-role-block" style={{ marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                      <div style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        fontWeight: 600,
+                        color: "#b5cea8",
+                        fontSize: "1.08em",
+                        marginBottom: 2
+                      }}>
+                        <span>〇 {role.role}</span>
+                        <span style={{ color: "#a259f7", fontWeight: 500, fontSize: "0.98em", marginLeft: 16 }}>{role.date}</span>
+                      </div>
+                      {role.bullets && (
+                        <ul style={{ marginLeft: 24, color: "#b5cea8", fontSize: "1em", position: 'relative' }}>
+                          {role.bullets.map((b, bidx) => <li key={bidx}>{b}</li>)}
+                        </ul>
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <ul style={{ marginLeft: 24, color: "#b5cea8", fontSize: "1em", position: 'relative' }}>
+                    {responsibilities.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+            {(contributors || (links && links.length > 0)) && (
+              <div style={{ margin: '16px 0 0 32px', color: '#b5cea8', fontSize: '0.98em' }}>
+                {contributors && (
+                  <div style={{ fontStyle: 'italic', marginBottom: links && links.length > 0 ? 6 : 0 }}>
+                    <span>Contributors: {contributors}</span>
+                  </div>
+                )}
+              </div>
+            )}
+            {links && links.length > 0 && (
+              <div className="experience-links-box">
+                {links.map((link, idx) => (
+                  link.type === "image" ? (
+                    <span key={idx} className="experience-link-img-thumb" onClick={e => { e.stopPropagation(); setOpenImg(link.src); }}>
+                      <img src={link.src} alt="certificate" />
+                    </span>
+                  ) : (
+                    <a key={idx} href={link.href} target="_blank" rel="noopener noreferrer" className="experience-link">
+                      {link.icon || <FaExternalLinkAlt />} {link.label}
+                    </a>
+                  )
+                ))}
+                {openImg && (
+                  <div className="experience-img-modal" onClick={() => setOpenImg(null)}>
+                    <img src={openImg} alt="certificate" />
+                  </div>
+                )}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
@@ -974,6 +1050,38 @@ function ChatbotSidebar({ width, onResizeStart, onClose }) {
   );
 }
 
+function GitSidebarProjects() {
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    fetchPublicRepos("ein1le")
+      .then(data => {
+        setRepos(data.filter(repo => !repo.fork));
+        setLoading(false);
+      })
+      .catch(err => {
+        setError("Failed to fetch GitHub projects");
+        setLoading(false);
+      });
+  }, []);
+  if (loading) return <div style={{ color: '#a259f7', marginTop: 12 }}>Loading projects...</div>;
+  if (error) return <div style={{ color: '#ff4d4f', marginTop: 12 }}>{error}</div>;
+  return (
+    <div style={{ marginTop: 24 }}>
+      <div style={{ color: '#a259f7', fontWeight: 600, fontSize: 16, marginBottom: 8 }}>GitHub Projects</div>
+      {repos.map((repo, idx) => (
+        <ProjectCard
+          key={repo.id}
+          title={repo.name}
+          description={repo.description || "No description"}
+          link={repo.html_url}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function App() {
   const [selected, setSelected] = useState("about.md");
   const [activeSidebar, setActiveSidebar] = useState("explorer"); // 'explorer', 'git', 'search', etc. or null
@@ -1137,6 +1245,7 @@ export default function App() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
                   <GithubCalendarSection />
                   <GithubActivity />
+                  <GitSidebarProjects />
                 </div>
                 <div style={{ flex: 1 }} />
               </>
@@ -1146,7 +1255,10 @@ export default function App() {
             )}
             {activeSidebar === "contact" && (
               <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '24px 38px 24px 24px', gap: 18 }}>
-                <div style={{ color: '#b5cea8', fontWeight: 600, fontSize: 20, marginBottom: 8 }}>Drop me an email!</div>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
+                  <img src={tangleSlime} alt="Tangle Slime" style={{ width: 24, height: 24, marginRight: 8 }} />
+                  <div style={{ color: '#b5cea8', fontWeight: 600, fontSize: 20 }}>Drop me an email!</div>
+                </div>
                 <textarea
                   placeholder="Type your message..."
                   style={{

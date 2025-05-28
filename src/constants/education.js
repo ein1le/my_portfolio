@@ -1,9 +1,16 @@
 const education = [
   {
     title: "University of Bristol",
-    subheader: "Integrated Masters, Mechanical Engineering",
+    subheader: "Integrated Masters, Mechanical Engineering [4MECH002U]",
     date: "2021 - 2025",
     location: "Bristol, UK",
+    grade: "First Class Honours (Expected)",
+    modules: [
+      "Year 4: Data Driven Physical Modelling, Multivariable and Non-linear Control, AT Generative Design, AT Quantum Information and Photonic Engineering, AT Design in a Constrained World, AT Machine Thinking in Smart Manufacturing, Group Industrial Project, Renewable Energy for a Sustainable Future, AT Biomechanics",
+      "Year 3: Individual Research Project, Applied Solid Mechanics, Engineering Management, Behaviour of Dynamic Systems, Fluid Mechanics and Heat Transfer",
+      "Year 2: Engineering Mathematics II, Dynamics and Control, Thermofluids, Engineering Practice, Materials Engineering",
+      "Year 1: Engineering Mathematics I, Engineering Communication Measurement and Data Analysis, Introduction to Design Practice, Principles of Mechanical Engineering, Engineering Science"
+    ],
     publications: [
       {
         title: "GKN Aerospace Ring Hoop Tension Test Investigation",
@@ -11,7 +18,7 @@ const education = [
         authors: "Sophie Cook, Demetri Gaffney, Tallulah Jackson-Coombs, Daniel Lee",
         description: "An investigation on the parameters affecting the accuracy of material property determination of aluminium using ring hoop tension tests",
         date: "© April 29, 2025",
-        pdfUrl: "/pdfs/bristol-paper.pdf"
+        pdfUrl: "/pdfs/bristol-paper.pdf, https://github.com/ein1le/gip-ddest"
       },
       {
         title: "Biomechanics of Legged Vehicles for Interplanetary Applications",
@@ -34,7 +41,7 @@ const education = [
         authors:"Ibrahim Arekat, William Sakyi",
         description: "",
         date: "December 3, 2024",
-        pdfUrl: "/pdfs/bristol-article.pdf"
+        pdfUrl: "/pdfs/bristol-article.pdf,https://github.com/Will27-s/MultiVarControl"
       },
       {
         title: "Reduced Order Recurrent Neural Networks for Vibration Modelling",
@@ -86,6 +93,14 @@ const education = [
         description: "Robot Chariot and Artefact study of a SR-71 Design Report",
         date: "December 17, 2021",
         pdfUrl: "/pdfs/bristol-article.pdf"
+      },
+      {
+        title: "DMP",
+        course: "[MENG10006] Design & Manufacturing Project",
+        authors: "Sophie Tan, Daniel Kim",
+        description: "Concept Generation, PDS, Analytics",
+        date: "Jul 2019",
+        pdfUrl: "/pdfs/harrow-math.pdf"
       }
     ],
     awards: ["Bristol PLUS Award", "Bristol Skills Accelerator"]
@@ -95,9 +110,16 @@ const education = [
     subheader: "Highschool",
     date: "2011 - 2021",
     location: "Bangkok, Thailand",
+    grade: "A-Levels: A*A*A*, IGCSEs: 12A*s",
+    modules: [
+      "A Levels: Mathematics, Physics, Biology",
+      "AS Levels: Mathematics, Physics, Chemistry, Extended Project Qualification",
+      "IGCSEs: Additional Mathematics, Mathematics, Physics, Chemistry, Biology, Development Studies, Geography, Thai Language, English Language, English Literature, English Second Language,Art & Design",
+      "IELTs: 8.0"
+    ],
     publications: [
       {
-        title: "Harrow Science Fair",
+        title: "Extended Project Qualification",
         course: "SCI101",
         authors: "Emily Chan, Michael Lee",
         description: "Presented at Harrow Science Fair 2020, this project won first place.",
@@ -105,7 +127,15 @@ const education = [
         pdfUrl: "/pdfs/harrow-science.pdf"
       },
       {
-        title: "Harrow Math Olympiad",
+        title: "Internal Research Project",
+        course: "MATH201",
+        authors: "Sophie Tan, Daniel Kim",
+        description: "Awarded at International Math Olympiad for innovative problem solving.",
+        date: "Jul 2019",
+        pdfUrl: "/pdfs/harrow-math.pdf"
+      },
+      {
+        title: "Internal Research Project",
         course: "MATH201",
         authors: "Sophie Tan, Daniel Kim",
         description: "Awarded at International Math Olympiad for innovative problem solving.",

@@ -13,14 +13,14 @@ export default function SkillsSQLTable() {
   const handleQuery = () => {
     setError("");
     setQueried(true);
-    fetch("/src/components/skills.csv")
+    fetch("/skills.csv")
       .then(res => {
         if (!res.ok) throw new Error("Could not load skills.csv");
         return res.text();
       })
       .then(csv => {
         const parsed = Papa.parse(csv, { header: true });
-        const data = parsed.data.filter(row => row.language);
+        const data = parsed.data.filter(row => row.name);
         try {
           // alasql needs an array of objects
           alasql("DROP TABLE IF EXISTS skills");
@@ -107,11 +107,42 @@ export default function SkillsSQLTable() {
                 <td style={{ padding: "8px 12px", color: "#7ec699" }}>{i + 1}</td>
                 {columns.map(col => (
                   <td key={col} style={{ padding: "8px 12px" }}>
-                    {col === "projects" && row[col]
-                      ? String(row[col]).split(';').map(p => (
-                          <span key={p} style={{ background: "#007acc", color: "#fff", borderRadius: 6, padding: "2px 8px", marginRight: 6, fontSize: 13 }}>{p}</span>
+                    {col === "libraries" && row[col]
+                      ? String(row[col]).split(';').filter(lib => lib.trim()).map(lib => (
+                          <button
+                            key={lib}
+                            style={{
+                              background: "#23232b",
+                              color: "#a259f7",
+                              border: "1.5px solid #a259f7",
+                              borderRadius: 6,
+                              padding: "2px 10px",
+                              marginRight: 6,
+                              fontSize: 13,
+                              fontWeight: 500,
+                              cursor: "pointer",
+                              marginBottom: 3,
+                              transition: "background 0.15s, color 0.15s, border 0.15s"
+                            }}
+                            onMouseOver={e => {
+                              e.target.style.background = '#a259f7';
+                              e.target.style.color = '#23232b';
+                              e.target.style.border = '1.5px solid #23232b';
+                            }}
+                            onMouseOut={e => {
+                              e.target.style.background = '#23232b';
+                              e.target.style.color = '#a259f7';
+                              e.target.style.border = '1.5px solid #a259f7';
+                            }}
+                          >
+                            {lib}
+                          </button>
                         ))
-                      : row[col]}
+                      : col === "projects" && row[col]
+                        ? String(row[col]).split(';').map(p => (
+                            <span key={p} style={{ background: "#007acc", color: "#fff", borderRadius: 6, padding: "2px 8px", marginRight: 6, fontSize: 13 }}>{p}</span>
+                          ))
+                        : row[col]}
                   </td>
                 ))}
               </tr>

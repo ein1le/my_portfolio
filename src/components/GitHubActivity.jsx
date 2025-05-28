@@ -62,10 +62,10 @@ export default function GithubActivity() {
                 <FaClock style={{ color: "#007acc" }} />
                 {new Date(event.created_at).toLocaleString()}
               </span>
-            </li>
-          ))}
-        </ul>
-      )}
+                        </li>
+                      ))}
+                    </ul>
+            )}
     </div>
   );
 }

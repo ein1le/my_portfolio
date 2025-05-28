@@ -3,7 +3,7 @@ import { FaCalendarAlt, FaMapMarkerAlt, FaChevronDown, FaChevronUp, FaFileAlt, F
 import PDFModal from "./PDFModal";
 import "./EducationCard.css";
 
-export default function EducationCard({ title, subheader, date, location, publications = [], awards = [] }) {
+export default function EducationCard({ title, subheader, date, location, grade, modules = [], publications = [], awards = [] }) {
   let cardClass = "education-card";
   if (title.includes("Bristol")) cardClass += " bristol";
   if (title.includes("Harrow")) cardClass += " harrow";
@@ -29,6 +29,9 @@ export default function EducationCard({ title, subheader, date, location, public
         <div>
           <div className="education-title">{title}</div>
           <div className="education-subheader">{subheader}</div>
+          {grade && (
+            <div style={{ color: '#a259f7', fontSize: '1.05em', marginTop: 2 }}>{grade}</div>
+          )}
         </div>
         <div className="education-card-right">
           <span className="education-date"><FaCalendarAlt /> {date}</span>
@@ -47,6 +50,16 @@ export default function EducationCard({ title, subheader, date, location, public
                     <span className="education-award-text">{award}</span>
                   </span>
                 ))}
+              </div>
+            )}
+            {modules.length > 0 && (
+              <div style={{ marginBottom: 16 }}>
+                <div style={{ color: '#b5cea8', fontWeight: 600, fontSize: '1.08em', marginBottom: 6 }}>Modules</div>
+                <ul style={{ color: '#d4d4d4', fontSize: '1em', margin: 0, paddingLeft: 20 }}>
+                  {modules.map((mod, idx) => (
+                    <li key={idx} style={{ marginBottom: 2 }}>{mod}</li>
+                  ))}
+                </ul>
               </div>
             )}
             {publications.length > 0 && (

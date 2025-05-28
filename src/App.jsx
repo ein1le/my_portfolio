@@ -7,8 +7,9 @@ import HeaderBar from "./components/HeaderBar.jsx";
 import EducationCard from "./components/EducationCard.jsx";
 import TimelineGitStyle from "./components/TimelineGitStyle.jsx";
 import TetrahedronAnimation from "./components/TetrahedronAnimation.jsx";
-import { FaPython, FaReact, FaHtml5, FaGithub, FaExternalLinkAlt, FaCertificate, FaCalendarAlt, FaMapMarkerAlt, FaChevronDown, FaChevronUp, FaPlus, FaTrash, FaEllipsisH, FaTimes, FaCommentDots } from "react-icons/fa";
+import { FaPython, FaReact, FaHtml5, FaGithub, FaExternalLinkAlt, FaCertificate, FaCalendarAlt, FaMapMarkerAlt, FaChevronDown, FaChevronUp, FaPlus, FaTrash, FaEllipsisH, FaTimes, FaCommentDots, FaLinkedin, FaTelegram, FaEnvelope, FaPhone } from "react-icons/fa";
 import { VscFiles, VscSearch, VscSourceControl, VscRunAll, VscExtensions, VscTerminalPowershell, VscChevronDown, VscChevronUp, VscSplitHorizontal } from "react-icons/vsc";
+import { SiKaggle, SiDiscord } from "react-icons/si";
 import "./App.css";
 import { fetchPublicRepos } from "./utils/github"; // adjust path as needed
 import GithubCalendarSection from "./components/GitHubCalendar";
@@ -16,51 +17,33 @@ import GithubActivity from "./components/GitHubActivity";
 import StaticSidebar from "./components/StaticSidebar";
 import { getChatbotResponse } from "./utils/openai";
 import wunbotIcon from './assets/wunbot.png'; // adjust path as needed
+import academicExperiences from "./constants/academic_exp";
+import extracurricularExperiences from "./constants/extracurricular_exp";
+import education from "./constants/education";
+import professionalExperiences from "./constants/professional_exp";
+import SkillsSQLTable from "./components/SkillsSQLTable.jsx";
+import ReactMarkdown from "react-markdown";
+import tangleSlime from './assets/tangleslime.png';
+import projects from "./constants/projects";
 
 const files = [
   "about.md",
   "projects.py",
   "timeline",
   "education",
+  "skills.sql",
+  "skills.erd",
+  "skills.db",
+  "skills.pivot",
   "contact.json"
 ];
 
 function ProjectsPage() {
-  const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchPublicRepos("ein1le")
-      .then(data => {
-        // Optionally filter out forked/private repos, or sort by stars, etc.
-        setRepos(data.filter(repo => !repo.fork));
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
-
-  if (loading) return <div>Loading projects...</div>;
-
   return (
-    <div>
-      <GithubCalendarSection />
-      <GithubActivity /> {/* Optional */}
-      <div className="projects-grid">
-        {repos.map((repo) => (
-          <div className="project-grid-card" key={repo.id}>
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-              {/* Use repo.owner.avatar_url or a fallback image */}
-              <img
-                src={repo.owner.avatar_url}
-                alt={repo.name}
-                className="project-grid-img"
-              />
-              <div className="project-grid-title">{repo.name}</div>
-              <div className="project-grid-desc">{repo.description || "No description"}</div>
-            </a>
-          </div>
-        ))}
-      </div>
+    <div className="projects-grid">
+      {projects.map((project, idx) => (
+        <ProjectCard key={idx} {...project} />
+      ))}
     </div>
   );
 }
@@ -75,128 +58,11 @@ function TimelinePage() {
 }
 
 function EducationPage() {
-  const bristolPublications = [
-    {
-      title: "GKN Aerospace Ring Hoop Tension Test Investigation",
-      course: "[MENGM5000] Group Industrial Project",
-      authors: "Sophie Cook, Demetri Gaffney, Tallulah Jackson-Coombs, Daniel Lee",
-      description: "An investigation on the parameters affecting the accuracy of material property determination of aluminium using ring hoop tension tests",
-      date: "© April 29, 2025",
-      pdfUrl: "/pdfs/bristol-paper.pdf"
-    },
-    {
-      title: "Biomechanics of Legged Vehicles for Interplanetary Applications",
-      course: "[MENGM0059] Advanced Topics in Mechanical Engineering",
-      description: "Report on the biomechanical feasibility and modifications to a Boston Dynamics Spot robot for Martian applications",
-      date: "February 25, 2025",
-      pdfUrl: "/pdfs/bristol-article.pdf"
-    },
-    {
-      title: "Richmond Building - Renewable Energy Strategy",
-      course: "[MENGM0064] Renewable Energy for a Sustainable Future",
-      authors: "Demetri Gaffney, Daniel Lee,Anjli Majitha",
-      description: "Official proposition of renewable energy alternative solutions for the University of Bristol's Richmond Building for Scope 1-2 emissions reduction",
-      date: "December 5, 2024",
-      pdfUrl: "/pdfs/bristol-article.pdf"
-    },
-    {
-      title: "Multivariable and Nonlinear Control of a 2-DOF Planar Manipulator",
-      course: "[MENGM0067] Multivariable and Nonlinear Control",
-      authors:"Ibrahim Arekat, William Sakyi",
-      description: "",
-      date: "December 3, 2024",
-      pdfUrl: "/pdfs/bristol-article.pdf"
-    },
-    {
-      title: "Reduced Order Recurrent Neural Networks for Vibration Modelling",
-      course: "[SEMTM0007] Data-Driven Physical Modelling",
-      description: "Utilisation of reduced order methods such as DMD, and various Neural Networks including ESNs, RNNs, and NODEs for modelling impact test vibration data",
-      date: "November 28, 2024",
-      pdfUrl: "/pdfs/bristol-article.pdf"
-    },
-    {
-      title: "Evolutionary Algorithms for Optimisation of Sensors for SHM Applications",
-      course: "[MENG35000] Individual Research Project",
-      description: "Dissertation investiating heuristic information-based convex optimisation algorithms such as genetic algorithms and particle swarm for nonlinear optimisation of sensor placements on structural beams",
-      date: "© May 9, 2024",
-      pdfUrl: "/pdfs/bristol-article.pdf"
-    },
-    {
-      title: "STP Ltd. Management Portfolio",
-      course: "[MENG30012] Engineering Management",
-      authors:"Kabeer Dayal, Vic Komolrojanaporn,  Daniel Lee, Abdullah Monnoo, Aung Zaw Myat",
-      description: "Business portfolio, including components of risk assessments, product quality management plan, shareholder brief, etc. for a planned fictional VR glasses product launch",
-      date: "May 2, 2024",
-      pdfUrl: "/pdfs/bristol-article.pdf"
-    },
-    {
-      title: "Finite Element Analysis of GCU Design on LNG Carriers",
-      course: "[MENGM30011] Applied Solid Mechanics",
-      description: "",
-      date: "December 14, 2023",
-      pdfUrl: "/pdfs/bristol-article.pdf"
-    },
-    {
-      title: "Deployable Solar Array Portfolio",
-      course: "[MENG20006] Engineering Practice",
-      authors:"Ibrahim Arekat, Kabeer Dayal, Abdullah Monnoo",
-      description: "",
-      date: "April 5, 2023",
-      pdfUrl: "/pdfs/bristol-article.pdf"
-    },
-    {
-      title: "Compliance and Material Properties Analysis of a Rack and Pin Hinge",
-      course: "[MENG10005] Engineering Communication, Measurement, and Data Analysis",
-      description: "",
-      date: "May 14, 2022",
-      pdfUrl: "/pdfs/bristol-article.pdf"
-    },
-    {
-      title: "Design Portfolio",
-      course: "[CENG10012] Engineering Design",
-      description: "Robot Chariot and Artefact study of a SR-71 Design Report",
-      date: "December 17, 2021",
-      pdfUrl: "/pdfs/bristol-article.pdf"
-    }
-  ];
-  const harrowPublications = [
-    {
-      title: "Harrow Science Fair",
-      course: "SCI101",
-      authors: "Emily Chan, Michael Lee",
-      description: "Presented at Harrow Science Fair 2020, this project won first place.",
-      date: "Mar 2020",
-      pdfUrl: "/pdfs/harrow-science.pdf"
-    },
-    {
-      title: "Harrow Math Olympiad",
-      course: "MATH201",
-      authors: "Sophie Tan, Daniel Kim",
-      description: "Awarded at International Math Olympiad for innovative problem solving.",
-      date: "Jul 2019",
-      pdfUrl: "/pdfs/harrow-math.pdf"
-    }
-  ];
-  const bristolAwards = ["Bristol PLUS Award", "Bristol Skills Accelerator"];
-  const harrowAwards = ["Harrow Prize Distinction", "Sixth Form Mathematics Prize","Sixth Form House Prize"];
   return (
     <div>
-      <EducationCard
-        title="University of Bristol"
-        subheader="Integrated Masters, Mechanical Engineering"
-        date="2021 - 2025"
-        location="Bristol, UK"
-        publications={bristolPublications}
-        awards={bristolAwards}
-      />
-      <EducationCard
-        title="Harrow International School"
-        subheader="Highschool"
-        date="2011 - 2021"
-        location="Bangkok, Thailand"
-        publications={harrowPublications}
-        awards={harrowAwards}
-      />
+      {education.map((edu, idx) => (
+        <EducationCard key={idx} {...edu} />
+      ))}
     </div>
   );
 }
@@ -248,14 +114,27 @@ const experiences = [
   }
 ];
 
-function ExperienceCard({ title, subheader, date, location, responsibilities }) {
+function ExperienceCard({ title, subheader, date, location, skills = [], languages = [], responsibilities = [], links = [], contributors = "", logo, description }) {
   const [expanded, setExpanded] = useState(false);
-  let cardClass = "education-card experience-card";
-  if (expanded) cardClass += " expanded";
+  const [openImg, setOpenImg] = useState(null);
+  let displayLogo = logo;
+  if (!displayLogo) {
+    displayLogo = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
+  }
+  const hasDetailedRoles = Array.isArray(responsibilities) && responsibilities.length > 0 && typeof responsibilities[0] === 'object' && responsibilities[0] !== null && responsibilities[0].role;
+
   return (
-    <div className={cardClass} onClick={() => setExpanded(e => !e)} tabIndex={0} style={{ cursor: "pointer" }}>
+    <div className={"education-card experience-card" + (expanded ? " expanded" : "")}
+         onClick={() => setExpanded(e => !e)}
+         tabIndex={0}
+         style={{ cursor: "pointer" }}>
       <div className="education-card-main">
-        <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+        {/* Left logo, if provided */}
+        {displayLogo && (
+          <img src={displayLogo} alt="logo" className="education-card-logo" />
+        )}
+        {/* Title and subtitle anchored to right of image, left-aligned */}
+        <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', marginLeft: 0 }}>
           <div className="education-title">{title}</div>
           <div className="education-subheader">{subheader}</div>
         </div>
@@ -267,11 +146,98 @@ function ExperienceCard({ title, subheader, date, location, responsibilities }) 
       </div>
       <div className={`education-card-expandable${expanded ? " expanded" : ""}`}>
         {expanded && (
-          <ul className="experience-responsibilities">
-            {responsibilities.map((item, idx) => (
-              <li key={idx}>{item}</li>
-            ))}
-          </ul>
+          <>
+            {(skills && skills.length > 0) && (
+              <div className="experience-skills">
+                {skills.map((skill, idx) => (
+                  <span key={idx} className="experience-skill-tag">{skill}</span>
+                ))}
+              </div>
+            )}
+            {(languages && languages.length > 0) && (
+              <div className="experience-languages">
+                {languages.map((lang, idx) => (
+                  <span key={idx} className="experience-lang-icon" title={lang.name}>{lang.icon}</span>
+                ))}
+              </div>
+            )}
+            {description && (
+              <div style={{ color: '#d4d4d4', fontSize: '1em', marginBottom: 12, marginLeft: 2, marginRight: 2 }}>{description}</div>
+            )}
+            {Array.isArray(responsibilities) && responsibilities.length > 0 && (
+              <div className="experience-roles-list" style={{ position: 'relative', paddingLeft: 32 }}>
+                {/* Vertical line */}
+                <div style={{
+                  position: 'absolute',
+                  left: 12,
+                  top: 0,
+                  bottom: 0,
+                  width: 2,
+                  background: 'linear-gradient(to bottom, #007acc 0%, #a259f7 100%)',
+                  borderRadius: 2,
+                  zIndex: 0
+                }} />
+                {hasDetailedRoles ? (
+                  responsibilities.map((role, idx) => (
+                    <div key={idx} className="experience-role-block" style={{ marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                      <div style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        fontWeight: 600,
+                        color: "#b5cea8",
+                        fontSize: "1.08em",
+                        marginBottom: 2
+                      }}>
+                        <span>〇 {role.role}</span>
+                        <span style={{ color: "#a259f7", fontWeight: 500, fontSize: "0.98em", marginLeft: 16 }}>{role.date}</span>
+                      </div>
+                      {role.bullets && (
+                        <ul style={{ marginLeft: 24, color: "#b5cea8", fontSize: "1em", position: 'relative' }}>
+                          {role.bullets.map((b, bidx) => <li key={bidx}>{b}</li>)}
+                        </ul>
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <ul style={{ marginLeft: 24, color: "#b5cea8", fontSize: "1em", position: 'relative' }}>
+                    {responsibilities.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+            {(contributors || (links && links.length > 0)) && (
+              <div style={{ margin: '16px 0 0 32px', color: '#b5cea8', fontSize: '0.98em' }}>
+                {contributors && (
+                  <div style={{ fontStyle: 'italic', marginBottom: links && links.length > 0 ? 6 : 0 }}>
+                    <span>Contributors: {contributors}</span>
+                  </div>
+                )}
+              </div>
+            )}
+            {links && links.length > 0 && (
+              <div className="experience-links-box">
+                {links.map((link, idx) => (
+                  link.type === "image" ? (
+                    <span key={idx} className="experience-link-img-thumb" onClick={e => { e.stopPropagation(); setOpenImg(link.src); }}>
+                      <img src={link.src} alt="certificate" />
+                    </span>
+                  ) : (
+                    <a key={idx} href={link.href} target="_blank" rel="noopener noreferrer" className="experience-link">
+                      {link.icon || <FaExternalLinkAlt />} {link.label}
+                    </a>
+                  )
+                ))}
+                {openImg && (
+                  <div className="experience-img-modal" onClick={() => setOpenImg(null)}>
+                    <img src={openImg} alt="certificate" />
+                  </div>
+                )}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
@@ -281,7 +247,7 @@ function ExperienceCard({ title, subheader, date, location, responsibilities }) 
 function ExperiencesPage() {
   return (
     <div>
-      {experiences.map((exp, idx) => (
+      {professionalExperiences.map((exp, idx) => (
         <ExperienceCard key={idx} {...exp} />
       ))}
     </div>
@@ -426,7 +392,7 @@ function TerminalSkills({ sidebarWidth = 200 }) {
   );
 }
 
-function OtherExperienceCard({ title, subtitle, date, location, skills = [], languages = [], responsibilities = [], links = [], logo, description }) {
+function OtherExperienceCard({ title, subtitle, date, location, skills = [], languages = [], responsibilities = [], links = [], contributors = "", logo, description }) {
   const [expanded, setExpanded] = useState(false);
   const [openImg, setOpenImg] = useState(null);
   // Placeholder logic
@@ -525,11 +491,40 @@ function OtherExperienceCard({ title, subtitle, date, location, skills = [], lan
                         <span style={{ color: "#a259f7", fontWeight: 500, fontSize: "0.98em", marginLeft: 16 }}>{role.date}</span>
                       </div>
                       {Array.isArray(role.bullets) ? (
-                        <ul style={{ marginLeft: 24, color: "#b5cea8", fontSize: "1em", position: 'relative' }}>
-                          {role.bullets.map((item, bidx) => (
-                            <li key={bidx}>{item}</li>
-                          ))}
-                        </ul>
+                        <>
+                          <ul style={{ marginLeft: 24, color: "#b5cea8", fontSize: "1em", position: 'relative' }}>
+                            {role.bullets.map((item, bidx) => (
+                              <li key={bidx}>{item}</li>
+                            ))}
+                          </ul>
+                          {/* Display role_contributors if present */}
+                          {role.role_contributors && (
+                            <div style={{ fontStyle: 'italic', color: '#b5cea8', marginLeft: 28, marginTop: 2, fontSize: '0.97em' }}>
+                              Contributors: {role.role_contributors}
+                            </div>
+                          )}
+                          {/* Display role_links if present */}
+                          {role.role_links && role.role_links.length > 0 && (
+                            <div className="experience-links-box" style={{ marginLeft: 24, marginTop: 4 }}>
+                              {role.role_links.map((link, lidx) => (
+                                link.type === "image" ? (
+                                  <span key={lidx} className="experience-link-img-thumb" onClick={e => { e.stopPropagation(); setOpenImg(link.src); }}>
+                                    <img src={link.src} alt="role media" />
+                                  </span>
+                                ) : (
+                                  <a key={lidx} href={link.href} target="_blank" rel="noopener noreferrer" className="experience-link">
+                                    {link.icon || <FaExternalLinkAlt />} {link.label}
+                                  </a>
+                                )
+                              ))}
+                              {openImg && (
+                                <div className="experience-img-modal" onClick={() => setOpenImg(null)}>
+                                  <img src={openImg} alt="role media" />
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </>
                       ) : (
                         // fallback for old format: treat role as a string
                         <ul style={{ marginLeft: 24, color: "#b5cea8", fontSize: "1em", position: 'relative' }}>
@@ -546,6 +541,17 @@ function OtherExperienceCard({ title, subtitle, date, location, skills = [], lan
                     ))}
                   </ul>
                 )}
+              </div>
+            )}
+            {/* CONTRIBUTORS & LINKS/MEDIA SECTION */}
+            {(contributors || (links && links.length > 0)) && (
+              <div style={{ margin: '16px 0 0 32px', color: '#b5cea8', fontSize: '0.98em' }}>
+                {contributors && (
+                  <div style={{ fontStyle: 'italic', marginBottom: links && links.length > 0 ? 6 : 0 }}>
+                    <span>Contributors: {contributors}</span>
+                  </div>
+                )}
+                {/* Optionally, you could render media here if you want to separate from links */}
               </div>
             )}
             {links.length > 0 && (
@@ -576,54 +582,9 @@ function OtherExperienceCard({ title, subtitle, date, location, skills = [], lan
 }
 
 function OtherExperiencesPage() {
-  const experiences = [
-    {
-      title: "United Kingdom Singapore Student Council (UKSSC)",
-      subtitle: "Technology Director",
-      date: "Mar 2025 - Present",
-      location: "London, UK",
-      skills: ["Leadership", "Technology", "Strategy"],
-      description: "Lorum ipsum",
-      responsibilities: [
-        {
-          role: "Technology Director",
-          date: "May 2025 - Present",
-          bullets: ["Lorum ipsum dolor sit amet."]
-        },
-        {
-          role: "Technology Associate",
-          date: "Mar 2025 - May 2025",
-          bullets: ["Lorum ipsum dolor sit amet."]
-        },
-        {
-          role: "SingSoc Representative",
-          date: "Mar 2024 - Mar 2025",
-          bullets: ["Lorum ipsum dolor sit amet."]
-        }
-      ]
-    },
-    {
-      title: "Bristol Investment Fund (BIF)",
-      subtitle: "Portfolio Risk Analyst",
-      date: "Jan 2025 - May 2025",
-      location: "Bristol, UK",
-      skills: ["Finance", "Risk Analysis", "Portfolio Management"],
-      description: "Lorum ipsum",
-      responsibilities: []
-    },
-    {
-      title: "Bristol Trading Society (BTS)",
-      subtitle: "Quantitative Analyst - Derivatives",
-      date: "Jan 2025 - May 2025",
-      location: "Bristol, UK",
-      skills: ["Quantitative Analysis", "Derivatives", "Trading"],
-      description: "Lorum ipsum",
-      responsibilities: []
-    },
-  ];
   return (
     <div>
-      {experiences.map((exp, idx) => (
+      {academicExperiences.map((exp, idx) => (
         <OtherExperienceCard key={idx} {...exp} />
       ))}
     </div>
@@ -631,103 +592,122 @@ function OtherExperiencesPage() {
 }
 
 function ExtracurricularExperiencesPage() {
-  const experiences = [
-    {
-      title: "Malaysian and Singaporean Students' Association (MSSA)",
-      subtitle: "Executive Committee 24/25, General Secretary",
-      date: "Mar 2024 - May 2025",
-      location: "Bristol, UK",
-      skills: ["Leadership", "Organization", "Communication"],
-      description: "Lorum ipsum",
-      responsibilities: []
-    },
-    {
-      title: "Bristol MechSoc",
-      subtitle: "Executive Committee 24/25",
-      date: "Mar 2024 - May 2025",
-      location: "Bristol, UK",
-      skills: ["Media", "Events", "Teamwork"],
-      description: "Lorum ipsum",
-      responsibilities: [
-        {
-          role: "Media Officer",
-          date: "Mar 2024 - May 2025",
-          bullets: ["Lorum ipsum dolor sit amet."]
-        },
-        {
-          role: "Senior Events Representative",
-          date: "Mar 2024 - May 2025",
-          bullets: ["Lorum ipsum dolor sit amet."]
-        }
-      ]
-    },
-    {
-      title: "University of Bristol Student's Union",
-      subtitle: "BAME Network Committee",
-      date: "Sep 2024 - Mar 2025",
-      location: "Bristol, UK",
-      skills: ["Diversity", "Advocacy", "Community"],
-      description: "Lorum ipsum",
-      responsibilities: []
-    },
-    {
-      title: "University of Bristol Faculty of Engineering",
-      subtitle: "Mechanical Engineering Course Representative",
-      date: "Feb 2024 - May 2025",
-      location: "Bristol, UK",
-      skills: ["Representation", "Engineering", "Leadership"],
-      description: "Lorum ipsum",
-      responsibilities: [
-        {
-          role: "Senior Course Rep",
-          date: "Aug 2024 - May 2025",
-          bullets: ["Lorum ipsum dolor sit amet."]
-        },
-        {
-          role: "Course Rep",
-          date: "Feb 2024 - Aug 2024",
-          bullets: ["Lorum ipsum dolor sit amet."]
-        }
-      ]
-    },
-    {
-      title: "University of Bristol Thai Society",
-      subtitle: "Executive Committee 21/22, Public Relations Officer",
-      date: "Sep 21 - Mar 2022",
-      location: "Bristol, UK",
-      skills: ["Public Relations", "Event Promotion", "Community"],
-      description: "Lorum ipsum",
-      responsibilities: []
-    }
-  ];
   return (
     <div>
-      {experiences.map((exp, idx) => (
+      {extracurricularExperiences.map((exp, idx) => (
         <OtherExperienceCard key={idx} {...exp} />
       ))}
     </div>
   );
 }
 
-const fileContents = {
-  "about.md": (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+function AboutMarkdownOverlay({ sidebarWidth, terminalHeight, rightSidebarOffset, headerHeight }) {
+  const [portfolioInfo, setPortfolioInfo] = React.useState("");
+  React.useEffect(() => {
+    fetch("/src/components/portfolio-information.md")
+      .then(res => res.text())
+      .then(setPortfolioInfo);
+  }, []);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: headerHeight,
+        left: sidebarWidth,
+        right: rightSidebarOffset,
+        bottom: terminalHeight,
+        width: `calc(100vw - ${sidebarWidth + rightSidebarOffset}px)`,
+        height: `calc(100vh - ${headerHeight + terminalHeight}px)`,
+        overflow: "auto",
+        zIndex: 1
+      }}
+    >
       <TetrahedronAnimation />
-      <div style={{ position: "relative", zIndex: 1, padding: "48px 0 0 0" }}>
-        <h2>About Me</h2>
-        <p>I'm a passionate developer who loves building cool things!</p>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background: "rgba(24,24,31,0.55)",
+          color: "#b5cea8",
+          zIndex: 2,
+          pointerEvents: "none",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{
+          maxWidth: 600,
+          width: "90%",
+          margin: "0 auto",
+          padding: 32,
+          borderRadius: 16,
+          background: "rgba(35,35,43,0.7)",
+          boxShadow: "0 4px 32px #0006",
+          pointerEvents: "auto"
+        }}>
+          <ReactMarkdown>{portfolioInfo}</ReactMarkdown>
+        </div>
       </div>
     </div>
+  );
+}
+
+function UserInfoCard({ icon, title, subtitle, link }) {
+  return (
+    <a
+      href={link}
+      target={link.startsWith('http') ? '_blank' : undefined}
+      rel="noopener noreferrer"
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        background: '#23232b',
+        borderRadius: 12,
+        padding: '16px 20px',
+        textDecoration: 'none',
+        boxShadow: '0 2px 8px #0002',
+        border: '1.5px solid #31313a',
+        minWidth: 0,
+        transition: 'box-shadow 0.15s, border 0.15s',
+        margin: 0,
+        color: '#b5cea8',
+        width: '100%',
+        cursor: 'pointer',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 2 }}>
+        {icon}
+        <span style={{ fontWeight: 600, fontSize: 16 }}>{title}</span>
+      </div>
+      <span style={{ fontSize: 13, color: '#7ec699', marginLeft: 38, wordBreak: 'break-all' }}>{subtitle}</span>
+    </a>
+  );
+}
+
+const fileContents = {
+  "about.md": (props) => (
+    <AboutMarkdownOverlay
+      sidebarWidth={props.sidebarWidth}
+      terminalHeight={props.terminalHeight}
+      rightSidebarOffset={props.rightSidebarOffset}
+      headerHeight={props.headerHeight}
+    />
   ),
   "projects.py": <ProjectsPage />,
   "timeline": <TimelinePage />,
-  "education.yml": <EducationPage />,
+  "education.py": <EducationPage />,
   "my_learning.log": <TimelineGitStyle />,
   "contact.json": <div><h2>Contact</h2><p>Email: you@example.com</p></div>,
   "professional_exp.ipynb": <ExperiencesPage />,
   "academic_exp.py": <OtherExperiencesPage />,
   "extracurricular_exp.py": <ExtracurricularExperiencesPage />,
-  "skills.md": <TerminalSkills />
+  "skills.md": <TerminalSkills />,
+  "skills.sql": <SkillsSQLTable />
 };
 
 const staticSidebarWidth = 56;
@@ -1070,10 +1050,48 @@ function ChatbotSidebar({ width, onResizeStart, onClose }) {
   );
 }
 
+function GitSidebarProjects() {
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    fetchPublicRepos("ein1le")
+      .then(data => {
+        setRepos(data.filter(repo => !repo.fork));
+        setLoading(false);
+      })
+      .catch(err => {
+        setError("Failed to fetch GitHub projects");
+        setLoading(false);
+      });
+  }, []);
+  if (loading) return <div style={{ color: '#a259f7', marginTop: 12 }}>Loading projects...</div>;
+  if (error) return <div style={{ color: '#ff4d4f', marginTop: 12 }}>{error}</div>;
+  return (
+    <div style={{ marginTop: 24 }}>
+      <div style={{ color: '#a259f7', fontWeight: 600, fontSize: 16, marginBottom: 8 }}>GitHub Projects</div>
+      {repos.map((repo, idx) => (
+        <ProjectCard
+          key={repo.id}
+          title={repo.name}
+          description={repo.description || "No description"}
+          link={repo.html_url}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function App() {
   const [selected, setSelected] = useState("about.md");
-  const [sidebarWidth, setSidebarWidth] = useState(200);
-  const [isResizing, setIsResizing] = useState(false);
+  const [activeSidebar, setActiveSidebar] = useState("explorer"); // 'explorer', 'git', 'search', etc. or null
+  const [sidebarWidths, setSidebarWidths] = useState({
+    explorer: 220,
+    git: 300,
+    search: 260,
+    // add more as needed
+  });
+  const [isSidebarResizing, setIsSidebarResizing] = useState(false);
   const mainContentRef = useRef(null);
   const [terminalHeight, setTerminalHeight] = useState(180);
   const [isTermResizing, setIsTermResizing] = useState(false);
@@ -1081,38 +1099,44 @@ export default function App() {
   const [chatbotWidth, setChatbotWidth] = useState(340);
   const [isChatbotResizing, setIsChatbotResizing] = useState(false);
 
-  const startResizing = (e) => {
-    setIsResizing(true);
+  // Sidebar resize handlers
+  const startSidebarResizing = (e) => {
+    setIsSidebarResizing(true);
     document.body.style.cursor = "col-resize";
   };
-
-  const stopResizing = () => {
-    setIsResizing(false);
+  const stopSidebarResizing = () => {
+    setIsSidebarResizing(false);
     document.body.style.cursor = "";
   };
-
-  const resize = (e) => {
-    if (isResizing) {
+  const resizeSidebar = (e) => {
+    if (isSidebarResizing && activeSidebar) {
       let newWidth = e.clientX - staticSidebarWidth;
-      if (newWidth < minDynamicSidebarWidth) newWidth = minDynamicSidebarWidth;
+      if (newWidth < 220) newWidth = 220;
       if (newWidth > 400) newWidth = 400;
-      setSidebarWidth(newWidth);
+      setSidebarWidths(widths => ({ ...widths, [activeSidebar]: newWidth }));
     }
   };
-
-  React.useEffect(() => {
-    if (isResizing) {
-      window.addEventListener("mousemove", resize);
-      window.addEventListener("mouseup", stopResizing);
+  useEffect(() => {
+    if (isSidebarResizing) {
+      window.addEventListener("mousemove", resizeSidebar);
+      window.addEventListener("mouseup", stopSidebarResizing);
     } else {
-      window.removeEventListener("mousemove", resize);
-      window.removeEventListener("mouseup", stopResizing);
+      window.removeEventListener("mousemove", resizeSidebar);
+      window.removeEventListener("mouseup", stopSidebarResizing);
     }
     return () => {
-      window.removeEventListener("mousemove", resize);
-      window.removeEventListener("mouseup", stopResizing);
+      window.removeEventListener("mousemove", resizeSidebar);
+      window.removeEventListener("mouseup", stopSidebarResizing);
     };
-  }, [isResizing]);
+  }, [isSidebarResizing, activeSidebar]);
+
+  // Sidebar icon click handler
+  const handleSidebarIconClick = (type) => {
+    setActiveSidebar(prev => (prev === type ? null : type));
+  };
+
+  // Current sidebar width
+  const currentSidebarWidth = activeSidebar ? sidebarWidths[activeSidebar] : 0;
 
   // Terminal resize handlers
   const startTermResizing = (e) => {
@@ -1180,7 +1204,8 @@ export default function App() {
   // Dynamically set skills.md content to pass sidebarWidth
   const dynamicFileContents = {
     ...fileContents,
-    "skills.md": <TerminalSkills sidebarWidth={sidebarWidth} />
+    "skills.md": <TerminalSkills sidebarWidth={currentSidebarWidth} />,
+    "skills.sql": <SkillsSQLTable />
   };
 
   // Pass right offset to TerminalWindow
@@ -1193,39 +1218,160 @@ export default function App() {
         showChatbot={showChatbot}
       />
       <div style={{ display: "flex", height: "100vh", position: "relative" }}>
-        <StaticSidebar />
-        <div
-          className="sidebar"
-          style={{
-            width: sidebarWidth,
-            background: '#23232b',
-            display: "flex",
-            flexDirection: "column",
-            position: "absolute",
-            left: staticSidebarWidth,
-            top: headerHeight,
-            height: `calc(100vh - ${headerHeight}px)`,
-            boxSizing: "border-box",
-            zIndex: 101,
-          }}
-        >
-          <Explorer selected={selected} onSelect={setSelected} />
+        <StaticSidebar onSidebarIconClick={handleSidebarIconClick} activeSidebar={activeSidebar} />
+        {/* Unified Sidebar: Only one visible at a time */}
+        {activeSidebar && (
           <div
-            className="sidebar-resizer"
-            onMouseDown={startResizing}
-            style={{ right: 0, top: 0, bottom: 0, width: 6, position: "absolute", cursor: "col-resize" }}
-          />
-        </div>
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", height: "100vh", overflow: "hidden", marginLeft: staticSidebarWidth + sidebarWidth, marginRight: showChatbot ? chatbotWidth : 0 }}>
+            className={`sidebar ${activeSidebar}-sidebar`}
+            style={{
+              width: currentSidebarWidth,
+              background: '#23232b',
+              display: "flex",
+              flexDirection: "column",
+              position: "absolute",
+              left: staticSidebarWidth,
+              top: headerHeight,
+              height: `calc(100vh - ${headerHeight}px - ${terminalHeight}px)`,
+              boxSizing: "border-box",
+              zIndex: 101,
+              borderRight: activeSidebar === "git" ? '1.5px solid #222' : undefined,
+              transition: 'width 0.1s, height 0.1s',
+            }}
+          >
+            {activeSidebar === "explorer" && <Explorer selected={selected} onSelect={setSelected} />}
+            {activeSidebar === "git" && (
+              <>
+                <div style={{ padding: 24, color: '#b5cea8', fontWeight: 600, fontSize: 18 }}>Git</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+                  <GithubCalendarSection />
+                  <GithubActivity />
+                  <GitSidebarProjects />
+                </div>
+                <div style={{ flex: 1 }} />
+              </>
+            )}
+            {activeSidebar === "search" && (
+              <div style={{ padding: 24, color: '#b5cea8', fontWeight: 600, fontSize: 18 }}>Search (Coming Soon)</div>
+            )}
+            {activeSidebar === "contact" && (
+              <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '24px 38px 24px 24px', gap: 18 }}>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
+                  <img src={tangleSlime} alt="Tangle Slime" style={{ width: 24, height: 24, marginRight: 8 }} />
+                  <div style={{ color: '#b5cea8', fontWeight: 600, fontSize: 20 }}>Drop me an email!</div>
+                </div>
+                <textarea
+                  placeholder="Type your message..."
+                  style={{
+                    width: '100%',
+                    minHeight: 120,
+                    background: '#18181f',
+                    color: '#b5cea8',
+                    border: '1.5px solid #31313a',
+                    borderRadius: 8,
+                    padding: '12px 14px',
+                    fontSize: 15,
+                    fontFamily: 'inherit',
+                    outline: 'none',
+                    resize: 'vertical',
+                  }}
+                />
+              </div>
+            )}
+            {activeSidebar === "user" && (
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                flex: 1,
+                padding: '20px 48px 24px 24px',
+                gap: 18,
+                overflowY: 'auto'
+              }}>
+                <div style={{ color: '#b5cea8', fontWeight: 600, fontSize: 20, marginBottom: 8 }}>User Info</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                  <UserInfoCard
+                    icon={<FaGithub style={{ color: '#b5cea8', fontSize: 22, marginRight: 16 }} />}
+                    title="GitHub"
+                    subtitle="github.com/ein1le"
+                    link="https://github.com/ein1le"
+                  />
+                  <UserInfoCard
+                    icon={<FaLinkedin style={{ color: '#b5cea8', fontSize: 22, marginRight: 16 }} />}
+                    title="LinkedIn"
+                    subtitle="linkedin.com/in/wishawin/"
+                    link="https://linkedin.com/in/wishawin/"
+                  />
+                  <UserInfoCard
+                    icon={<FaTelegram style={{ color: '#b5cea8', fontSize: 22, marginRight: 16 }} />}
+                    title="Telegram"
+                    subtitle="t.me/einle1"
+                    link="https://t.me/einle1"
+                  />
+                  <UserInfoCard
+                    icon={<FaEnvelope style={{ color: '#b5cea8', fontSize: 22, marginRight: 16 }} />}
+                    title="Email"
+                    subtitle="wishawin@gmail.com"
+                    link="mailto:wishawin@gmail.com"
+                  />
+                  <UserInfoCard
+                    icon={<FaPhone style={{ color: '#b5cea8', fontSize: 22, marginRight: 16 }} />}
+                    title="Phone"
+                    subtitle="+44 7534578468"
+                    link="tel:+44 7534578468"
+                  />
+                  <UserInfoCard
+                    icon={<SiKaggle style={{ color: '#b5cea8', fontSize: 22, marginRight: 16 }} />}
+                    title="Kaggle"
+                    subtitle="kaggle.com/wishawinlertnawapan"
+                    link="https://kaggle.com/wishawinlertnawapan"
+                  />
+                  <UserInfoCard
+                    icon={<SiDiscord style={{ color: '#b5cea8', fontSize: 22, marginRight: 16 }} />}
+                    title="Discord"
+                    subtitle="discord.com/users/1wun/"
+                    link="https://discord.com/users/1wun/"
+                  />
+                </div>
+              </div>
+            )}
+            {/* Add more sidebar types as needed */}
+            <div
+              className="sidebar-resizer"
+              onMouseDown={startSidebarResizing}
+              style={{ right: 0, top: 0, bottom: 0, width: 6, position: "absolute", cursor: "col-resize" }}
+            />
+            <div
+              style={{ position: 'absolute', top: 8, right: 12, color: '#b5cea8', cursor: 'pointer', fontSize: 20 }}
+              onClick={() => setActiveSidebar(null)}
+              title="Close Sidebar"
+            >
+              ×
+            </div>
+          </div>
+        )}
+        <div style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          height: `calc(100vh - ${terminalHeight}px)`,
+          overflow: "hidden",
+          marginLeft: staticSidebarWidth + currentSidebarWidth,
+          marginRight: showChatbot ? chatbotWidth : 0
+        }}>
           <div className="main-content" ref={mainContentRef} style={{ flex: 1, minHeight: 0, paddingTop: headerHeight }}>
-            <Editor content={dynamicFileContents[selected]} />
+            <Editor
+              content={typeof dynamicFileContents[selected] === 'function' ? dynamicFileContents[selected] : dynamicFileContents[selected]}
+              sidebarWidth={staticSidebarWidth + currentSidebarWidth}
+              terminalHeight={terminalHeight}
+              rightSidebarOffset={rightSidebarOffset}
+              headerHeight={headerHeight}
+            />
           </div>
           <StatusBar />
         </div>
         <TerminalWindow
           height={terminalHeight}
           onResizeStart={startTermResizing}
-          sidebarOffset={staticSidebarWidth + sidebarWidth}
+          sidebarOffset={staticSidebarWidth + currentSidebarWidth}
           rightOffset={rightSidebarOffset}
         />
         {showChatbot && (

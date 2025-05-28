@@ -8,15 +8,14 @@ const explorerStructure = [
     name: "about",
     children: [
       { type: "file", name: "about.md" },
-      { type: "file", name: "skills.md" },
-      { type: "file", name: "contact.info" }
+      { type: "file", name: "skills.sql" }
     ]
   },
   {
     type: "folder",
     name: "education",
     children: [
-      { type: "file", name: "education.yml" },
+      { type: "file", name: "education.py" },
       { type: "file", name: "my_learning.log" }
     ]
   },

@@ -33,7 +33,22 @@ const academicExperiences = [
         bullets: ["Lorum ipsum dolor sit amet."]
       }
     ]
-  }, {
+  },
+  {
+    title: "University of Bristol Intelligent Systems Laboratory",
+    subtitle: "Undergraduate Researcher",
+    date: "Jan 2025 - Present",
+    location: "Bristol, UK",
+    skills: ["UI/UX Design", "Technology", "Strategy"],
+    description: "Artificial Intelligence and Machine Learning Laboratory | Financial Engineering Laboratory",
+    contributors: "Alice Example, Bob Example",
+    links: [
+      { label: "GitHub", href: "https://github.com/ein1le/headstart-carbontracc", type: "link" },
+      { label: "Team Photo", src: "https://via.placeholder.com/100", type: "image" }
+    ],
+    responsibilities: []
+  }, 
+  {
     title: "CarbonTrac",
     subtitle: "Project Lead",
     date: "Jan 2025 - Present",

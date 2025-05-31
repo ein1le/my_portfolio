@@ -1,6 +1,6 @@
 import React from "react";
-import { FaPython, FaReact, FaHtml5, FaJs, FaNodeJs, FaJava, FaDatabase, FaGithub, FaCss3, FaRProject } from "react-icons/fa";
-import { SiVite } from "react-icons/si";
+import { FaPython, FaReact, FaHtml5, FaJs, FaNodeJs, FaJava, FaDatabase, FaGithub, FaCss3, FaRProject, FaGit, FaFigma } from "react-icons/fa";
+import { SiVite, SiVercel } from "react-icons/si";
 import "./ProjectCard.css";
 
 const languageIconMap = {
@@ -14,7 +14,10 @@ const languageIconMap = {
   github: <FaGithub style={{ color: '#b5cea8' }} />,
   css: <FaCss3 style={{ color: '#264de4' }} />,
   vite: <SiVite style={{ color: '#646cff' }} />,
-  r: <FaRProject style={{ color: '#264de4' }} />
+  r: <FaRProject style={{ color: '#264de4' }} />,
+  git: <FaGit style={{ color: '#b5cea8' }} />,
+  vercel: <SiVercel style={{ color: '#fff', background: '#000', borderRadius: '3px' }} />,
+  figma: <FaFigma style={{ color: '#b5cea8' }} />
 };
 
 export default function ProjectCard({ title, description, link, languages = [] }) {

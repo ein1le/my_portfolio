@@ -103,7 +103,7 @@ const extracurricularExperiences = [
       {
         role: "Admin Head",
         date: "Aug 2024 - Mar 2025",
-        bullets: ["MSNight 2025 'Dusta'"],
+        bullets: ["Admin Head | Auxiliary Department | Core Committee","MSNight 2025 'Dusta'"],
         role_contributors: "Haziq Hamdan, Hazeq Emir Harrison, Zarihatul Husna, Nik Ariff Johaan, Pattaranit Krongboonying, Abdul Qayyum, Cheryl Teo, Michelle Yeo ",
         role_links: []
       },
@@ -111,7 +111,8 @@ const extracurricularExperiences = [
         role: "Creative Director",
         date: "Jul 2023 - Apr 2024",
         bullets: ["Director | Creative Department | Core Committee","MNight 2024 'Waiting for your Return'"],
-        role_contributors: "Pattaranit Krongboonying, Jaslyn Leong, Zhen Wei Leong, Mindy Liew, Alicia Low, King Ray Ng, Chien Wen Siow, Wen Hans Tan, Michelle Yeo",
+        role_contributors: "Pattaranit Krongboonying, Jaslyn Leong, Mindy Liew, King Ray Ng, Chien Wen Siow, Michelle Yeo",
+        role_contributors_link: ["","https://www.linkedin.com/in/jaslyn-leong/?originalSubdomain=uk",],
         role_links: [
           { label: "Epigram Newsletter", href: "https://epigram.org.uk/review-waiting-for-your-return-by-bristol-ms-night/", type: "link" },
           { label: "MSNight2024 Gallery", src: "themarcusliew.pic-time.com/-bristolmsnight20243march2024/gallery?scrollPos=0", type: "link" }
@@ -120,7 +121,7 @@ const extracurricularExperiences = [
       {
         role: "Assistant Creative Director",
         date: "Jan 2023 - Apr 2023",
-        bullets: ["MSNight 2023 `Stuck in the Moment`"],
+        bullets: ["Assistant Creative Director | Creative Department | Core Committee","MSNight 2023 `Stuck in the Moment`"],
         role_contributors: "Role Alice, Role Bob",
         role_links: []
       }

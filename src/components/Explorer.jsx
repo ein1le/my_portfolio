@@ -38,6 +38,18 @@ const explorerStructure = [
   }
 ];
 
+const fileDescriptions = {
+  "about.md": "Hero Page",
+  "skills.sql": "Skills Database",
+  "education.py": "Academic History",
+  "my_learning.log": "Learning and Events Log",
+  "professional_exp.ipynb": "Professional Experience",
+  "academic_exp.py": "Academic-related Extracurriculars",
+  "extracurricular_exp.py": "Other Extracurriculars",
+  "volunteering.py": "Volunteering Activities",
+  "projects.py": "Personal Projects Portfolio"
+};
+
 function Folder({ name, children, open, toggle, renderChildren }) {
   return (
     <div>
@@ -84,6 +96,7 @@ export default function Explorer({ selected, onSelect }) {
                   <li
                     key={child.name}
                     className={selected === child.name ? "selected" : ""}
+                    title={fileDescriptions[child.name] || undefined}
                     onClick={e => {
                       e.stopPropagation();
                       onSelect(child.name);

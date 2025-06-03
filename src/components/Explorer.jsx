@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FaChevronRight, FaChevronDown } from "react-icons/fa";
-import "./Explorer.css";
 
 const explorerStructure = [
   {
@@ -53,10 +52,10 @@ const fileDescriptions = {
 function Folder({ name, children, open, toggle, renderChildren }) {
   return (
     <div>
-      <div className="explorer-folder" onClick={toggle}>
-        {open ? <FaChevronDown /> : <FaChevronRight />} <span className="explorer-folder-label">{name}</span>
+      <div className="flex items-center cursor-pointer py-1 pl-2 pr-0 text-text font-bold select-none transition-colors duration-200 hover:bg-[#31313a]" onClick={toggle}>
+        {open ? <FaChevronDown /> : <FaChevronRight />} <span className="ml-1 text-base">{name}</span>
       </div>
-      {open && <ul>{renderChildren()}</ul>}
+      {open && <ul className="list-none pl-4 m-0">{renderChildren()}</ul>}
     </div>
   );
 }
@@ -75,13 +74,13 @@ export default function Explorer({ selected, onSelect }) {
   };
 
   return (
-    <div className="explorer">
-      <h4>EXPLORER</h4>
-      <div className="explorer-folder" onClick={() => setPortfolioOpen(o => !o)}>
-        {portfolioOpen ? <FaChevronDown /> : <FaChevronRight />} <span className="explorer-folder-label">Portfolio</span>
+    <div className="w-[200px] bg-card py-4 border-r border-[#222] text-text">
+      <h4 className="m-0 mb-2 ml-4 text-base text-accent2 tracking-wide">EXPLORER</h4>
+      <div className="flex items-center cursor-pointer py-1 pl-2 pr-0 text-text font-bold select-none transition-colors duration-200 hover:bg-[#31313a]" onClick={() => setPortfolioOpen(o => !o)}>
+        {portfolioOpen ? <FaChevronDown /> : <FaChevronRight />} <span className="ml-1 text-base">Portfolio</span>
       </div>
       {portfolioOpen && (
-        <div style={{ paddingLeft: 12 }}>
+        <div className="pl-3">
           {explorerStructure.map(folder => (
             <Folder
               key={folder.name}
@@ -95,7 +94,7 @@ export default function Explorer({ selected, onSelect }) {
                 folder.children.map(child => (
                   <li
                     key={child.name}
-                    className={selected === child.name ? "selected" : ""}
+                    className={`rounded px-2 py-1 cursor-pointer transition-colors duration-200 text-sm ${selected === child.name ? 'bg-[#31313a] text-white' : 'hover:bg-[#31313a] hover:text-white'}`}
                     title={fileDescriptions[child.name] || undefined}
                     onClick={e => {
                       e.stopPropagation();

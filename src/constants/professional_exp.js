@@ -1,16 +1,13 @@
 const professionalExperiences = [
   {
     title: "BOBA Network",
-    subheader: "Role at Company 1",
-    date: "2020 - 2021",
-    location: "Location 1",
+    subheader: "Generative AI Engineer",
+    date: "Jan 2025- Present",
+    location: "Remote, UK",
+    type: "contract",
     skills: ["Leadership", "Workflow Automation", "Team Management"],
     languages: ["JavaScript", "Python"],
     description: "Worked on blockchain scaling solutions and led a team of engineers to deliver new features.",
-    contributors: "Jane Doe, John Smith",
-    links: [
-      { label: "Company Website", href: "https://boba.network", type: "link" }
-    ],
     logo: "https://cryptologos.cc/logos/boba-network-boba-logo.png",
     responsibilities: [
       "Led a team of 5 engineers.",
@@ -20,16 +17,13 @@ const professionalExperiences = [
   },
   {
     title: "Flare Network",
-    subheader: "Role at Company 2",
-    date: "2019 - 2020",
-    location: "Location 2",
+    subheader: "Flare Time-Series Oracle (FTSO) Developer",
+    date: "Jan 2025 - Present",
+    location: "Remote, UK",
+    type: "contract",
     skills: ["DevOps", "CI/CD", "Mentoring"],
     languages: ["Go", "Python"],
     description: "Implemented CI/CD pipelines and mentored junior developers in a fast-paced environment.",
-    contributors: "Alice Example, Bob Example",
-    links: [
-      { label: "Company Website", href: "https://flare.network", type: "link" }
-    ],
     logo: "https://cryptologos.cc/logos/flare-flr-logo.png",
     responsibilities: [
       "Managed project timelines and deliverables.",
@@ -39,16 +33,13 @@ const professionalExperiences = [
   },
   {
     title: "KKP Financial Group",
-    subheader: "Role at Company 3",
-    date: "2018 - 2019",
-    location: "Location 3",
+    subheader: "Summer Analyst",
+    date: "July 2024 - August 2024",
+    location: "Bangkok, Thailand",
+    type: "internship",
     skills: ["Backend Development", "Database Optimization"],
     languages: ["Java", "SQL"],
     description: "Designed scalable backend systems and optimized database queries for financial applications.",
-    contributors: "Michael Lee, Emily Chan",
-    links: [
-      { label: "Company Website", href: "https://kkpfg.com", type: "link" }
-    ],
     logo: "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg",
     responsibilities: [
       "Designed scalable backend systems.",
@@ -58,16 +49,13 @@ const professionalExperiences = [
   },
   {
     title: "YSG Group Co. Ltd",
-    subheader: "Role at Company 4",
-    date: "2017 - 2018",
-    location: "Location 4",
+    subheader: "Data Engineering Intern",
+    date: "June 2023 - August 2023",
+    location: "Bangkok, Thailand",
+    type: "internship",
     skills: ["Dashboard Development", "API Integration"],
     languages: ["JavaScript", "PHP"],
     description: "Built customer-facing dashboards and integrated third-party APIs for business clients.",
-    contributors: "Sophie Tan, Daniel Kim",
-    links: [
-      { label: "Company Website", href: "https://ysg.co.th", type: "link" }
-    ],
     logo: "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg",
     responsibilities: [
       "Built customer-facing dashboards.",
@@ -77,16 +65,13 @@ const professionalExperiences = [
   },
   {
     title: "University of Bristol",
-    subheader: "Role at Company 4",
-    date: "2017 - 2018",
+    subheader: "Various Positions",
+    date: "August 2022 - May 2025",
     location: "Location 4",
+    type: "student-job",
     skills: ["Research", "Data Analysis"],
     languages: ["Python", "R"],
     description: "Conducted research and data analysis for academic projects.",
-    contributors: "Ibrahim Arekat, William Sakyi",
-    links: [
-      { label: "University Website", href: "https://bristol.ac.uk", type: "link" }
-    ],
     logo: "https://upload.wikimedia.org/wikipedia/en/3/3a/University_of_Bristol_logo.svg",
     responsibilities: [
       {
@@ -129,15 +114,12 @@ const professionalExperiences = [
   {
     title: "Vibharvadi Hospital",
     subheader: "Role at Company 4",
-    date: "2017 - 2018",
-    location: "Location 4",
+    date: "June 2019 - June 2019",
+    location: "Bangkok, Thailand",
+    type: "contract",
     skills: ["Healthcare IT", "Deployment"],
     languages: ["Python", "SQL"],
     description: "Deployed IT solutions for hospital management and patient care.",
-    contributors: "Abdullah Monnoo, Aung Zaw Myat",
-    links: [
-      { label: "Hospital Website", href: "https://vibhavadi.com", type: "link" }
-    ],
     logo: "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg",
     responsibilities: [
       "Built customer-facing dashboards.",

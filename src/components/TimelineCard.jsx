@@ -3,59 +3,48 @@ import { FaCalendarAlt, FaMedal, FaExternalLinkAlt } from "react-icons/fa";
 
 export default function TimelineCard({ event, sidebarWidth = 220, percent, cardWidth = 420 }) {
   let icon = null;
-  let cardClass = "timeline-card";
   if (event.type === "Milestone") {
-    icon = <FaMedal style={{ color: '#b5cea8', fontSize: 26, marginRight: 8 }} />;
-    cardClass += " timeline-milestone";
+    icon = <FaMedal className="text-accent2 text-[26px] mr-2" />;
   }
-  // No icon for Course or Event
 
   // Shared card layout for Course and Event
   if (event.type === "Course" || event.type === "Event") {
     return (
       <div
-        className={`timeline-item timeline-${event.side}`}
+        className={`absolute z-30 flex ${event.side === 'left' ? 'justify-end' : 'justify-start'} pointer-events-auto`}
         style={{
-          position: 'absolute',
           left: event.side === 'left'
             ? `calc(${Math.max(sidebarWidth, 0)}px + 8px)`
             : `calc(100% - ${cardWidth}px)`,
           top: `calc(${percent * 100}% - 30px)`,
           width: cardWidth,
-          zIndex: 3,
-          justifyContent: event.side === 'left' ? 'flex-end' : 'flex-start',
-          pointerEvents: 'auto',
         }}
       >
-        <div className={cardClass} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 14, width: '100%', maxWidth: cardWidth, wordBreak: 'break-word', overflow: 'hidden' }}>
+        <div className="bg-card border border-border rounded-xl shadow-card flex flex-row items-center gap-4 w-full max-w-[420px] p-5 transition-all duration-200 hover:shadow-lg hover:border-accent overflow-hidden">
           {event.image && (
-            <img src={event.image} alt="event" style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: '50%', background: '#fff', flexShrink: 0, display: 'block' }} />
+            <img src={event.image} alt="event" className="w-14 h-14 object-cover rounded-full bg-white flex-shrink-0 block" />
           )}
-          <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', overflow: 'hidden' }}>
-            <div className="timeline-label" style={{ fontWeight: 600, fontSize: 17, whiteSpace: 'normal', textOverflow: 'ellipsis', overflow: 'hidden', wordBreak: 'break-word', color: event.type === 'Event' ? '#a259f7' : undefined }}>{event.label}</div>
+          <div className="flex-1 min-w-0 flex flex-col justify-center overflow-hidden">
+            <div className={`font-semibold text-[17px] whitespace-normal text-ellipsis overflow-hidden break-words ${event.type === 'Event' ? 'text-accent' : 'text-accent2'}`}>{event.label}</div>
             {event.company && (
-              <div style={{ color: '#b5cea8', fontSize: 14, marginBottom: 2, whiteSpace: 'normal', textOverflow: 'ellipsis', overflow: 'hidden', wordBreak: 'break-word' }}>{event.company}</div>
+              <div className="text-accent2 text-[14px] mb-1 whitespace-normal text-ellipsis overflow-hidden break-words">{event.company}</div>
             )}
-            <div style={{ color: '#d4d4d4', fontSize: 13, marginBottom: 2, whiteSpace: 'normal', textOverflow: 'ellipsis', overflow: 'hidden', wordBreak: 'break-word' }}>
+            <div className="text-text text-[13px] mb-1 whitespace-normal text-ellipsis overflow-hidden break-words">
               {new Date(event.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
             </div>
             {event.type === "Event" && event.description && (
-              <div className="timeline-desc" style={{ marginBottom: 8 }}>{event.description}</div>
+              <div className="text-text text-[14px] mb-2 whitespace-normal break-words">{event.description}</div>
             )}
             {event.type === "Course" && event.id && (
-              <div style={{ color: '#b5cea8', fontSize: 13, marginBottom: 8, whiteSpace: 'normal', textOverflow: 'ellipsis', overflow: 'hidden', wordBreak: 'break-word' }}>
-                Credential ID {event.id}
-              </div>
+              <div className="text-accent2 text-[13px] mb-2 whitespace-normal break-words">Credential ID {event.id}</div>
             )}
             {event.ref_link && (
-              <a href={event.ref_link} target="_blank" rel="noopener noreferrer" style={{
-                display: 'inline-flex', alignItems: 'center', background: '#23232b', color: '#fff', border: '1.5px solid #31313a', borderRadius: 8, padding: '6px 16px', fontWeight: 600, fontSize: 15, textDecoration: 'none', marginTop: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%'
-              }}>
-                Show Media <FaExternalLinkAlt style={{ marginLeft: 8, fontSize: 15 }} />
+              <a href={event.ref_link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-card text-white border border-border rounded px-4 py-1.5 font-semibold text-[15px] no-underline mt-1 transition-colors duration-150 hover:bg-accent hover:text-white max-w-full overflow-hidden text-ellipsis">
+                Show Media <FaExternalLinkAlt className="ml-2 text-[15px]" />
               </a>
             )}
             {event.type === "Course" && event.institution && (
-              <div style={{ color: '#b5cea8', fontSize: 14, marginTop: 2, whiteSpace: 'normal', textOverflow: 'ellipsis', overflow: 'hidden', wordBreak: 'break-word' }}>{event.institution}</div>
+              <div className="text-accent2 text-[14px] mt-1 whitespace-normal break-words">{event.institution}</div>
             )}
           </div>
         </div>
@@ -66,27 +55,23 @@ export default function TimelineCard({ event, sidebarWidth = 220, percent, cardW
   // Milestone fallback
   return (
     <div
-      className={`timeline-item timeline-${event.side}`}
+      className={`absolute z-30 flex ${event.side === 'left' ? 'justify-end' : 'justify-start'} pointer-events-auto`}
       style={{
-        position: 'absolute',
         left: event.side === 'left'
           ? `calc(${Math.max(sidebarWidth, 0)}px + 8px)`
           : `calc(100% - ${cardWidth}px)`,
         top: `calc(${percent * 100}% - 30px)`,
         width: cardWidth,
-        zIndex: 3,
-        justifyContent: event.side === 'left' ? 'flex-end' : 'flex-start',
-        pointerEvents: 'auto',
       }}
     >
-      <div className={cardClass}>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }}>
+      <div className="bg-card border border-border rounded-xl shadow-card flex flex-col gap-1 p-5 transition-all duration-200 hover:shadow-lg hover:border-accent">
+        <div className="flex items-center mb-1">
           {icon}
-          <div className="timeline-date">
+          <div className="text-accent text-[15px] ml-1">
             {new Date(event.date).toLocaleString('default', { month: 'short', year: 'numeric' })}
           </div>
         </div>
-        <div className="timeline-label">{event.label}</div>
+        <div className="font-bold text-accent2 text-[17px] whitespace-normal break-words">{event.label}</div>
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
 import { FaCalendarAlt, FaMedal, FaBook, FaExternalLinkAlt } from "react-icons/fa";
-import "./TimelineGitStyle.css";
 import timelineData from "../constants/timeline_constants";
 import TimelineCard from "./TimelineCard";
 
@@ -102,25 +101,24 @@ export default function TimelineGitStyle({ sidebarWidth = 220 }) {
   }, [timelineRef.current]);
 
   return (
-    <div className="timeline-outer" style={{ position: 'relative', minHeight: TIMELINE_HEIGHT }}>
+    <div
+      className="w-full h-full min-h-[400px] max-h-screen overflow-y-auto p-0 relative bg-transparent scrollbar-thin scrollbar-thumb-[#31313a] scrollbar-track-card"
+      style={{ minHeight: TIMELINE_HEIGHT }}
+    >
+      {/* Fade effect at top and bottom */}
+      <div className="pointer-events-none sticky top-0 left-0 right-0 h-9 z-10" style={{ background: 'linear-gradient(to bottom, #1e1e1e 80%, transparent 100%)' }} />
       <div
-        className="timeline-scroll"
+        className="relative w-full flex flex-col items-center pt-8 pb-8"
         ref={timelineRef}
-        style={{ position: 'relative', height: TIMELINE_HEIGHT }}
+        style={{ height: TIMELINE_HEIGHT }}
       >
-        <div className="timeline-central-line" style={{ height: '100%' }} />
+        <div className="absolute left-1/2 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent to-accent2 -translate-x-1/2 z-0 min-h-screen" style={{ height: '100%' }} />
         {/* Render nodes for each month (descending) */}
         {monthsDesc.map((month, idx) => (
           <div
             key={getMonthKey(month)}
-            className="timeline-node"
-            style={{
-              position: 'absolute',
-              left: '50%',
-              top: `calc(${monthPositions[idx] * 100}% - 11px)`,
-              transform: 'translate(-50%, 0)',
-              zIndex: 2
-            }}
+            className="absolute left-1/2 w-[22px] h-[22px] bg-card border-4 border-accent rounded-full -translate-x-1/2 z-20 shadow-md"
+            style={{ top: `calc(${monthPositions[idx] * 100}% - 11px)` }}
           />
         ))}
         {/* Render event cards at interpolated positions (descending) */}
@@ -147,6 +145,7 @@ export default function TimelineGitStyle({ sidebarWidth = 220 }) {
           />
         ))}
       </div>
+      <div className="pointer-events-none sticky bottom-0 left-0 right-0 h-9 z-10" style={{ background: 'linear-gradient(to top, #1e1e1e 80%, transparent 100%)' }} />
     </div>
   );
 } 

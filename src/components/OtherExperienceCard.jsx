@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FaExternalLinkAlt, FaChevronUp, FaChevronDown } from "react-icons/fa";
-import "./OtherExperienceCard.css";
 
 export default function OtherExperienceCard({ title, subtitle, date, location, skills = [], languages = [], responsibilities = [], links = [], contributors = "", contributors_link = [], logo, description }) {
   const [expanded, setExpanded] = useState(false);
@@ -31,52 +30,42 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
   }
 
   return (
-    <div className={"education-card experience-card" + (expanded ? " expanded" : "")}
-         onClick={() => setExpanded(e => !e)}
-         tabIndex={0}
-         style={{ cursor: "pointer" }}>
-      <div className="education-card-main">
+    <div
+      className={`bg-card border border-border rounded-xl mb-6 px-8 py-10 shadow-card transition-all duration-200 flex flex-col min-w-0 relative overflow-hidden cursor-pointer ${expanded ? 'shadow-2xl' : ''}`}
+      onClick={() => setExpanded(e => !e)}
+      tabIndex={0}
+    >
+      <div className="flex justify-between items-center w-full relative z-10">
         {/* Left logo, if provided */}
         {displayLogo && (
-          <img src={displayLogo} alt="logo" className="education-card-logo" />
+          <img src={displayLogo} alt="logo" className="w-10 h-10 rounded-full object-cover mr-5 bg-white shadow-md flex-shrink-0" />
         )}
         {/* Title and subtitle anchored to right of image, left-aligned */}
-        <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', marginLeft: 0 }}>
-          <div className="education-title">{title}</div>
-          <div className="education-subheader">{subtitle}</div>
+        <div className="flex flex-col items-start justify-center text-left ml-0 flex-1">
+          <div className="text-accent2 font-bold text-xl leading-tight">{title}</div>
+          <div className="text-text text-base mt-1">{subtitle}</div>
         </div>
-        <div className="education-card-right">
-          <span className="education-date">{date}</span>
-          <span className="education-location">{location}</span>
-          <span className="education-expand-icon">{expanded ? <FaChevronUp /> : <FaChevronDown />}</span>
+        <div className="flex flex-col items-end gap-2 min-w-[120px]">
+          <span className="text-text text-sm">{date}</span>
+          <span className="text-text text-sm">{location}</span>
+          <span className="mt-2 text-accent2 text-lg">{expanded ? <FaChevronUp /> : <FaChevronDown />}</span>
         </div>
       </div>
-      <div className={`education-card-expandable${expanded ? " expanded" : ""}`}>
+      {/* Expandable section */}
+      <div className={`transition-all duration-700 overflow-hidden ${expanded ? 'max-h-[2000px] mt-5 pt-3 pb-3' : 'max-h-0 pt-0 pb-0'}`}>
         {expanded && (
           <>
             {(skills.length > 0 || languages.length > 0) && (
-              <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12, justifyContent: 'space-between' }}>
-                <div
-                  className="experience-skills"
-                  style={{
-                    flex: 1,
-                    minWidth: 0,
-                    display: 'flex',
-                    flexWrap: 'nowrap',
-                    alignItems: 'center',
-                    gap: 8
-                  }}
-                >
+              <div className="flex items-center mb-3 justify-between">
+                <div className="flex flex-nowrap items-center gap-2 flex-1 min-w-0">
                   {skills.map((skill, idx) => (
-                    <span key={idx} className="experience-skill-tag">{skill}</span>
+                    <span key={idx} className="bg-card border border-accent rounded-xl px-3 py-1 text-accent2 text-sm font-medium shadow-sm">{skill}</span>
                   ))}
                 </div>
                 {languages.length > 0 && (
-                  <div className="experience-languages" style={{ marginBottom: 0, flex: '0 0 auto', marginLeft: 16 }}>
+                  <div className="flex items-center gap-3 ml-4 flex-shrink-0">
                     {languages.map((lang, idx) => (
-                      <span key={idx} className="experience-lang-icon" title={lang.name}>
-                        {lang.icon}
-                      </span>
+                      <span key={idx} className="text-accent text-xl hover:text-accent2 transition-transform duration-200" title={lang.name}>{lang.icon}</span>
                     ))}
                   </div>
                 )}
@@ -84,49 +73,30 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
             )}
             {/* Description under skills/languages */}
             {description && (
-              <div style={{ color: '#d4d4d4', fontSize: '1em', marginBottom: 12, marginLeft: 2, marginRight: 2 }}>
-                {description}
-              </div>
+              <div className="text-text text-base mb-3 mx-1">{description}</div>
             )}
             {/* RESPONSIBILITIES SECTION */}
             {Array.isArray(responsibilities) && responsibilities.length > 0 && (
-              <div className="experience-roles-list" style={{ position: 'relative', paddingLeft: 32 }}>
+              <div className="relative pl-8">
                 {/* Vertical line */}
-                <div style={{
-                  position: 'absolute',
-                  left: 12,
-                  top: 0,
-                  bottom: 0,
-                  width: 2,
-                  background: 'linear-gradient(to bottom, #007acc 0%, #a259f7 100%)',
-                  borderRadius: 2,
-                  zIndex: 0
-                }} />
+                <div className="absolute left-2 top-0 bottom-0 w-1 rounded bg-gradient-to-b from-accent to-accent2 z-0" />
                 {hasDetailedRoles ? (
                   responsibilities.map((role, idx) => (
-                    <div key={idx} className="experience-role-block" style={{ marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                      <div style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        fontWeight: 600,
-                        color: "#b5cea8",
-                        fontSize: "1.08em",
-                        marginBottom: 2
-                      }}>
+                    <div key={idx} className="mb-4 relative z-10">
+                      <div className="flex justify-between items-center font-semibold text-accent2 text-base mb-1">
                         <span>〇 {role.role}</span>
-                        <span style={{ color: "#a259f7", fontWeight: 500, fontSize: "0.98em", marginLeft: 16 }}>{role.date}</span>
+                        <span className="text-accent font-medium text-sm ml-4">{role.date}</span>
                       </div>
                       {Array.isArray(role.bullets) ? (
                         <>
-                          <ul style={{ marginLeft: 24, color: "#b5cea8", fontSize: "1em", position: 'relative' }}>
+                          <ul className="ml-6 text-accent2 text-base list-disc">
                             {role.bullets.map((item, bidx) => (
                               <li key={bidx}>{item}</li>
                             ))}
                           </ul>
                           {/* Display role_contributors if present */}
                           {role.role_contributors && (
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginLeft: 28, marginTop: 2, fontSize: '0.97em' }}>
+                            <div className="flex items-center gap-1 ml-7 mt-1 text-[0.97em]">
                               {role.role_contributors.split(',').map((name, idx) => {
                                 const initials = getInitials(name);
                                 const link = Array.isArray(role.role_contributors_link) ? role.role_contributors_link[idx] : undefined;
@@ -134,22 +104,11 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
                                   <span
                                     key={idx}
                                     title={name.trim()}
+                                    className="inline-flex items-center justify-center w-6 h-6 rounded-full font-bold text-white text-xs shadow-md cursor-pointer transition-colors duration-200 border-2 border-card"
                                     style={{
-                                      display: 'inline-flex',
-                                      alignItems: 'center',
-                                      justifyContent: 'center',
-                                      width: 24,
-                                      height: 24,
-                                      borderRadius: '50%',
                                       background: stringToColor(name),
-                                      color: '#fff',
-                                      fontWeight: 700,
-                                      fontSize: 13,
-                                      boxShadow: '0 1px 4px #0002',
-                                      cursor: link ? 'pointer' : 'default',
-                                      transition: 'background 0.2s',
                                       marginLeft: idx === 0 ? 0 : -10,
-                                      border: '2px solid #23232b',
+                                      cursor: link ? 'pointer' : 'default',
                                     }}
                                     onClick={link ? (e) => { e.stopPropagation(); window.open(link, '_blank'); } : undefined}
                                   >
@@ -162,21 +121,21 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
                           )}
                           {/* Display role_links if present */}
                           {role.role_links && role.role_links.length > 0 && (
-                            <div className="experience-links-box" style={{ marginLeft: 24, marginTop: 4 }}>
+                            <div className="flex items-center gap-3 mt-1 flex-wrap ml-6">
                               {role.role_links.map((link, lidx) => (
                                 link.type === "image" ? (
-                                  <span key={lidx} className="experience-link-img-thumb" onClick={e => { e.stopPropagation(); setOpenImg(link.src); }}>
-                                    <img src={link.src} alt="role media" />
+                                  <span key={lidx} className="cursor-pointer rounded overflow-hidden border border-border transition-colors duration-200 hover:border-accent" onClick={e => { e.stopPropagation(); setOpenImg(link.src); }}>
+                                    <img src={link.src} alt="role media" className="w-10 h-10 object-cover" />
                                   </span>
                                 ) : (
-                                  <a key={lidx} href={link.href} target="_blank" rel="noopener noreferrer" className="experience-link">
+                                  <a key={lidx} href={link.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-accent text-[0.95em] font-medium hover:text-accent2 transition-colors duration-200">
                                     {link.icon || <FaExternalLinkAlt />} {link.label}
                                   </a>
                                 )
                               ))}
                               {openImg && (
-                                <div className="experience-img-modal" onClick={() => setOpenImg(null)}>
-                                  <img src={openImg} alt="role media" />
+                                <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[1000] cursor-pointer" onClick={() => setOpenImg(null)}>
+                                  <img src={openImg} alt="role media" className="max-w-[90%] max-h-[90%] object-contain rounded-lg" />
                                 </div>
                               )}
                             </div>
@@ -184,7 +143,7 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
                         </>
                       ) : (
                         // fallback for old format: treat role as a string
-                        <ul style={{ marginLeft: 24, color: "#b5cea8", fontSize: "1em", position: 'relative' }}>
+                        <ul className="ml-6 text-accent2 text-base list-disc relative z-10">
                           <li>{typeof role === 'string' ? role : ''}</li>
                         </ul>
                       )}
@@ -192,7 +151,7 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
                   ))
                 ) : (
                   // Simple bullets only, no role titles
-                  <ul style={{ marginLeft: 24, color: "#b5cea8", fontSize: "1em", position: 'relative' }}>
+                  <ul className="ml-6 text-accent2 text-base list-disc relative z-10">
                     {responsibilities.map((item, idx) => (
                       <li key={idx}>{item}</li>
                     ))}
@@ -202,9 +161,9 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
             )}
             {/* CONTRIBUTORS & LINKS/MEDIA SECTION */}
             {(contributors || (links && links.length > 0)) && (
-              <div style={{ margin: '16px 0 0 32px', color: '#b5cea8', fontSize: '0.98em', display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div className="mt-4 ml-8 text-accent2 text-sm flex items-center gap-2">
                 {contributors && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div className="flex items-center gap-1">
                     {contributors.split(',').map((name, idx) => {
                       const initials = getInitials(name);
                       const link = Array.isArray(contributors_link) ? contributors_link[idx] : undefined;
@@ -212,22 +171,11 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
                         <span
                           key={idx}
                           title={name.trim()}
+                          className="inline-flex items-center justify-center w-7 h-7 rounded-full font-bold text-white text-sm shadow-md cursor-pointer transition-colors duration-200 border-2 border-card"
                           style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: 28,
-                            height: 28,
-                            borderRadius: '50%',
                             background: stringToColor(name),
-                            color: '#fff',
-                            fontWeight: 700,
-                            fontSize: 14,
-                            boxShadow: '0 1px 4px #0002',
-                            cursor: link ? 'pointer' : 'default',
-                            transition: 'background 0.2s',
                             marginLeft: idx === 0 ? 0 : -10,
-                            border: '2px solid #23232b',
+                            cursor: link ? 'pointer' : 'default',
                           }}
                           onClick={link ? (e) => { e.stopPropagation(); window.open(link, '_blank'); } : undefined}
                         >
@@ -241,21 +189,21 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
               </div>
             )}
             {links && links.length > 0 && (
-              <div className="experience-links-box">
+              <div className="flex items-center gap-3 mt-3 flex-wrap">
                 {links.map((link, idx) => (
                   link.type === "image" ? (
-                    <span key={idx} className="experience-link-img-thumb" onClick={e => { e.stopPropagation(); setOpenImg(link.src); }}>
-                      <img src={link.src} alt="certificate" />
+                    <span key={idx} className="cursor-pointer rounded overflow-hidden border border-border transition-colors duration-200 hover:border-accent" onClick={e => { e.stopPropagation(); setOpenImg(link.src); }}>
+                      <img src={link.src} alt="certificate" className="w-10 h-10 object-cover" />
                     </span>
                   ) : (
-                    <a key={idx} href={link.href} target="_blank" rel="noopener noreferrer" className="experience-link">
+                    <a key={idx} href={link.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-accent text-[0.95em] font-medium hover:text-accent2 transition-colors duration-200">
                       {link.icon || <FaExternalLinkAlt />} {link.label}
                     </a>
                   )
                 ))}
                 {openImg && (
-                  <div className="experience-img-modal" onClick={() => setOpenImg(null)}>
-                    <img src={openImg} alt="certificate" />
+                  <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[1000] cursor-pointer" onClick={() => setOpenImg(null)}>
+                    <img src={openImg} alt="certificate" className="max-w-[90%] max-h-[90%] object-contain rounded-lg" />
                   </div>
                 )}
               </div>

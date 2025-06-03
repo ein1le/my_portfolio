@@ -32,6 +32,7 @@ import ChatbotSidebar from "./components/ChatbotSidebar";
 import userInfo from "./constants/userinfo";
 import ProfessionalExperienceCard from "./components/ProfessionalExperienceCard";
 import TerminalSkills from "./components/TerminalSkills";
+import { Analytics } from "@vercel/analytics/react";
 
 const files = [
   "about.md",
@@ -55,15 +56,6 @@ function ProjectsPage() {
   );
 }
 
-function TimelinePage() {
-  return (
-    <div>
-      <h2>Timeline</h2>
-      <p>Interactive timeline coming soon!</p>
-    </div>
-  );
-}
-
 function EducationPage() {
   return (
     <div>
@@ -83,16 +75,6 @@ function ExperiencesPage() {
     </div>
   );
 }
-
-const terminalLines = [
-  { type: "prompt", text: "$ skills --list" },
-  { type: "output", text: "> Languages:" },
-  { type: "skill", label: "Python", bar: 10, max: 10 },
-  { type: "skill", label: "JavaScript", bar: 8, max: 10 },
-  { type: "skill", label: "C++", bar: 7, max: 10 },
-  { type: "prompt", text: "$ tools --list" },
-  { type: "output", text: "- Git, Docker, AWS, Linux..." }
-];
 
 function OtherExperiencesPage() {
   return (
@@ -179,7 +161,6 @@ const fileContents = {
     />
   ),
   "projects.py": <ProjectsPage />,
-  "timeline": <TimelinePage />,
   "education.py": <EducationPage />,
   "my_learning.log": <TimelineGitStyle />,
   "contact.json": <div><h2>Contact</h2><p>Email: you@example.com</p></div>,
@@ -499,6 +480,7 @@ export default function App() {
           <ChatbotSidebar width={chatbotWidth} onResizeStart={startChatbotResizing} onClose={() => setShowChatbot(false)} />
         )}
       </div>
+      <Analytics />
     </>
   );
 } 

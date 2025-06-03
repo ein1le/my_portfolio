@@ -1,3 +1,11 @@
+/*
+  This file is now mostly for custom styles. Most layout, color, and typography are handled by Tailwind CSS utility classes.
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: 'Fira Mono', 'Consolas', 'monospace';
@@ -135,7 +143,7 @@ body {
   pointer-events: none;
 }
 
-/* Experience Card Background Hover Effects */
+/* Experience Card Background Hover Effects (custom, not easily handled by Tailwind) */
 .experience-card.education-card:hover::before {
   content: "";
   position: absolute;
@@ -154,15 +162,12 @@ body {
 .experience-card:nth-child(1):hover::before {
   background-image: linear-gradient(120deg, #007acc99 0%, #b5cea899 100%), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80');
 }
-
 .experience-card:nth-child(2):hover::before {
   background-image: linear-gradient(120deg, #007acc99 0%, #b5cea899 100%), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80');
 }
-
 .experience-card:nth-child(3):hover::before {
   background-image: linear-gradient(120deg, #007acc99 0%, #b5cea899 100%), url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80');
 }
-
 .experience-card:nth-child(4):hover::before {
   background-image: linear-gradient(120deg, #007acc99 0%, #b5cea899 100%), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80');
 }
@@ -246,6 +251,7 @@ body {
   object-fit: cover;
 }
 
+/* Modal and image thumb custom styles */
 .experience-img-modal {
   position: fixed;
   top: 0;
@@ -259,7 +265,6 @@ body {
   z-index: 1000;
   cursor: pointer;
 }
-
 .experience-img-modal img {
   max-width: 90%;
   max-height: 90%;

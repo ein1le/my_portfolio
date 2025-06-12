@@ -283,3 +283,57 @@ body {
   flex-shrink: 0;
   vertical-align: middle;
 }
+
+.pdf-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  cursor: pointer;
+}
+.pdf-modal-content {
+  background: #23232b;
+  border-radius: 12px;
+  box-shadow: 0 4px 32px #000a;
+  padding: 24px 32px 16px 32px;
+  min-width: 320px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+  cursor: auto;
+}
+.pdf-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #b5cea8;
+  margin-bottom: 12px;
+}
+.pdf-modal-close {
+  background: none;
+  border: none;
+  color: #b5cea8;
+  font-size: 1.5em;
+  cursor: pointer;
+  margin-left: 16px;
+  transition: color 0.2s;
+}
+.pdf-modal-close:hover {
+  color: #ff4d4f;
+}
+.pdf-modal-body {
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 12px;
+  max-height: 70vh;
+  overflow: auto;
+}

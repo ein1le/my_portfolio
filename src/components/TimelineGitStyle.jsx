@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { FaCalendarAlt, FaMedal, FaBook, FaExternalLinkAlt } from "react-icons/fa";
 import timelineData from "../constants/timeline_constants";
 import TimelineCard from "./TimelineCard";
+import { motion, useAnimation } from "framer-motion";
 
 function getMonthRange(events) {
   if (!events.length) return [];
@@ -93,6 +94,8 @@ export default function TimelineGitStyle({ sidebarWidth = 220 }) {
 
   const timelineRef = useRef(null);
   const [height, setHeight] = useState(0);
+  const [scrollTop, setScrollTop] = useState(0);
+  const [maxScroll, setMaxScroll] = useState(0);
 
   useEffect(() => {
     if (timelineRef.current) {
@@ -100,16 +103,35 @@ export default function TimelineGitStyle({ sidebarWidth = 220 }) {
     }
   }, [timelineRef.current]);
 
+  useEffect(() => {
+    const container = timelineRef.current;
+    if (!container) return;
+    function handleScroll() {
+      setScrollTop(container.scrollTop);
+      setMaxScroll(container.scrollHeight - container.clientHeight);
+    }
+    container.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Fade in if not at top/bottom
+  const topFadeOpacity = scrollTop > 10 ? 1 : 0;
+  const bottomFadeOpacity = (maxScroll - scrollTop) > 10 ? 1 : 0;
+
   return (
     <div
       className="w-full h-full min-h-[400px] max-h-screen overflow-y-auto p-0 relative bg-transparent scrollbar-thin scrollbar-thumb-[#31313a] scrollbar-track-card"
       style={{ minHeight: TIMELINE_HEIGHT }}
+      ref={timelineRef}
     >
-      {/* Fade effect at top and bottom */}
-      <div className="pointer-events-none sticky top-0 left-0 right-0 h-9 z-10" style={{ background: 'linear-gradient(to bottom, #1e1e1e 80%, transparent 100%)' }} />
+      {/* Fade effect at top and bottom with direct opacity */}
+      <div
+        className="pointer-events-none sticky top-0 left-0 right-0 h-9 z-10"
+        style={{ background: 'linear-gradient(to bottom, #1e1e1e 80%, transparent 100%)', opacity: topFadeOpacity }}
+      />
       <div
         className="relative w-full flex flex-col items-center pt-8 pb-8"
-        ref={timelineRef}
         style={{ height: TIMELINE_HEIGHT }}
       >
         <div className="absolute left-1/2 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent to-accent2 -translate-x-1/2 z-0 min-h-screen" style={{ height: '100%' }} />
@@ -145,7 +167,10 @@ export default function TimelineGitStyle({ sidebarWidth = 220 }) {
           />
         ))}
       </div>
-      <div className="pointer-events-none sticky bottom-0 left-0 right-0 h-9 z-10" style={{ background: 'linear-gradient(to top, #1e1e1e 80%, transparent 100%)' }} />
+      <div
+        className="pointer-events-none sticky bottom-0 left-0 right-0 h-9 z-10"
+        style={{ background: 'linear-gradient(to top, #1e1e1e 80%, transparent 100%)', opacity: bottomFadeOpacity }}
+      />
     </div>
   );
 } 

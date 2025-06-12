@@ -12,17 +12,52 @@ const typeIconMap = {
 export default function ProfessionalExperienceCard({ title, subheader, date, location, skills = [], languages = [], responsibilities = [], links = [], contributors = "", logo, description, type }) {
   const [expanded, setExpanded] = useState(false);
   const [openImg, setOpenImg] = useState(null);
+  const [hovered, setHovered] = useState(false);
+  const [titleDisplay, setTitleDisplay] = useState(title);
+  const [subheaderDisplay, setSubheaderDisplay] = useState(subheader);
+  const [showCursor, setShowCursor] = useState(false);
   let displayLogo = logo;
   if (!displayLogo) {
     displayLogo = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
   }
   const hasDetailedRoles = Array.isArray(responsibilities) && responsibilities.length > 0 && typeof responsibilities[0] === 'object' && responsibilities[0] !== null && responsibilities[0].role;
 
+  // Typewriter effect
+  React.useEffect(() => {
+    if (hovered && !expanded) {
+      let t = 0;
+      let s = 0;
+      setTitleDisplay("");
+      setSubheaderDisplay("");
+      setShowCursor(false);
+      const titleInterval = setInterval(() => {
+        t++;
+        setTitleDisplay(title.slice(0, t));
+        if (t >= title.length) {
+          clearInterval(titleInterval);
+          setShowCursor(true);
+        }
+      }, 18);
+      const subheaderInterval = setInterval(() => {
+        s++;
+        setSubheaderDisplay(subheader.slice(0, s));
+        if (s >= subheader.length) clearInterval(subheaderInterval);
+      }, 18 + title.length * 2);
+      return () => { clearInterval(titleInterval); clearInterval(subheaderInterval); };
+    } else {
+      setTitleDisplay(title);
+      setSubheaderDisplay(subheader);
+      setShowCursor(false);
+    }
+  }, [hovered, expanded, title, subheader]);
+
   return (
     <div
-      className={`bg-card border border-border rounded-xl mb-6 px-8 py-10 shadow-card transition-all duration-200 flex flex-col min-w-0 relative overflow-hidden cursor-pointer ${expanded ? 'shadow-2xl' : ''}`}
+      className={`bg-card border border-border rounded-xl mb-6 px-8 py-10 shadow-card transition-all duration-200 flex flex-col min-w-0 relative overflow-hidden cursor-pointer group ${expanded ? 'shadow-2xl' : ''} ${!expanded ? 'hover:bg-accent/10 hover:border-accent hover:shadow-xl' : ''}`}
       onClick={() => setExpanded(e => !e)}
       tabIndex={0}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       <div className="flex justify-between items-center w-full relative z-10">
         {/* Left logo, if provided */}
@@ -31,8 +66,11 @@ export default function ProfessionalExperienceCard({ title, subheader, date, loc
         )}
         {/* Title and subtitle anchored to right of image, left-aligned */}
         <div className="flex flex-col items-start justify-center text-left ml-0 flex-1">
-          <div className="text-accent2 font-bold text-xl leading-tight">{title}</div>
-          <div className="text-text text-base mt-1">{subheader}</div>
+          <div className="text-accent2 font-bold text-xl leading-tight min-h-[1.5em]">
+            {titleDisplay}
+            {showCursor && hovered && !expanded && <span className="inline-block animate-pulse ml-0.5">|</span>}
+          </div>
+          <div className="text-text text-base mt-1 min-h-[1.2em]">{subheaderDisplay}</div>
         </div>
         <div className="flex flex-col items-end gap-2 min-w-[160px]">
           <span className="flex items-center text-text text-sm"><FaCalendarAlt className="mr-1" /> {date}</span>
@@ -45,7 +83,7 @@ export default function ProfessionalExperienceCard({ title, subheader, date, loc
         </div>
       </div>
       {/* Expandable section */}
-      <div className={`transition-all duration-700 overflow-hidden ${expanded ? 'max-h-[2000px] mt-5 pt-3 pb-3' : 'max-h-0 pt-0 pb-0'}`}>
+      <div className={`transition-all duration-700 overflow-hidden ${expanded ? 'max-h-[2000px] mt-5 pt-3 pb-3 opacity-100 scale-100' : 'max-h-0 pt-0 pb-0 opacity-0 scale-95'} ease-in-out`}>
         {expanded && (
           <>
             {(skills && skills.length > 0) && (

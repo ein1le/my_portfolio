@@ -1,50 +1,62 @@
 import { FaPython, FaReact, FaHtml5, FaJs, FaNodeJs, FaJava, FaDatabase, FaGithub, FaCss3, FaRProject, FaGit, FaFigma, FaCuttlefish, FaSwift } from "react-icons/fa";
 import { SiVite, SiVercel, SiFlutter, SiDart, SiCmake } from "react-icons/si";
+import VSCodeProjectImg from '../assets/VSCode_Project.jpg';
+import UMAPMSSAProjectImg from '../assets/UMAP_MSSA_project.png';
+import GlobeEarthProjectImg from '../assets/Globe_Earth_Project.png';
+import WalletUIProjectImg from '../assets/Wallet_UI_Project.png';
+
+  // TODO: Option Pricing Model (Quant Jesus)
+  // TODO: BIF Risk  (Portfolio Risk, QFI)
+  // TODO: Recommender System 
+  // TODO: BTS Algo Trading (Freecodecamp + Backtesting + Live streaming  of Data)
+  // TODO: Flare Time-Series Oracle (Practical Time Series + R + Simulations)
+  // TODO: Financial Analyst Agent Chatbot 
+  // TODO: Full stack / Django(JSMastery)
+  // TODO: MLOps Sagemaker  (MLOps)
+  // TODO: https://github.com/virattt/ai-hedge-fund/tree/main/app/backend (World Quant Bootcamp Project)
+
+  // Headstart Carbon Tracker
+  // Learn2Innovate (MediGAN)
+  // 180 DC
 
 const projects = [
   {
     title: "Portfolio Website",
-    description: "A personal developer portfolio built with React and styled like VS Code.",
+    description: "A personal developer portfolio which serves to showcase my history, skills, and projects. With various windows and widgets, the design is inspired by a VS Code IDE.",
     link: "https://github.com/ein1le/portfolio",
-    languages: ["react", "javascript", "css","vite","vercel"],
+    languages: ["react", "javascript", "tailwind","vite","vercel"],
+    image: VSCodeProjectImg,
   },
-  {
-    title: "Oracle Backtester",
-    description: "A set of Python tools for data cleaning, visualization, and machine learning.",
-    link: "https://github.com/ein1le/data-analysis-toolkit",
-    languages: ["python","r"],
-  },
-  // TODO: Option Pricing Model
-  // TODO: BIF Risk 
-  // TODO: Flare Time-Series Oracle
-  // TODO: MLOps Sagemaker 
-  // TODO: https://github.com/virattt/ai-hedge-fund/tree/main/app/backend
+
   {
     title: "MSSA Sorting Algorithm",
-    description: "A conversational AI assistant using OpenAI's GPT-4 API.",
-    link: "https://github.com/ein1le/chatbot-assistant",
-    languages: ["python", "node", "javascript"],
+    description: "An Email Newsletter template for automated email blasting. A Machine Learning sorting algorithm using NLP and feature encoding for family scheme groupings using UMAP clustering.",
+    link: "https://github.com/ein1le/MSSA_famscheme",
+    languages: ["python", "jupyter", "html"],
+    image: UMAPMSSAProjectImg,
   },
   {
     title: "Static Website",
-    description: "A real-time dashboard for monitoring IoT devices, built with Node.js and WebSockets.",
+    description: "3D multipage developer portfolio website for a client built using Parcel. Explored Three.js in interactive 3D svg models within the website.",
     link: "https://github.com/earthlertkit/earthlertkit.github.io",
-    languages: ["GitHub", "html", "CSS","javascript","figma"],
+    languages: ["react","figma","threejs","parcel"],
+    image: GlobeEarthProjectImg,
   },
   {
-    title: "Budget Tracking Webapp",
+    title: "Fulstack Budget Tracking Application",
     description: "Mobile-compatible budget tracking webapp built with Flutter and CMake",
     link: "https://github.com/NaFreee20/rawr/tree/main/budget_tracker",
     languages: ["GitHub", "flutter", "Dart","CMake","figma","Swift","C++"],
     contributors: [
       { name: "Mohamed Erfan Bin Fazal Othman", link: "https://www.linkedin.com/in/mohamed-erfan-bin-fazal-othman-67a5b12ab/"}
-    ]
+    ],
+    image: WalletUIProjectImg,
   },
   {
-    title: "OpenCV Project",
-    description: "Lorum Ipsum Type shit",
+    title: "Hand Gesture Control",
+    description: "Computer vision project using pre-trained models for real-time hand gesture recognition and control of a linked application.",
     link: "https://www.linkedin.com/in/wlertkit/",
-    languages: ["GitHub", "html", "CSS","javascript","figma"],
+    languages: ["GitHub", "python","opencv"],
     contributors: [
       { name: "Wichayut Lertkittarmonkul", link: "https://www.linkedin.com/in/wlertkit/" }
     ]

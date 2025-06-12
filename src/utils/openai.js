@@ -3,7 +3,7 @@ export async function getChatbotResponse(messages, prefix = "") {
   if (!apiKey) throw new Error("OpenAI API key not set in VITE_OPENAI_API_KEY");
 
   const apiUrl = "https://api.openai.com/v1/chat/completions";
-  const systemPrompt = "You are wunbot, a friendly, helpful chatbot. Always give concise, short answers. Do not use search or tools. Keep responses under 80 tokens.";
+  const systemPrompt = "You are wunbot, a friendly, helpful chatbot. Always give concise, short answers. Do not use search or tools";
   const res = await fetch(apiUrl, {
     method: "POST",
     headers: {
@@ -17,7 +17,7 @@ export async function getChatbotResponse(messages, prefix = "") {
         ...messages.map(m => ({ role: m.sender === 'user' ? 'user' : 'assistant', content: m.text }))
       ],
       max_tokens: 80,
-      temperature: 0.7
+      temperature: 0.2
     })
   });
   if (!res.ok) throw new Error("OpenAI API error");

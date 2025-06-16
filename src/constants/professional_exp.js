@@ -9,6 +9,7 @@ const professionalExperiences = [
     languages: ["JavaScript", "Python"],
     description: "Worked on blockchain scaling solutions and led a team of engineers to deliver new features.",
     logo: "https://cryptologos.cc/logos/boba-network-boba-logo.png",
+    image: "https://media.licdn.com/dms/image/v2/D4E0BAQGnFchJctgCoQ/company-logo_100_100/company-logo_100_100/0/1692728401192/bobanetwork_logo?e=1755734400&v=beta&t=IhEolbEk2niGAHAZc_43DP3nUH9_rBNAZRMzrd_b-zE",
     responsibilities: [
       "Led a team of 5 engineers.",
       "Developed a new workflow system.",
@@ -25,6 +26,7 @@ const professionalExperiences = [
     languages: ["Go", "Python"],
     description: "Implemented CI/CD pipelines and mentored junior developers in a fast-paced environment.",
     logo: "https://cryptologos.cc/logos/flare-flr-logo.png",
+    image: "https://media.licdn.com/dms/image/v2/C4E0BAQG6QPjLZPygGQ/company-logo_100_100/company-logo_100_100/0/1678876879484/flarenetwork_logo?e=1755734400&v=beta&t=3YAJHICPfaJpbPrsFD_52SXm5hyPbidRoOAyxADm_Fk",
     responsibilities: [
       "Managed project timelines and deliverables.",
       "Implemented CI/CD pipelines.",
@@ -41,6 +43,7 @@ const professionalExperiences = [
     languages: ["Java", "SQL"],
     description: "Designed scalable backend systems and optimized database queries for financial applications.",
     logo: "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg",
+    image: "https://media.licdn.com/dms/image/v2/D560BAQEVEV8ua7W3IA/company-logo_100_100/company-logo_100_100/0/1736392277185?e=1755734400&v=beta&t=I8-31vGe7RAUhPlwW80fqGIozYCq-XgNn--Yd_ZA1XQ",
     responsibilities: [
       "Designed scalable backend systems.",
       "Optimized database queries.",
@@ -57,6 +60,7 @@ const professionalExperiences = [
     languages: ["JavaScript", "PHP"],
     description: "Built customer-facing dashboards and integrated third-party APIs for business clients.",
     logo: "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg",
+    image: null,
     responsibilities: [
       "Built customer-facing dashboards.",
       "Integrated third-party APIs.",
@@ -73,6 +77,7 @@ const professionalExperiences = [
     languages: ["Python", "R"],
     description: "Conducted research and data analysis for academic projects.",
     logo: "https://upload.wikimedia.org/wikipedia/en/3/3a/University_of_Bristol_logo.svg",
+    image: "https://media.licdn.com/dms/image/v2/D4E0BAQHpcDl5zEb2Og/company-logo_100_100/company-logo_100_100/0/1708951303888/university_of_bristol_logo?e=1755734400&v=beta&t=XGmVd-QkMw0SVXGqFOEcn2TbGTSkUtg2polrwgld750",
     responsibilities: [
       {
         role: "Global Lounge Ambassador",
@@ -121,6 +126,7 @@ const professionalExperiences = [
     languages: ["Python", "SQL"],
     description: "Deployed IT solutions for hospital management and patient care.",
     logo: "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg",
+    image: null,
     responsibilities: [
       "Built customer-facing dashboards.",
       "Integrated third-party APIs.",

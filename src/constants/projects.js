@@ -5,19 +5,7 @@ import UMAPMSSAProjectImg from '../assets/UMAP_MSSA_project.png';
 import GlobeEarthProjectImg from '../assets/Globe_Earth_Project.png';
 import WalletUIProjectImg from '../assets/Wallet_UI_Project.png';
 
-  // TODO: Option Pricing Model (Quant Jesus)
-  // TODO: BIF Risk  (Portfolio Risk, QFI)
-  // TODO: Recommender System 
-  // TODO: BTS Algo Trading (Freecodecamp + Backtesting + Live streaming  of Data)
-  // TODO: Flare Time-Series Oracle (Practical Time Series + R + Simulations)
-  // TODO: Financial Analyst Agent Chatbot 
-  // TODO: Full stack / Django(JSMastery)
-  // TODO: MLOps Sagemaker  (MLOps)
-  // TODO: https://github.com/virattt/ai-hedge-fund/tree/main/app/backend (World Quant Bootcamp Project)
 
-  // Headstart Carbon Tracker
-  // Learn2Innovate (MediGAN)
-  // 180 DC
 
 const projects = [
   {

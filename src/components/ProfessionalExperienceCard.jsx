@@ -9,14 +9,14 @@ const typeIconMap = {
   "student-job": <FaUserGraduate style={{ color: '#b5cea8', marginRight: 4 }} /> // student-job
 };
 
-export default function ProfessionalExperienceCard({ title, subheader, date, location, skills = [], languages = [], responsibilities = [], links = [], contributors = "", logo, description, type }) {
+export default function ProfessionalExperienceCard({ title, subheader, date, location, skills = [], languages = [], responsibilities = [], links = [], contributors = "", logo, image, description, type }) {
   const [expanded, setExpanded] = useState(false);
   const [openImg, setOpenImg] = useState(null);
   const [hovered, setHovered] = useState(false);
   const [titleDisplay, setTitleDisplay] = useState(title);
   const [subheaderDisplay, setSubheaderDisplay] = useState(subheader);
   const [showCursor, setShowCursor] = useState(false);
-  let displayLogo = logo;
+  let displayLogo = image || logo;
   if (!displayLogo) {
     displayLogo = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
   }

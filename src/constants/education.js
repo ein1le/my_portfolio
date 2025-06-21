@@ -18,14 +18,15 @@ const education = [
         authors: "Sophie Cook, Demetri Gaffney, Tallulah Jackson-Coombs, Daniel Lee",
         description: "An investigation on the parameters affecting the accuracy of material property determination of aluminium using ring hoop tension tests",
         date: "© April 29, 2025",
-        pdfUrl: "/pdfs/bristol-paper.pdf, https://github.com/ein1le/gip-ddest"
+        pdfUrl: "/pdfs/G21_GIP_MENGM5000_REPORT.pdf",
+        hyperlink: "https://github.com/ein1le/gip-ddest"
       },
       {
         title: "Biomechanics of Legged Vehicles for Interplanetary Applications",
         course: "[MENGM0059] Advanced Topics in Mechanical Engineering",
         description: "Report on the biomechanical feasibility and modifications to a Boston Dynamics Spot robot for Martian applications",
         date: "February 25, 2025",
-        pdfUrl: "/pdfs/bristol-article.pdf"
+        pdfUrl: "/pdfs/BURN_2143062_pdf.pdf"
       },
       {
         title: "Richmond Building - Renewable Energy Strategy",
@@ -33,7 +34,7 @@ const education = [
         authors: "Demetri Gaffney, Daniel Lee,Anjli Majitha",
         description: "Official proposition of renewable energy alternative solutions for the University of Bristol's Richmond Building for Scope 1-2 emissions reduction",
         date: "December 5, 2024",
-        pdfUrl: "/pdfs/bristol-article.pdf"
+        pdfUrl: "/pdfs/Renewable_Energy.pdf"
       },
       {
         title: "Multivariable and Nonlinear Control of a 2-DOF Planar Manipulator",
@@ -41,7 +42,8 @@ const education = [
         authors:"Ibrahim Arekat, William Sakyi",
         description: "",
         date: "December 3, 2024",
-        pdfUrl: "/pdfs/bristol-article.pdf,https://github.com/Will27-s/MultiVarControl"
+        pdfUrl: "/pdfs/Multivariable_and_Non_Linear_Control_Report.pdf",
+        hyperlink: "https://github.com/Will27-s/MultiVarControl"
       },
       {
         title: "Reduced Order Recurrent Neural Networks for Vibration Modelling",
@@ -55,7 +57,7 @@ const education = [
         course: "[MENG35000] Individual Research Project",
         description: "Dissertation investiating heuristic information-based convex optimisation algorithms such as genetic algorithms and particle swarm for nonlinear optimisation of sensor placements on structural beams",
         date: "© May 9, 2024",
-        pdfUrl: "/pdfs/bristol-article.pdf"
+        pdfUrl: "/pdfs/IRP_2143062_Wishawin.pdf"
       },
       {
         title: "STP Ltd. Management Portfolio",
@@ -63,14 +65,22 @@ const education = [
         authors:"Kabeer Dayal, Vic Komolrojanaporn,  Daniel Lee, Abdullah Monnoo, Aung Zaw Myat",
         description: "Business portfolio, including components of risk assessments, product quality management plan, shareholder brief, etc. for a planned fictional VR glasses product launch",
         date: "May 2, 2024",
-        pdfUrl: "/pdfs/bristol-article.pdf"
+        pdfUrls: [
+          "/pdfs/STP/1_Organisation Brief_LocaVision.pdf",
+          "/pdfs/STP/2_Concept Selection_LocaVision.pdf",
+          "/pdfs/STP/3_Business Case_LocaVision.pdf",
+          "/pdfs/STP/4_Communication Plan_LocaVision.pdf",
+          "/pdfs/STP/5_Risk Register_LocaVision.pdf",
+          "/pdfs/STP/6_Sustainability Assessment_LocaVision.pdf",
+          "/pdfs/STP/7_Quality Management Plan_LocaVision.pdf"
+        ]
       },
       {
         title: "Finite Element Analysis of GCU Design on LNG Carriers",
         course: "[MENGM30011] Applied Solid Mechanics",
         description: "",
         date: "December 14, 2023",
-        pdfUrl: "/pdfs/bristol-article.pdf"
+        pdfUrl: "/pdfs/ASM_2143062.pdf"
       },
       {
         title: "Deployable Solar Array Portfolio",
@@ -99,7 +109,7 @@ const education = [
         course: "[MENG10006] Design & Manufacturing Project",
         authors: "Sophie Tan, Daniel Kim",
         description: "Concept Generation, PDS, Analytics",
-        date: "Jul 2019",
+        date: "July 12 2019",
         pdfUrl: "/pdfs/harrow-math.pdf"
       }
     ],

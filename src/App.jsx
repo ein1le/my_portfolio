@@ -33,6 +33,8 @@ import userInfo from "./constants/userinfo";
 import ProfessionalExperienceCard from "./components/ProfessionalExperienceCard";
 import TerminalSkills from "./components/TerminalSkills";
 import { Analytics } from "@vercel/analytics/react";
+import volunteeringData from "./constants/volunteering__exp";
+import TechWireframeMap from "./components/Map";
 
 const files = [
   "about.md",
@@ -92,6 +94,14 @@ function ExtracurricularExperiencesPage() {
       {extracurricularExperiences.map((exp, idx) => (
         <OtherExperienceCard key={idx} {...exp} />
       ))}
+    </div>
+  );
+}
+
+function VolunteeringExperiencesPage() {
+  return (
+    <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'transparent' }}>
+      <TechWireframeMap height={"100vh"} data={volunteeringData} />
     </div>
   );
 }
@@ -167,6 +177,7 @@ const fileContents = {
   "professional_exp.ipynb": <ExperiencesPage />,
   "academic_exp.py": <OtherExperiencesPage />,
   "extracurricular_exp.py": <ExtracurricularExperiencesPage />,
+  "volunteering.py": <VolunteeringExperiencesPage />,
   "skills.md": <TerminalSkills />,
   "skills.sql": <SkillsSQLTable />
 };

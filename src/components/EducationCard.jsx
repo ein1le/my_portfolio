@@ -1,6 +1,22 @@
 import React, { useState } from "react";
-import { FaCalendarAlt, FaMapMarkerAlt, FaChevronDown, FaChevronUp, FaFileAlt, FaMedal } from "react-icons/fa";
+import { FaCalendarAlt, FaMapMarkerAlt, FaChevronDown, FaChevronUp, FaFileAlt, FaMedal, FaExternalLinkAlt, FaBook } from "react-icons/fa";
 import PDFModal from "./PDFModal";
+
+
+function getInitials(name) {
+  const parts = name.trim().split(/\s+/);
+  if (parts.length === 1) return parts[0][0]?.toUpperCase() || '';
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function stringToColor(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+  return "#" + "00000".substring(0, 6 - c.length) + c;
+}
 
 export default function EducationCard({ title, subheader, date, location, grade, modules = [], publications = [], awards = [] }) {
   let cardClass = "";
@@ -85,8 +101,41 @@ export default function EducationCard({ title, subheader, date, location, grade,
                         <div className="text-accent2 text-[0.98em] ml-4 whitespace-nowrap self-start">{pub.date}</div>
                       </div>
                       <div className="text-accent text-[0.98em] mt-1">{pub.course}</div>
-                      <div className="text-accent2 text-[0.97em] mb-1">{pub.authors}</div>
-                      <div className="text-text text-[0.98em]">{pub.description}</div>
+                      {/* Authors as bubbles */}
+                      {pub.authors && (
+                        <div className="flex items-center mb-1 mt-1 ml-1" style={{ gap: 8 }}>
+                          {pub.authors.split(',').map((name, idx) => {
+                            const initials = getInitials(name);
+                            return (
+                              <span
+                                key={idx}
+                                title={name.trim()}
+                                className="inline-flex items-center justify-center w-7 h-7 rounded-none border-2 border-accent shadow-md relative"
+                                style={{
+                                  clipPath: 'polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%)',
+                                  background: stringToColor(name),
+                                  marginLeft: 0,
+                                  zIndex: 10 - idx,
+                                }}
+                              >
+                                {initials}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      )}
+                      <div className="text-accent2 text-[0.97em] mb-1">{pub.description}</div>
+                      {pub.hyperlink && (
+                        <a
+                          href={pub.hyperlink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-accent2 text-[0.97em] mt-1 flex items-center gap-1 hover:underline"
+                        >
+                          <span>Repository</span>
+                          <FaExternalLinkAlt style={{ fontSize: '0.95em' }} />
+                        </a>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -94,6 +143,7 @@ export default function EducationCard({ title, subheader, date, location, grade,
                   open={!!openPdf}
                   onClose={() => setOpenPdf(null)}
                   pdfUrl={openPdf?.pdfUrl}
+                  pdfUrls={openPdf?.pdfUrls}
                   title={openPdf?.title}
                 />
               </div>

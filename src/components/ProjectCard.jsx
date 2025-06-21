@@ -1,6 +1,7 @@
 import React from "react";
-import { FaPython, FaReact, FaHtml5, FaJs, FaNodeJs, FaJava, FaDatabase, FaGithub, FaCss3, FaRProject, FaGit, FaFigma, FaCuttlefish, FaSwift } from "react-icons/fa";
-import { SiVite, SiVercel, SiFlutter, SiDart, SiCmake } from "react-icons/si";
+import { FaPython, FaReact, FaHtml5, FaJs, FaNodeJs, FaJava, FaDatabase, FaGithub, FaCss3, FaRProject, FaGit, FaFigma, FaSwift, FaBox } from "react-icons/fa";
+import { SiVite, SiVercel, SiFlutter, SiDart, SiCmake, SiTailwindcss, SiJupyter, SiCplusplus, SiThreedotjs } from "react-icons/si";
+import { motion } from "framer-motion";
 
 const languageIconMap = {
   python: <FaPython style={{ color: '#3572A5' }} />,
@@ -21,9 +22,14 @@ const languageIconMap = {
   dart: <SiDart style={{ color: '#0175C2' }} />,
   cmake: <SiCmake style={{ color: '#064F8C' }} />,
   swift: <FaSwift style={{ color: '#F05138' }} />,
-  "c++": <FaCuttlefish style={{ color: '#00599C' }} />
+  "c++": <SiCplusplus style={{ color: '#00599C' }} />,
+  tailwind: <SiTailwindcss style={{ color: '#38BDF8' }} />,
+  jupyter: <SiJupyter style={{ color: '#F37626' }} />,
+  threejs: <SiThreedotjs style={{ color: '#000' }} />,
+  parcel: <FaBox style={{ color: '#f9c646' }} />
 };
-export default function ProjectCard({ title, description, link, languages = [], contributors = [] }) {
+export default function ProjectCard({ title, description, link, languages = [], contributors = [], image }) {
+  const [isHovered, setIsHovered] = React.useState(false);
   // Helper to get initials from a name
   function getInitials(name) {
     const parts = name.trim().split(/\s+/);
@@ -40,12 +46,28 @@ export default function ProjectCard({ title, description, link, languages = [], 
     return "#" + "00000".substring(0, 6 - c.length) + c;
   }
   return (
-    <div className="relative min-h-[420px] max-w-[400px] flex flex-col items-stretch justify-start bg-card border border-border rounded-xl p-6 mb-6 shadow-card transition-all duration-200 hover:shadow-cardHover hover:border-accent">
-      <h3 className="mb-3 text-accent2 font-bold text-lg">{title}</h3>
-      <div className="w-full flex justify-center items-center mb-3.5">
+    <motion.div
+      className="min-h-[420px] max-w-[400px] flex flex-col justify-between items-stretch bg-card border border-border rounded-xl p-6 mb-6 shadow-card transition-all duration-200 hover:shadow-cardHover hover:border-accent"
+      style={{ perspective: 1200 }}
+      whileHover={{ rotateX: -14, boxShadow: "0 12px 32px 0 rgba(50,50,100,0.25)" }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      <div className="relative w-full" style={{ minHeight: 60 }}>
+        <motion.h3
+          className="mb-3 text-accent2 font-bold text-2xl md:text-3xl z-20"
+          initial={false}
+          animate={isHovered ? { y: -36, scale: 1.15, boxShadow: "0 8px 32px 0 rgba(162,89,247,0.18)" } : { y: 0, scale: 1, boxShadow: "none" }}
+          transition={{ type: "spring", stiffness: 300, damping: 22 }}
+          style={{ position: isHovered ? "absolute" : "relative", left: 24, top: isHovered ? 0 : undefined }}
+        >
+          {title}
+        </motion.h3>
+      </div>
+      <div className="w-full flex justify-center items-center mb-3.5" style={{ paddingTop: isHovered ? 36 : 0 }}>
         <img
-          src="https://placehold.co/400x220/23232b/7ec699?text=Project+Image"
-          alt="project placeholder"
+          src={image || "https://placehold.co/400x220/23232b/7ec699?text=Project+Image"}
+          alt={title + " project image"}
           className="w-full max-w-[340px] h-[180px] object-cover rounded-lg bg-[#18181f] border border-border"
         />
       </div>
@@ -83,7 +105,7 @@ export default function ProjectCard({ title, description, link, languages = [], 
         </div>
       )}
       <p className="my-3 text-text">{description}</p>
-      {link && <a href={link} target="_blank" rel="noopener noreferrer" className="inline-block bg-accent text-white rounded-lg px-4 py-2 font-semibold text-[15px] cursor-pointer no-underline mt-2 transition-colors duration-150 absolute left-4 right-4 bottom-4 hover:bg-[#005fa3]">View Project</a>}
-    </div>
+      {link && <a href={link} target="_blank" rel="noopener noreferrer" className="inline-block bg-accent text-white rounded-lg px-4 py-2 font-semibold text-[15px] cursor-pointer no-underline mt-6 transition-colors duration-150 hover:bg-[#005fa3]">View Project</a>}
+    </motion.div>
   );
 } 

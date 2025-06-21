@@ -16,7 +16,7 @@ export default function StaticSidebar({ activeSidebar, onSidebarIconClick }) {
       {sidebarItems.map((item, idx) => (
         <button
           key={item.label}
-          className={`w-10 h-10 my-2 bg-none border-none text-accent2 text-[1.6em] rounded-lg flex items-center justify-center transition-colors duration-200 cursor-pointer ${activeSidebar === item.type ? 'bg-[#31313a] text-accent' : 'hover:bg-[#31313a] hover:text-accent'}`}
+          className={`w-10 h-10 my-6 bg-none border-none text-accent2 text-[1.6em] rounded-lg flex items-center justify-center transition-colors duration-200 cursor-pointer ${activeSidebar === item.type ? 'bg-[#31313a] text-accent' : 'hover:bg-[#31313a] hover:text-accent'}`}
           title={item.label}
           onClick={() => onSidebarIconClick(item.type)}
         >

@@ -53,7 +53,7 @@ function Folder({ name, children, open, toggle, renderChildren }) {
   return (
     <div>
       <div className="flex items-center cursor-pointer py-1 pl-2 pr-0 text-text font-bold select-none transition-colors duration-200 hover:bg-[#31313a]" onClick={toggle}>
-        {open ? <FaChevronDown /> : <FaChevronRight />} <span className="ml-1 text-base">{name}</span>
+        {open ? <FaChevronDown /> : <FaChevronRight />} <span className="ml-1 text-lg">{name}</span>
       </div>
       {open && <ul className="list-none pl-4 m-0">{renderChildren()}</ul>}
     </div>
@@ -75,9 +75,9 @@ export default function Explorer({ selected, onSelect }) {
 
   return (
     <div className="w-[200px] bg-card py-4 border-r border-[#222] text-text">
-      <h4 className="m-0 mb-2 ml-4 text-base text-accent2 tracking-wide">EXPLORER</h4>
+      <h4 className="m-0 mb-2 ml-4 text-xl text-accent2 tracking-wide">EXPLORER</h4>
       <div className="flex items-center cursor-pointer py-1 pl-2 pr-0 text-text font-bold select-none transition-colors duration-200 hover:bg-[#31313a]" onClick={() => setPortfolioOpen(o => !o)}>
-        {portfolioOpen ? <FaChevronDown /> : <FaChevronRight />} <span className="ml-1 text-base">Portfolio</span>
+        {portfolioOpen ? <FaChevronDown /> : <FaChevronRight />} <span className="ml-1 text-xl">Portfolio</span>
       </div>
       {portfolioOpen && (
         <div className="pl-3">
@@ -94,7 +94,7 @@ export default function Explorer({ selected, onSelect }) {
                 folder.children.map(child => (
                   <li
                     key={child.name}
-                    className={`rounded px-2 py-1 cursor-pointer transition-colors duration-200 text-sm ${selected === child.name ? 'bg-[#31313a] text-white' : 'hover:bg-[#31313a] hover:text-white'}`}
+                    className={`rounded px-2 py-1 cursor-pointer transition-colors duration-200 text-lg ${selected === child.name ? 'bg-[#31313a] text-white' : 'hover:bg-[#31313a] hover:text-white'}`}
                     title={fileDescriptions[child.name] || undefined}
                     onClick={e => {
                       e.stopPropagation();

@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Papa from "papaparse";
 import alasql from "alasql";
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import skillsRadarData from '../constants/skills_radar';
 
 export default function SkillsSQLTable() {
   const [query, setQuery] = useState("");
@@ -50,16 +52,33 @@ export default function SkillsSQLTable() {
   };
 
   return (
-    <div style={{
-      background: "#23272f",
-      borderRadius: 16,
-      padding: 32,
-      fontFamily: "Inter, system-ui, sans-serif",
-      color: "#e3e8ee",
-      boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
-      maxWidth: 900,
-      margin: "0 auto"
-    }}>
+    <div style={{ padding: 0, margin: 0, fontFamily: "Inter, system-ui, sans-serif", color: "#e3e8ee", width: '100%' }}>
+      {/* Radar Plot */}
+      <div style={{ width: '100%', maxWidth: 520, margin: '0 auto 36px auto', borderRadius: 14, padding: 24, background: 'transparent', boxShadow: 'none' }}>
+        <ResponsiveContainer width="100%" aspect={1.3}>
+          <RadarChart data={skillsRadarData} outerRadius={90}>
+            <PolarGrid stroke="#31313a" />
+            <PolarAngleAxis 
+              dataKey="skill" 
+              stroke="#b5cea8" 
+              fontSize={14}
+              tick={{
+                fontFamily: 'Fira Mono, Consolas, monospace',
+                fontWeight: 500,
+                fill: '#b5cea8',
+                letterSpacing: 0.5
+              }}
+            />
+            <PolarRadiusAxis 
+              angle={30} 
+              domain={[0, 100]} 
+              tick={false} 
+              axisLine={false} 
+            />
+            <Radar name="Skill" dataKey="value" stroke="#3fa7ff" fill="#3fa7ff" fillOpacity={0.18} dot={true} />
+          </RadarChart>
+        </ResponsiveContainer>
+      </div>
       {/* Message box with transparent input and Query button */}
       <div style={{
         marginBottom: 28,

@@ -1,6 +1,6 @@
 name,type,proficiency,libraries,description
 Python,Programming Language,Advanced,pandas;pyTorch;TensorFlow;Keras;LangChain;Flask;Django;FastAPI;HuggingFace;OpenCV;Jupyter, "Extensively for data analysis, machine learning, and web development."
-JavaScript,Programming Language,Intermediate,React;Vite;Node.js;Express;MongoDB, "React projects for building portfolio websites, society websites, and simple webapps."
+JavaScript,Programming Language,Intermediate,React;Three.js;Express.js;Vite;Parcel, "React projects for building portfolio websites, society websites, and simple webapps."
 C++,Programming Language,Intermediate,QuantLib;Boost;Eigen;ROS;Gazebo,"Used for algorithmic trading with libraries like QuantLib and Boost, and control system simulation. Main language for learning Data Structures and Algorithms."
 SQL,Database,Advanced,SQLite;MySQL;PostgreSQL;MariaDB, ""
 R,Programming Language,Intermediate,astsa;timeSeries;ggplot2;tidyr;, "Time series analysis and simulation"
@@ -9,6 +9,7 @@ Git,DevOps,Advanced,Git;GitHub;GitLab;Bitbucket, "Used for version control and c
 Docker,DevOps,Intermediate,Docker;Docker Compose;Docker Swarm;Kubernetes, "Used for containerization and deployment of applications."
 AWS,Cloud,Intermediate,AWS;AWS Lambda;AWS S3;AWS EC2;AWS RDS;AWS ECR;AWS ECS;AWS EKS;AWS Fargate, "Used with Samaggi Samaggom"
 Amazon DynamoDB,Database,Intermediate,, "Used with Samaggi Samaggom"
+MongoDB,
 HTML,Programming Language,Intermediate,, "Used for building portfolio websites, society websites, and simple webapps."
 CSS,Programming Language,Intermediate,Tailwind CSS, "Used for building portfolio websites, society websites, and simple webapps."
 MATLAB,Programming Language,Intermediate,Simulink;SimScape;Optimization Toolbox;Curve Fitting Toolbox;Statistics and Machine Learning Toolbox;Signal Processing Toolbox;Image Processing Toolbox;Deep Learning Toolbox, "Mainly used for dissertation simulation of convex optimisation algorithms."

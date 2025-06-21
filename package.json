@@ -18,6 +18,7 @@
     "react-pdf": "^9.2.1",
     "react-simple-maps": "^3.0.0",
     "react-svg-worldmap": "^2.0.0-alpha.16",
+    "recharts": "^2.15.4",
     "three": "^0.152.2",
     "topojson-client": "^3.1.0"
   },

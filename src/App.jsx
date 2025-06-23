@@ -25,7 +25,7 @@ import SkillsSQLTable from "./components/SkillsSQLTable.jsx";
 import ReactMarkdown from "react-markdown";
 import tangleSlime from './assets/tangleslime.png';
 import projects from "./constants/projects";
-import OtherExperienceCard from "./components/OtherExperienceCard";
+import OtherExperienceCard, { pageTitle as ExtracurricularPageTitle } from "./components/OtherExperienceCard";
 import UserInfoCard from "./components/UserInfoCard";
 import TerminalWindow from "./components/TerminalWindow";
 import ChatbotSidebar from "./components/ChatbotSidebar";
@@ -35,6 +35,10 @@ import TerminalSkills from "./components/TerminalSkills";
 import { Analytics } from "@vercel/analytics/react";
 import volunteeringData from "./constants/volunteering__exp";
 import TechWireframeMap from "./components/Map";
+import { titleDescription as AcademicTitleDescription } from "./constants/academic_exp";
+import { titleDescription as ProfessionalTitleDescription } from "./constants/professional_exp";
+import { titleDescription as VolunteeringTitleDescription } from "./constants/volunteering__exp";
+import { titleDescription as ExtracurricularTitleDescription } from "./constants/extracurricular_exp";
 
 const files = [
   "about.md",
@@ -60,10 +64,14 @@ function ProjectsPage() {
 
 function EducationPage() {
   return (
-    <div>
-      {education.map((edu, idx) => (
-        <EducationCard key={idx} {...edu} />
-      ))}
+    <div style={{ overflowX: 'auto', paddingBottom: '1rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem', minWidth: 0 }}>
+        {education.map((edu, idx) => (
+          <div key={idx} style={{ minWidth: 350, flex: '1 1 350px' }}>
+            <EducationCard {...edu} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -71,6 +79,10 @@ function EducationPage() {
 function ExperiencesPage() {
   return (
     <div>
+      <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem', color: '#b5cea8' }}>Professional Experiences</h1>
+        <div style={{ fontSize: '1.25rem', color: '#d4d4d4', maxWidth: 700, fontWeight: 600 }}>{ProfessionalTitleDescription}</div>
+      </div>
       {professionalExperiences.map((exp, idx) => (
         <ProfessionalExperienceCard key={idx} {...exp} />
       ))}
@@ -81,6 +93,10 @@ function ExperiencesPage() {
 function OtherExperiencesPage() {
   return (
     <div>
+      <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem', color: '#b5cea8' }}>Academic Experiences</h1>
+        <div style={{ fontSize: '1.25rem', color: '#d4d4d4', maxWidth: 700, fontWeight: 600 }}>{AcademicTitleDescription}</div>
+      </div>
       {academicExperiences.map((exp, idx) => (
         <OtherExperienceCard key={idx} {...exp} />
       ))}
@@ -91,6 +107,10 @@ function OtherExperiencesPage() {
 function ExtracurricularExperiencesPage() {
   return (
     <div>
+      <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem', color: '#b5cea8' }}>Extracurricular Experiences</h1>
+        <div style={{ fontSize: '1.25rem', color: '#d4d4d4', maxWidth: 700, fontWeight: 600 }}>{ExtracurricularTitleDescription}</div>
+      </div>
       {extracurricularExperiences.map((exp, idx) => (
         <OtherExperienceCard key={idx} {...exp} />
       ))}
@@ -100,7 +120,11 @@ function ExtracurricularExperiencesPage() {
 
 function VolunteeringExperiencesPage() {
   return (
-    <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'transparent' }}>
+    <div>
+      <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem', color: '#b5cea8' }}>Volunteering Experiences</h1>
+        <div style={{ fontSize: '1.25rem', color: '#d4d4d4', maxWidth: 700, fontWeight: 600 }}>{VolunteeringTitleDescription}</div>
+      </div>
       <TechWireframeMap height={"100vh"} data={volunteeringData} />
     </div>
   );

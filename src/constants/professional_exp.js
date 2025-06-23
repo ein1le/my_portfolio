@@ -135,4 +135,6 @@ const professionalExperiences = [
   }
 ];
 
-export default professionalExperiences; 
+export default professionalExperiences;
+
+export const titleDescription = "A summary of professional experiences and verified positions at organisations. Experiences listed here are defined by their status as being compensated, unlike all other experiences in other tabs."; 

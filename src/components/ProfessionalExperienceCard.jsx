@@ -53,7 +53,13 @@ export default function ProfessionalExperienceCard({ title, subheader, date, loc
 
   return (
     <div
-      className={`bg-card border border-border rounded-xl mb-6 px-8 py-10 shadow-card transition-all duration-200 flex flex-col min-w-0 relative overflow-hidden cursor-pointer group ${expanded ? 'shadow-2xl' : ''} ${!expanded ? 'hover:bg-accent/10 hover:border-accent hover:shadow-xl' : ''}`}
+      className={`border border-border rounded-xl mb-6 px-8 py-16 transition-all duration-200 flex flex-col min-w-0 relative overflow-hidden cursor-pointer group ${expanded ? 'shadow-2xl' : ''} ${!expanded ? 'hover:bg-accent/10 hover:border-accent hover:shadow-xl' : ''}`}
+      style={{
+        background: 'linear-gradient(135deg, #23232b 0%, #22577A 100%)',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.25), 0 1.5px 4px rgba(63,167,255,0.08)',
+        paddingTop: '3.5rem',
+        paddingBottom: '3.5rem',
+      }}
       onClick={() => setExpanded(e => !e)}
       tabIndex={0}
       onMouseEnter={() => setHovered(true)}
@@ -66,15 +72,15 @@ export default function ProfessionalExperienceCard({ title, subheader, date, loc
         )}
         {/* Title and subtitle anchored to right of image, left-aligned */}
         <div className="flex flex-col items-start justify-center text-left ml-0 flex-1">
-          <div className="text-accent2 font-bold text-xl leading-tight min-h-[1.5em]">
+          <div className="text-accent2 font-bold text-3xl" style={{ marginBottom: '2px', lineHeight: 1.1 }}>
             {titleDisplay}
             {showCursor && hovered && !expanded && <span className="inline-block animate-pulse ml-0.5">|</span>}
           </div>
-          <div className="text-text text-base mt-1 min-h-[1.2em]">{subheaderDisplay}</div>
+          <div className="text-text text-lg font-bold" style={{ marginTop: 0 }}>{subheaderDisplay}</div>
         </div>
         <div className="flex flex-col items-end gap-2 min-w-[160px]">
-          <span className="flex items-center text-text text-sm"><FaCalendarAlt className="mr-1" /> {date}</span>
-          <span className="flex items-center text-text text-sm"><FaMapMarkerAlt className="mr-1" /> {location}</span>
+          <span className="flex items-center text-text text-lg font-semibold"><FaCalendarAlt className="mr-1" /> {date}</span>
+          <span className="flex items-center text-text text-lg font-semibold"><FaMapMarkerAlt className="mr-1" /> {location}</span>
           {/* Type field with icon */}
           {type && (
             <span className="inline-flex items-center bg-card text-accent border border-border rounded px-3 py-1 font-semibold text-[14px] ml-2"><span className="mr-1">{typeIconMap[type] || <FaUser style={{ color: '#a259f7', marginRight: 4 }} />}</span>{type.charAt(0).toUpperCase() + type.slice(1)}</span>

@@ -1,4 +1,37 @@
 const academicExperiences = [
+
+  {
+    title: "NexusKCG",
+    subtitle: "MLOps Platform Engineer",
+    date: "Jun 2025 - Present",
+    location: "Bristol, UK",
+    skills: ["UI/UX Design", "Technology", "Strategy"],
+    description: "Artificial Intelligence and Machine Learning Laboratory | Financial Engineering Laboratory",
+    contributors: "Alice Example, Bob Example",
+    contributors_link: null,
+    logo: null,
+    links: [
+      { label: "GitHub", href: "https://github.com/ein1le/headstart-carbontracc", type: "link" },
+      { label: "Team Photo", src: "https://via.placeholder.com/100", type: "image" }
+    ],
+    responsibilities: []
+  }, 
+  {
+    title: "Aegis Professor Undergraduate Competition",
+    subtitle: "Team Member",
+    date: "Apr 2025 - Present",
+    location: "Bristol, UK",
+    skills: ["UI/UX Design", "Technology", "Strategy"],
+    description: "Artificial Intelligence and Machine Learning Laboratory | Financial Engineering Laboratory",
+    contributors: "Alice Example, Bob Example",
+    contributors_link: null,
+    logo: null,
+    links: [
+      { label: "GitHub", href: "https://github.com/ein1le/headstart-carbontracc", type: "link" },
+      { label: "Team Photo", src: "https://via.placeholder.com/100", type: "image" }
+    ],
+    responsibilities: []
+  }, 
   {
     title: "United Kingdom Singapore Student Council (UKSSC)",
     subtitle: "Technology Director",
@@ -245,9 +278,25 @@ const academicExperiences = [
     responsibilities: []
   },
   {
+    title: "Thai Society Innovation Network (TSIN)",
+    subtitle: "Data and Research Analyst",
+    date: "Apr 2023 - Nov 2023",
+    location: "Bristol, UK",
+    skills: ["UI/UX Design", "Technology", "Strategy"],
+    description: "Artificial Intelligence and Machine Learning Laboratory | Financial Engineering Laboratory",
+    contributors: "Alice Example, Bob Example",
+    contributors_link: null,
+    logo: null,
+    links: [
+      { label: "GitHub", href: "https://github.com/ein1le/headstart-carbontracc", type: "link" },
+      { label: "Team Photo", src: "https://via.placeholder.com/100", type: "image" }
+    ],
+    responsibilities: []
+  }, 
+  {
     title: "Samaggi Smaggom 123",
     subtitle: "Python Developer",
-    date: "Jul 2023 - Aug 2024",
+    date: "Aug 2021 - Jun 2022",
     location: "London, UK",
     skills: ["Finance", "Risk Analysis", "Portfolio Management"],
     description: "BR02 and BR03. RMB Chivenor Heat, Castle Coombe Heat",
@@ -272,4 +321,6 @@ const academicExperiences = [
   },
 ];
 
-export default academicExperiences; 
+export default academicExperiences;
+
+export const titleDescription = "Extracurricular roles or projects with an emphasis on technical skills, expanding and deepening domain knowledge in engineering, finance, and technology. Languages used are listed as icons."; 

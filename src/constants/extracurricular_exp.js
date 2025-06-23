@@ -1,328 +1,547 @@
+import { FaPython, FaGoogle, FaMicrosoft } from "react-icons/fa";
+
+//link types: "github", "certificate", "media", "youtube", "website", "linktree","instagram"
+
 const extracurricularExperiences = [
   {
-    title: "Malaysian and Singaporean Students' Association (MSSA)",
-    subtitle: "Executive Committee 24/25, General Secretary",
-    date: "Mar 2024 - May 2025",
-    location: "Bristol, UK",
-    skills: ["Leadership", "Organization", "Communication"],
-    description: "Lorum ipsum",
-    contributors: "Jane Doe, John Smith",
-    contributors_link: null,
-    logo: "https://media.licdn.com/dms/image/v2/C560BAQH86m_MEK4yyQ/company-logo_100_100/company-logo_100_100/0/1631359978573?e=1755734400&v=beta&t=ERQ26ocADWl_42dA4mronMJr-z84KdC4Zvnm7rpKTEQ",
-    links: [
-      { label: "Official Website", href: "https://example.com", type: "link" },
-      { label: "Event Photo", src: "https://via.placeholder.com/100", type: "image" }
+    "title": "Malaysian and Singaporean Students Association (MSSA)",
+    "subtitle": "Executive Committee 24/25",
+    "date": "Mar 2024 - May 2025",
+    "location": "Bristol, UK",
+    "skills": ["Organisation","Feedback Handling","Management"],
+    "languages": [],
+    "description": "Description",
+    "responsibilities": [
+      "Responsibility 1",
+      "Responsibility 2",
+      "Responsibility 3"
     ],
-    responsibilities: []
+    "contributors": [
+        "Yasmin de Silva","Amanda Yong","Alicia Low","Brahmjoth Singh","Elijah Lim","Magdalene Khor","Leanne Huang","Ethan Lock","Christine Choong","Natalie Ong"
+        ],
+    "contributors_link": [],
+    "logo": "https://media.licdn.com/dms/image/v2/C560BAQH86m_MEK4yyQ/company-logo_100_100/company-logo_100_100/0/1631359978573?e=1755734400&v=beta&t=ERQ26ocADWl_42dA4mronMJr-z84KdC4Zvnm7rpKTEQ",
+    "links": [
+        {
+          type: "certificate",
+          label_name: "Group of the Month",
+          link: null,
+          asset: ""
+        },
+        {
+          type: "certificate",
+          label_name: "Gold Accreditation",
+          link: null,
+          asset: ""
+        },
+        {
+          type: "linktree",
+          label_name: "MSSA LinkTree",
+          link: "https://linktr.ee/BristolMSSA",
+          asset: null
+          },
+        {
+         type: "github",
+         label_name: "API Repository",
+         link: "https://github.com/ein1le/MSSA_famscheme"
+        },
+    ]
   },
   {
-    title: "Bristol MechSoc",
-    subtitle: "Executive Committee 24/25",
-    date: "Mar 2024 - May 2025",
-    location: "Bristol, UK",
-    skills: ["Media", "Events", "Teamwork"],
-    description: "Lorum ipsum",
-    contributors: "Jane Doe, John Smith",
-    contributors_link: null,
-    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQEym2ZED7OT-Q/company-logo_100_100/company-logo_100_100/0/1699391996511/uobmechsoc_logo?e=1755734400&v=beta&t=MoTvqstFiaVhbrXgNnaik33F05erX09L_54wqEElKmk",
-    links: [
-      { label: "Official Website", href: "https://example.com", type: "link" },
-      { label: "Event Photo", src: "https://via.placeholder.com/100", type: "image" }
-    ],
-    responsibilities: [
+    "title": "Bristol MechSoc",
+    "subtitle": "Executive Committee 24/25",
+    "date": "Mar 2024 - May 2025",
+    "location": "Bristol, UK",
+    "skills": [],
+    "languages": [],
+    "logo": "https://media.licdn.com/dms/image/v2/D4D0BAQEym2ZED7OT-Q/company-logo_100_100/company-logo_100_100/0/1699391996511/uobmechsoc_logo?e=1755734400&v=beta&t=MoTvqstFiaVhbrXgNnaik33F05erX09L_54wqEElKmk",
+    "description": "Description",
+    "responsibilities": [
       {
-        role: "Media Officer",
-        date: "Mar 2024 - May 2025",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: "Role Alice, Role Bob",
-        role_contributors_link: null,
-        role_links: [
-          { label: "Role Doc", href: "https://example.com/role-doc", type: "link" },
-          { label: "Role Image", src: "https://via.placeholder.com/80", type: "image" }
+        "role": "Media Officer",
+        "date": "Mar 2024 - May 2025",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role",
+          "Responsibility 3 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": [],
+        "role_links": []
+      },
+      {
+        "role": "Senior Events Representative",
+        "date": "Apr 2024 - May 2025",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": []
+      }
+      
+    ],
+    "contributors": ["Tanya Patel","Anna Zhuravlova","Boris Kovacheski","Srosh Akbari","Sayuni Jayakodi","Liv Brannan","Nely Georgiou","Jad Raffoul","Tristan Simescu","Louis Townsend"],
+    "contributors_link": [],
+    "links": [
+      {
+        type: "certificate",
+        label_name: "Gold Accreditation",
+        link: null,
+        asset: ""
+      },
+      {
+        type: "linktree",
+        label_name: "MechSoc LinkTree",
+        link: "https://linktr.ee/mechsoc_bristol",
+        asset: null
+        },
+      {
+       type: "website",
+       label_name: "MechSoc Website",
+       link: ""
+      },
+    ]
+  },
+  {
+    "title": "MSNight",
+    "subtitle": "Core Committee",
+    "date": "Feb 2023 - May 2025",
+    "location": "Bristol, UK",
+    "skills": [],
+    "languages": [],
+    "logo": null,
+    "description": "Description",
+    "responsibilities": [
+      {
+        "role": "Admin Head, Choreographer",
+        "date": "Aug 2024 - May 2025",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": ["Haziq Hamdan"," Hazeq Emir Harrison","Zarihatul Husna", "Nik Ariff Johaan", "Pattaranit Krongboonying", "Abdul Qayyum", "Cheryl Teo", "Michelle Yeo"],
+        "role_contributors_link": [],
+        "role_links": [
+          {
+            "type": null,   // e.g., "image" or "link"
+            "src": null,    // for images
+            "href": null,   // for links
+            "label": null,  // for links
+            "icon": null    // optional, for links
+          }
         ]
       },
       {
-        role: "Senior Events Representative",
-        date: "Mar 2024 - May 2025",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: "Role Charlie, Role Dana",
-        role_contributors_link: null,
-        role_links: [
-          { label: "Role Doc", href: "https://example.com/role-doc2", type: "link" },
-          { label: "Role Image", src: "https://via.placeholder.com/80", type: "image" }
-        ]
-      }
-    ]
-  },
-  {
-    title: "University of Bristol Student's Union",
-    subtitle: "BAME Network Committee",
-    date: "Sep 2024 - Mar 2025",
-    location: "Bristol, UK",
-    skills: ["Diversity", "Advocacy", "Community"],
-    description: "Lorum ipsum",
-    contributors: "Jane Doe, John Smith",
-    contributors_link: null,
-    logo: null,
-    image: null,
-    links: [
-      { label: "Official Website", href: "https://example.com", type: "link" },
-      { label: "Event Photo", src: "https://via.placeholder.com/100", type: "image" }
-    ],
-    responsibilities: []
-  },
-  {
-    title: "University of Bristol Faculty of Engineering",
-    subtitle: "Mechanical Engineering Course Representative",
-    date: "Feb 2024 - May 2025",
-    location: "Bristol, UK",
-    skills: ["Representation", "Engineering", "Leadership"],
-    description: "Lorum ipsum",
-    contributors: "Jane Doe, John Smith",
-    contributors_link: null,
-    logo: "https://media.licdn.com/dms/image/v2/D4E0BAQFMhjh_H3lpVA/company-logo_100_100/company-logo_100_100/0/1718352541738/university_of_bristol_engineering_logo?e=1755734400&v=beta&t=mStEv-IAGW3FFDs7sWygjYTqjhPx5eGwu7gfdu9bFio",
-    links: [
-      { label: "Official Website", href: "https://example.com", type: "link" },
-      { label: "Event Photo", src: "https://via.placeholder.com/100", type: "image" }
-    ],
-    responsibilities: [
-      {
-        role: "Senior Course Rep",
-        date: "Aug 2024 - May 2025",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
-      },
-      {
-        role: "Course Rep",
-        date: "Feb 2024 - Aug 2024",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
-      }
-    ]
-  },
-  {
-    title: "MSNight",
-    subtitle: "Core Committee",
-    date: "Feb 2024 - May 2025",
-    location: "Bristol, UK",
-    skills: ["Representation", "Engineering", "Leadership"],
-    description: "Lorum ipsum",
-    contributors: "Jane Doe, John Smith",
-    contributors_link: null,
-    logo: null,
-    image: null,
-    links: [
-      { label: "Official Website", href: "https://example.com", type: "link" },
-      { label: "Event Photo", src: "https://via.placeholder.com/100", type: "image" }
-    ],
-    responsibilities: [
-      {
-        role: "Admin Head",
-        date: "Aug 2024 - Mar 2025",
-        bullets: ["Admin Head | Auxiliary Department | Core Committee","MSNight 2025 'Dusta'"],
-        role_contributors: "Haziq Hamdan, Hazeq Emir Harrison, Zarihatul Husna, Nik Ariff Johaan, Pattaranit Krongboonying, Abdul Qayyum, Cheryl Teo, Michelle Yeo ",
-        role_contributors_link: null,
-        role_links: []
-      },
-      {
-        role: "Creative Director",
-        date: "Jul 2023 - Apr 2024",
-        bullets: ["Director | Creative Department | Core Committee","MNight 2024 'Waiting for your Return'"],
-        role_contributors: "Pattaranit Krongboonying, Jaslyn Leong, Mindy Liew, King Ray Ng, Chien Wen Siow, Michelle Yeo",
-        role_contributors_link: ["","https://www.linkedin.com/in/jaslyn-leong/?originalSubdomain=uk",],
-        role_links: [
-          { label: "Epigram Newsletter", href: "https://epigram.org.uk/review-waiting-for-your-return-by-bristol-ms-night/", type: "link" },
-          { label: "MSNight2024 Gallery", src: "themarcusliew.pic-time.com/-bristolmsnight20243march2024/gallery?scrollPos=0", type: "link" }
+        "role": "Creative Director",
+        "date": "Jul 2023 - Apr 2024",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": ["Pattaranit Krongboonying", "Jaslyn Leong", "Mindy Liew", "King Ray Ng", "Chien Wen Siow", "Michelle Yeo","Zhen Wei Leong","Hans Wen Tan"],
+        "role_contributors_link": [],
+        "role_links": [
+          {
+            "type": "link",   // e.g., "image" or "link"
+            "src": null,    // for images
+            "href": "https://epigram.org.uk/review-waiting-for-your-return-by-bristol-ms-night/", 
+            "label": "Epigram Review",  // for links
+            "icon": null    // optional, for links
+          },
+          {
+            "type": "link",   // e.g., "image" or "link"
+            "src": null,    // for images
+            "href": "themarcusliew.pic-time.com/-bristolmsnight20243march2024/gallery?scrollPos=0", 
+            "label": "Gallery",  // for links
+            "icon": null    // optional, for links
+          }
         ]
       },
       {
-        role: "Assistant Creative Director",
-        date: "Jan 2023 - Apr 2023",
-        bullets: ["Assistant Creative Director | Creative Department | Core Committee","MSNight 2023 `Stuck in the Moment`"],
-        role_contributors: "Role Alice, Role Bob",
-        role_contributors_link: null,
-        role_links: []
+        "role": "Assistant Creative Director",
+        "date": "Jan 2023 - Apr 2023",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": ["Olivia Ng","Lorraine Lam"],
+        "role_contributors_link": [],
+        "role_links": [
+          {
+            "type": null,   // e.g., "image" or "link"
+            "src": null,    // for images
+            "href": null,   // for links
+            "label": null,  // for links
+            "icon": null    // optional, for links
+          }
+        ]
+      }
+
+    ],
+    "contributors": null,
+    "contributors_link": [],
+    "links": []
+  },
+  {
+    "title": "University of Bristol Students' Union",
+    "subtitle": "BAME Network Representative",
+    "date": "Sep 2024 - Mar 2025",
+    "location": "Bristol, UK",
+    "skills": [],
+    "languages": [],
+    "logo": "https://media.licdn.com/dms/image/v2/C560BAQHMGOsvvRoSxw/company-logo_100_100/company-logo_100_100/0/1659344116151/bristolsu_logo?e=1756339200&v=beta&t=xXiDSRfa0DAFPUiDRX0ilAZRFriE7k3iTN4N27sDDOQ",
+    "description": "Description",
+    "responsibilities": [
+      "Responsibility 1",
+      "Responsibility 2",
+      "Responsibility 3"
+    ],
+    "contributors": ["Bakhtawar Javed","Linlu Ye","Katie Poyner","Mia Stevens"],
+    "contributors_link": [],
+    "links": []
+  },
+  {
+    "title": "University of Bristol Faculty of Engineering",
+    "subtitle": "Mechanical Engineering Course Representative",
+    "date": "Feb 2024 - May 2025",
+    "location": "Bristol, UK",
+    "skills": [],
+    "languages": [],
+    "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQFMhjh_H3lpVA/company-logo_100_100/company-logo_100_100/0/1718352541738/university_of_bristol_engineering_logo?e=1755734400&v=beta&t=mStEv-IAGW3FFDs7sWygjYTqjhPx5eGwu7gfdu9bFio",
+    "description": "Description",
+    "responsibilities": [
+      {
+        "role": "Senior Course Representative",
+        "date": "Aug 2024 - May 2025",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": [],
+        "role_links": []
+      },
+      {
+        "role": "Course Representative",
+        "date": "Feb 2024 - Aug 2024",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": [],
+        "role_links": []
+      },
+    ],
+    "contributors": "Nely Georgiou",
+    "contributors_link": [],
+    "links": []
+  },
+  {
+    "title": "Bristol Elevate Society",
+    "subtitle": "Bristol Performance Tema",
+    "date": "Nov 2022 - Mar 2023",
+    "location": "London, UK",
+    "skills": [],
+    "languages": [],
+    "logo": null,
+    "description" : "Description",
+    "responsibilities": [
+      "Responsibility 1",
+      "Responsibility 2",
+      "Responsibility 3"
+    ],
+    "contributors":["Tosum Chan","Swannie Hui","Lulu Lock","Yolanda Shi"],
+    "contributors_link": [],
+    "links": [
+      {
+        type: "youtube",
+        label_name: "Kings of Kpop 2023",
+        link: "https://www.youtube.com/live/wbC63q-K-Uo?si=yQ4EYi-_ce77c7q9",
+        asset: null
+      },
+    ]
+  } ,
+  {
+    "title": "University of Bristol Thai Society",
+    "subtitle": "Executive Committee 22/23",
+    "date": "Dec 2022 - Mar 2023",
+    "location": "Bristol, UK",
+    "skills": [],
+    "languages": [],
+    "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQGUuiMzHGNdKg/company-logo_100_100/company-logo_100_100/0/1704824709065?e=1756339200&v=beta&t=2QEjT0dowO26P1mp0ndXfdnjphJiD0wf7VivJwpI88Q",
+    "description": "Description",
+    "responsibilities": [
+      "Responsibility 1",
+      "Responsibility 2",
+      "Responsibility 3"
+    ],
+    "contributors": ["Pim Kanthamanon","Phukao Poolsawat","Pat Temchareon","Champ Phatpanichot","Pearl Unhavaithaya","Wern Palarit"],
+    "contributors_link": [],
+    "links": [
+      {
+        type: "linktree",
+        label_name: "Thai Society LinkTree",
+        link: "https://linktr.ee/SIGNUPUOBNUWEMEMBERSHIP",
+        asset: null  
       }
     ]
   },
   {
-    title: "UoB Elevate Society",
-    subtitle: "Bristol Performance Team",
-    date: "Nov 22 - Mar 2023",
-    location: "Bristol, UK",
-    skills: ["Public Relations", "Event Promotion", "Community"],
-    description: "Kings of KPOP 2023",
-    contributors: "Tosum Chan, Swannie Hui, Lulu Lock, Yolanda Shi",
-    contributors_link: null,
-    logo: null,
-    image: null,
-    links: [
-      { label: "Official Website", href: "https://example.com", type: "link" },
-      { label: "Event Photo", src: "https://via.placeholder.com/100", type: "image" }
-    ],
-    responsibilities: []
-  },
-  {
-    title: "University of Bristol Thai Society",
-    subtitle: "Executive Committee 21/22, Public Relations Officer",
-    date: "Sep 21 - Mar 2022",
-    location: "Bristol, UK",
-    skills: ["Public Relations", "Event Promotion", "Community"],
-    description: "Lorum ipsum",
-    contributors: "Jane Doe, John Smith",
-    contributors_link: null,
-    logo: null,
-    image: null,
-    links: [
-      { label: "Official Website", href: "https://example.com", type: "link" },
-      { label: "Event Photo", src: "https://via.placeholder.com/100", type: "image" }
-    ],
-    responsibilities: []
-  },
-  {
-    title: "Harrow International School Bangkok",
-    subtitle: "Summary of roles in Sixth Form",
-    date: "Aug 2019 - Jun 2021",
-    location: "Bangkok, Thailand",
-    skills: ["Representation", "Engineering", "Leadership"],
-    description: "Lorum ipsum",
-    contributors: null,
-    contributors_link: null,
-    logo: null,
-    image: null,
-    links: [
-      { label: "Official Website", href: "https://example.com", type: "link" },
-      { label: "Event Photo", src: "https://via.placeholder.com/100", type: "image" }
-    ],
-    responsibilities: [
+    "title": "Harrow International School Bangkok",
+    "subtitle": "Summary of roles in Sixth Form",
+    "date": "Aug 2019 - Jun 2021",
+    "location": "Bangkok, Thailand",
+    "skills": [],
+    "languages": [],
+    "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQF9R3ETIKNOOQ/company-logo_100_100/company-logo_100_100/0/1695058617344/harrowschool_logo?e=1756339200&v=beta&t=pwseqxifqgkfXlfTFOGHFKrr8lFRBsh7JxPMd3xRtE4",
+    "description": "Description",
+    "responsibilities": [
       {
-        role: "Student Academic and Leadership Team (SALT) Vice President",
-        date: "Nov 2020 - Jun 2021",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
+        "role": "SALT Vice President",
+        "date": "Nov 2020 - Jun 2021",
+        "bullets": [
+          "Student Academic and Leadership Team",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": [],
+        "role_links": []
       },
       {
-        role: "Prefect",
-        date: "Oct 2020 - Apr 2021",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
+        "role": "Prefect",
+        "date": "Oct 2020 - May 2021",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": [],
+        "role_links": []
       },
       {
-        role: "Engineering Society Committee",
-        date: "Sep 2019 - May 2021",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
+        "role": "Engineering Society Committee",
+        "date": "Sep 2019 - May 2021",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": [],
+        "role_links": []
       },
       {
-        role: "HarrowCraft Technical Specialist",
-        date: "May 2020 - Jun 2021",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: "Saran Cheewasutthanon, David Harrison, Pakkapol Lailert, Wichayut Lertkittiamornkul",
-        role_contributors_link: null,
-        role_links: []
+        "role": "HarrowCraft Project",
+        "date": "May 2020 - Jun 2021",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": [],
+        "role_links": []
       },
       {
-        role: "Senior House Captain",
-        date: "Sep 2019 - Apr 2021",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
+        "role": "Senior House Captain",
+        "date": "Sep 2019 - Apr 2021",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": [],
+        "role_links": []
       },
       {
-        role: "Legends of Lions Captain",
-        date: "Aug 2020 - May 2021",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
+        "role": "SALT Vice President",
+        "date": "Nov 2020 - Jun 2021",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": [],
+        "role_contributors_link": [],
+        "role_links": []
       },
       {
-        role: "Legends of Lions Vice Captain",
-        date: "Oct 2019 - Aug 2020",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
+        "role": "Legends of Lions Captain",
+        "date": "Aug 2020 - May 2021",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": ["Run Pakwaran","Elson Leong","Fah Kittipattananon"],
+        "role_contributors_link": [],
+        "role_links": []
       },
       {
-        role: "Study Buddy Tutor",
-        date: "Aug 2019 - Apr 2021",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
+        "role": "Legends of Lions Vice Captain",
+        "date": "Oct 2019 - Aug 2020",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": ["Caesar Chunharatchapan"],
+        "role_contributors_link": [],
+        "role_links": []
       }
-    ]
+    ],
+    "contributors": null,
+    "contributors_link": [],
+    "links": []
   },
   {
-    title: "Harrow International School Bangkok",
-    subtitle: "Summary of roles in Secondary",
-    date: "Feb 2024 - May 2025",
-    location: "Bangkok, Thailand",
-    skills: ["Representation", "Engineering", "Leadership"],
-    description: "Lorum ipsum",
-    contributors: null,
-    contributors_link: null,
-    logo: null,
-    image: null,
-    links: [
-      { label: "Official Website", href: "https://example.com", type: "link" },
-      { label: "Event Photo", src: "https://via.placeholder.com/100", type: "image" }
-    ],
-    responsibilities: [
+    "title": "Harrow International School Bangkok",
+    "subtitle": "Summary of roles in Secondary",
+    "date": "Aug 2017 - Jun 2019",
+    "location": "Bangkok, Thailand",
+    "skills": [],
+    "languages": [],
+    "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQF9R3ETIKNOOQ/company-logo_100_100/company-logo_100_100/0/1695058617344/harrowschool_logo?e=1756339200&v=beta&t=pwseqxifqgkfXlfTFOGHFKrr8lFRBsh7JxPMd3xRtE4",
+    "description": "Description",
+    "responsibilities": [
       {
-        role: "Deputy House Captain",
-        date: "Sep 2018 - Apr 2019",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
+        "role": "Deputy House Captain",
+        "date": "Sep 2018 - Apr 2019",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": [],
+        "role_links": []
       },
       {
-        role: "Suriyothai Leadership Team (SLT) Development",
-        date: "Oct 2018 - Apr 2019",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
+        "role": "SLT Development Team",
+        "date": "Oct 2018 - Apr 2019",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": "Sweetie Yoon",
+        "role_contributors_link": [],
+        "role_links": []
       },
       {
-        role: "SEASAC Bouldering Team",
-        date: "Sep 2017 - Mar 2019",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
+        "role": "SEASAC Bouldering Team",
+        "date": "Sep 2017 - Mar 2019",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": [],
+        "role_links": []
       },
       {
-        role: "FOBISEA Varsity Badminton Team",
-        date: "Nov 2017 - Mar 2019",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
+        "role": "FOBISIA Varsity Badminton",
+        "date": "Nov 2017 - Mar 2019",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": [],
+        "role_links": []
       },
       {
-        role: "FOBISIA Junior Varsity Volleyball Team",
-        date: "Nov 2017 - Mar 2018",
-        bullets: ["Lorum ipsum dolor sit amet."],
-        role_contributors: null,
-        role_contributors_link: null,
-        role_links: null
+        "role": "FOBISIA Junior Varsity Volleyball",
+        "date": "Nov 2017 - Mar 2018",
+        "bullets": [
+          "Responsibility 1 for this role",
+          "Responsibility 2 for this role"
+        ],
+        "role_contributors": null,
+        "role_contributors_link": [],
+        "role_links": []
       }
-    ]
-  },
+    ],
+    "contributors": null,
+    "contributors_link": [],
+    "links": []
+  }
+  
+
+
 ];
 
 export default extracurricularExperiences; 
+
+/* Link Templates
+ {
+    type: "github",
+    label_name: "GitHub Repository",
+    link: "https://github.com/username/repo",
+    asset: null
+  },
+  {
+    type: "certificate",
+    label_name: "Group of the Month Certificate",
+    link: "https://certificate-verification.com/abc123",
+    asset: "src/assets/certificate.png"
+  },
+  {
+    type: "media",
+    label_name: "Project Screenshot",
+    link: null,
+    asset: "src/assets/screenshot.jpg"
+  },
+  {
+    type: "youtube",
+    label_name: "Demo Video",
+    link: "https://youtube.com/watch?v=xyz",
+    asset: null
+  },
+  {
+    type: "website",
+    label_name: "Project Website",
+    link: "https://projectsite.com",
+    asset: null
+  }
+  {
+    type: "linktree",
+    label_name: "Project Website",
+    link: "https://projectsite.com",
+    asset: null 
+*/
+
+/* multirole
+{
+  "title": null,
+  "subtitle": null,
+  "date": null,
+  "location": null,
+  "skills": [],
+  "languages": [],
+  "logo": null,
+  "description": null,
+  "responsibilities": [
+    {
+      "role": null,
+      "date": null,
+      "bullets": [
+        "Responsibility 1 for this role",
+        "Responsibility 2 for this role"
+      ],
+      "role_contributors": null,
+      "role_contributors_link": [],
+      "role_links": [
+        {
+          "type": null,   // e.g., "image" or "link"
+          "src": null,    // for images
+          "href": null,   // for links
+          "label": null,  // for links
+          "icon": null    // optional, for links
+        }
+      ]
+    }
+    // ...more roles as needed
+  ],
+  "contributors": null,
+  "contributors_link": [],
+  "links": []
+}
+*/
+
+export const titleDescription = "Uncompensated, extracurricular experiences not necessarily related to academia including committee positions in student socities and representative roles. These highlight the soft skills in leadership and community engagement.";

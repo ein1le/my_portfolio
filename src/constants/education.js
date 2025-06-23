@@ -1,3 +1,6 @@
+import UOB_Banner from '../assets/UOB_Banner.jpeg';
+import Harrow_Banner from '../assets/Harrow_Banner.jpeg';
+
 const education = [
   {
     title: "University of Bristol",
@@ -5,6 +8,8 @@ const education = [
     date: "2021 - 2025",
     location: "Bristol, UK",
     grade: "First Class Honours (Expected)",
+    logo: "https://media.licdn.com/dms/image/v2/D4E0BAQHpcDl5zEb2Og/company-logo_100_100/company-logo_100_100/0/1708951303888/university_of_bristol_logo?e=1756339200&v=beta&t=CaGrBwmsc-1iqvk5Baueq9slBLTyKP4WzMdaVrTferQ",
+    hoverImage: UOB_Banner,
     modules: [
       "Year 4: Data Driven Physical Modelling, Multivariable and Non-linear Control, AT Generative Design, AT Quantum Information and Photonic Engineering, AT Design in a Constrained World, AT Machine Thinking in Smart Manufacturing, Group Industrial Project, Renewable Energy for a Sustainable Future, AT Biomechanics",
       "Year 3: Individual Research Project, Applied Solid Mechanics, Engineering Management, Behaviour of Dynamic Systems, Fluid Mechanics and Heat Transfer",
@@ -113,7 +118,7 @@ const education = [
         pdfUrl: "/pdfs/harrow-math.pdf"
       }
     ],
-    awards: ["Bristol PLUS Award", "Bristol Skills Accelerator"]
+    awards: ["Bristol PLUS Award", "Bristol Skills Accelerator","Think Big Scholarship"]
   },
   {
     title: "Harrow International School",
@@ -121,6 +126,8 @@ const education = [
     date: "2011 - 2021",
     location: "Bangkok, Thailand",
     grade: "A-Levels: A*A*A*, IGCSEs: 12A*s",
+    logo: "https://media.licdn.com/dms/image/v2/D4E0BAQF9R3ETIKNOOQ/company-logo_100_100/company-logo_100_100/0/1695058617344/harrowschool_logo?e=1756339200&v=beta&t=pwseqxifqgkfXlfTFOGHFKrr8lFRBsh7JxPMd3xRtE4",
+    hoverImage: Harrow_Banner,
     modules: [
       "A Levels: Mathematics, Physics, Biology",
       "AS Levels: Mathematics, Physics, Chemistry, Extended Project Qualification",
@@ -153,7 +160,7 @@ const education = [
         pdfUrl: "/pdfs/harrow-math.pdf"
       }
     ],
-    awards: ["Harrow Prize Distinction", "Sixth Form Mathematics Prize", "Sixth Form House Prize"]
+    awards: ["Harrow Prize Distinction", "Sixth Form Mathematics Prize", "Sixth Form House Prize","Gold Scholarship","Duke of Edinburgh Silver Award"]
   }
 ];
 

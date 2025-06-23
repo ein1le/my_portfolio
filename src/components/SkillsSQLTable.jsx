@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Papa from "papaparse";
 import alasql from "alasql";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
-import skillsRadarData from '../constants/skills_radar';
+import { domainsRadarData, technicalsRadarData } from '../constants/skills_radar';
 
 export default function SkillsSQLTable() {
   const [query, setQuery] = useState("");
@@ -53,31 +53,64 @@ export default function SkillsSQLTable() {
 
   return (
     <div style={{ padding: 0, margin: 0, fontFamily: "Inter, system-ui, sans-serif", color: "#e3e8ee", width: '100%' }}>
-      {/* Radar Plot */}
-      <div style={{ width: '100%', maxWidth: 520, margin: '0 auto 36px auto', borderRadius: 14, padding: 24, background: 'transparent', boxShadow: 'none' }}>
-        <ResponsiveContainer width="100%" aspect={1.3}>
-          <RadarChart data={skillsRadarData} outerRadius={90}>
-            <PolarGrid stroke="#31313a" />
-            <PolarAngleAxis 
-              dataKey="skill" 
-              stroke="#b5cea8" 
-              fontSize={14}
-              tick={{
-                fontFamily: 'Fira Mono, Consolas, monospace',
-                fontWeight: 500,
-                fill: '#b5cea8',
-                letterSpacing: 0.5
-              }}
-            />
-            <PolarRadiusAxis 
-              angle={30} 
-              domain={[0, 100]} 
-              tick={false} 
-              axisLine={false} 
-            />
-            <Radar name="Skill" dataKey="value" stroke="#3fa7ff" fill="#3fa7ff" fillOpacity={0.18} dot={true} />
-          </RadarChart>
-        </ResponsiveContainer>
+      {/* Radar Plots Side by Side */}
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: 40, marginBottom: 36 }}>
+        <div style={{ width: 540, background: 'transparent', borderRadius: 14, padding: 40, boxShadow: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div style={{ fontWeight: 700, color: '#b5cea8', fontSize: 20, marginBottom: 12 }}>Domains</div>
+          <ResponsiveContainer width="100%" aspect={1.1}>
+            <RadarChart data={domainsRadarData} outerRadius={90} margin={{ top: 80, right: 80, bottom: 80, left: 80 }}>
+              <PolarGrid stroke="#31313a" />
+              <PolarAngleAxis 
+                dataKey="skill" 
+                stroke="#b5cea8" 
+                fontSize={17}
+                tick={{
+                  fontFamily: 'Fira Mono, Consolas, monospace',
+                  fontWeight: 400,
+                  fill: '#b5cea8',
+                  letterSpacing: 0.5,
+                  fontSize: 17,
+                  whiteSpace: 'pre-line',
+                  wordBreak: 'break-word',
+                  width: 180,
+                  textAlign: 'center',
+                  lineHeight: 1.2,
+                  transform: 'rotate(-18deg)'
+                }}
+              />
+              <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+              <Radar name="Domain" dataKey="value" stroke="#3fa7ff" fill="#3fa7ff" fillOpacity={0.18} dot={true} />
+            </RadarChart>
+          </ResponsiveContainer>
+        </div>
+        <div style={{ width: 540, background: 'transparent', borderRadius: 14, padding: 40, boxShadow: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div style={{ fontWeight: 700, color: '#b5cea8', fontSize: 20, marginBottom: 12 }}>Technicals</div>
+          <ResponsiveContainer width="100%" aspect={1.1}>
+            <RadarChart data={technicalsRadarData} outerRadius={90} margin={{ top: 80, right: 80, bottom: 80, left: 80 }}>
+              <PolarGrid stroke="#31313a" />
+              <PolarAngleAxis 
+                dataKey="skill" 
+                stroke="#b5cea8" 
+                fontSize={17}
+                tick={{
+                  fontFamily: 'Fira Mono, Consolas, monospace',
+                  fontWeight: 400,
+                  fill: '#b5cea8',
+                  letterSpacing: 0.5,
+                  fontSize: 17,
+                  whiteSpace: 'pre-line',
+                  wordBreak: 'break-word',
+                  width: 180,
+                  textAlign: 'center',
+                  lineHeight: 1.2,
+                  transform: 'rotate(-18deg)'
+                }}
+              />
+              <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+              <Radar name="Technical" dataKey="value" stroke="#6f7bfd" fill="#6f7bfd" fillOpacity={0.18} dot={true} />
+            </RadarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
       {/* Message box with transparent input and Query button */}
       <div style={{

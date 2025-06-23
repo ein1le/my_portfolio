@@ -93,3 +93,5 @@ const countryCentroids = {
 
 export default volunteeringData;
 
+export const titleDescription = "Roles directly supporting a social or environmental cause, either as part of an organisation or contribution to short-term voluntary services.";
+

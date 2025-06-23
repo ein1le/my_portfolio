@@ -18,46 +18,94 @@ function stringToColor(str) {
   return "#" + "00000".substring(0, 6 - c.length) + c;
 }
 
-export default function EducationCard({ title, subheader, date, location, grade, modules = [], publications = [], awards = [] }) {
+export default function EducationCard({ title, subheader, date, location, grade, modules = [], publications = [], awards = [], logo, hoverImage }) {
   let cardClass = "";
   if (title.includes("Bristol")) cardClass += " bristol";
   if (title.includes("Harrow")) cardClass += " harrow";
   const [expanded, setExpanded] = useState(false);
   const [openPdf, setOpenPdf] = useState(null);
-  // Logo selection
-  let logo = null;
-  if (title.includes("Bristol")) {
-    logo = "https://upload.wikimedia.org/wikipedia/en/3/3a/University_of_Bristol_logo.svg";
-  } else if (title.includes("Harrow")) {
-    logo = "https://www.harrowschool.ac.th/wp-content/uploads/2020/09/harrow-logo.png";
-  }
-  // Custom background for hover (Bristol/Harrow)
-  const hoverBg = title.includes("Bristol")
-    ? "hover:before:content-[''] hover:before:absolute hover:before:inset-0 hover:before:z-0 hover:before:opacity-25 hover:before:bg-cover hover:before:bg-center hover:before:bg-no-repeat hover:before:pointer-events-none hover:before:rounded-xl hover:before:bg-[linear-gradient(120deg,_#007acc99_0%,_#b5cea899_100%),_url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80')]"
-    : title.includes("Harrow")
-    ? "hover:before:content-[''] hover:before:absolute hover:before:inset-0 hover:before:z-0 hover:before:opacity-25 hover:before:bg-cover hover:before:bg-center hover:before:bg-no-repeat hover:before:pointer-events-none hover:before:rounded-xl hover:before:bg-[linear-gradient(120deg,_#007acc99_0%,_#b5cea899_100%),_url('https://www.harrowschool.ac.th/wp-content/uploads/2020/09/harrow-bangkok-campus.jpg')]"
-    : "";
+  const [hovered, setHovered] = useState(false);
+  const [titleDisplay, setTitleDisplay] = useState(title);
+  const [subheaderDisplay, setSubheaderDisplay] = useState(subheader);
+  const [showCursor, setShowCursor] = useState(false);
+
+  React.useEffect(() => {
+    if (hovered) {
+      let t = 0;
+      let s = 0;
+      setTitleDisplay("");
+      setSubheaderDisplay("");
+      setShowCursor(false);
+      const titleInterval = setInterval(() => {
+        t++;
+        setTitleDisplay(title.slice(0, t));
+        if (t >= title.length) {
+          clearInterval(titleInterval);
+          setShowCursor(true);
+        }
+      }, 18);
+      const subheaderInterval = setInterval(() => {
+        s++;
+        setSubheaderDisplay(subheader.slice(0, s));
+        if (s >= subheader.length) clearInterval(subheaderInterval);
+      }, 18 + title.length * 2);
+      return () => { clearInterval(titleInterval); clearInterval(subheaderInterval); };
+    } else {
+      setTitleDisplay(title);
+      setSubheaderDisplay(subheader);
+      setShowCursor(false);
+    }
+  }, [hovered, title, subheader]);
+
   return (
     <div
-      className={`bg-card border border-border rounded-xl mb-6 px-8 py-10 shadow-card transition-all duration-200 flex flex-col min-w-0 relative overflow-hidden cursor-pointer ${expanded ? 'shadow-2xl' : ''} ${hoverBg}`}
+      className={`bg-card border border-border rounded-xl mb-6 px-8 py-14 transition-all duration-200 flex flex-col min-w-0 relative overflow-hidden cursor-pointer ${expanded ? 'shadow-2xl' : ''} ${cardClass}`}
       onClick={() => setExpanded(e => !e)}
       tabIndex={0}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        position: 'relative',
+        boxShadow: !expanded ? '0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(63,167,255,0.10), 0 4px 24px 0 rgba(0,0,0,0.12)' : undefined,
+      }}
     >
-      <div className="flex justify-between items-center w-full relative z-10">
+      {/* Hover background image with gradient overlay */}
+      {hoverImage && !expanded && (
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 0,
+            opacity: hovered ? 1 : 0,
+            transition: 'opacity 0.5s',
+            backgroundImage: `linear-gradient(to left, rgba(35,35,43,0.01) 60%, rgba(35,35,43,0.85) 100%), linear-gradient(120deg, rgba(35,35,43,0.6) 0%, rgba(34,87,122,0.4) 100%), url(${hoverImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
+      <div className="flex justify-between items-center w-full relative z-10" style={{ paddingTop: '0.5rem', paddingBottom: '0.5rem' }}>
         {/* Left logo */}
         {logo && (
-          <img src={logo} alt="logo" className="w-10 h-10 rounded-full object-cover mr-5 bg-white shadow-md flex-shrink-0" />
+          <img src={logo} alt="logo" className="w-16 h-16 rounded-full object-cover mr-7 bg-white shadow-md flex-shrink-0" style={{ width: 64, height: 64 }} />
         )}
         <div className="flex flex-col items-start justify-center text-left ml-0 flex-1">
-          <div className="text-accent2 font-bold text-xl leading-tight">{title}</div>
-          <div className="text-text text-base mt-1">{subheader}</div>
+          <div className="text-accent2 font-bold" style={{ fontSize: '2.1rem', lineHeight: 1.1 }}>
+            {titleDisplay}
+            {showCursor && hovered && <span className="inline-block animate-pulse ml-0.5">|</span>}
+          </div>
+          <div className="text-text mt-1" style={{ fontWeight: 600 }}>
+            {subheaderDisplay}
+          </div>
           {grade && (
             <div className="text-accent font-semibold text-[1.05em] mt-1">{grade}</div>
           )}
         </div>
         <div className="flex flex-col items-end gap-2 min-w-[120px]">
-          <span className="flex items-center text-text text-sm"><FaCalendarAlt className="mr-1 text-accent" /> {date}</span>
-          <span className="flex items-center text-text text-sm"><FaMapMarkerAlt className="mr-1 text-accent" /> {location}</span>
+          <span className="flex items-center text-text" style={{ fontSize: '1.15rem', fontWeight: 600 }}><FaCalendarAlt className="mr-1 text-accent" /> {date}</span>
+          <span className="flex items-center text-text" style={{ fontSize: '1.15rem', fontWeight: 600 }}><FaMapMarkerAlt className="mr-1 text-accent" /> {location}</span>
           <span className="mt-2 text-accent2 text-lg">{expanded ? <FaChevronUp /> : <FaChevronDown />}</span>
         </div>
       </div>

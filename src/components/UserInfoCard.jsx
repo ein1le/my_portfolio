@@ -10,7 +10,7 @@ export default function UserInfoCard({ icon, title, subtitle, link }) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
-        background: '#23232b',
+        background: 'var(--sidebar_color)',
         borderRadius: 12,
         padding: '16px 20px',
         textDecoration: 'none',

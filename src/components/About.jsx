@@ -1,6 +1,7 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
+import ReactMarkdown from "react-markdown";
 
-// 2D projected points for a tetrahedron
+// TetrahedronAnimation component moved here
 const tetraPoints = [
   { x: 150, y: 60 },   // Top
   { x: 240, y: 220 }, // Bottom right
@@ -11,9 +12,7 @@ const edges = [
   [0, 1], [1, 2], [2, 0], // base triangle
   [0, 3], [1, 3], [2, 3]  // sides
 ];
-
 function rotate2D(points, angle) {
-  // Rotate all points around the center (150, 150)
   const cx = 150, cy = 150;
   const rad = (angle * Math.PI) / 180;
   return points.map(({ x, y }) => {
@@ -25,20 +24,17 @@ function rotate2D(points, angle) {
     };
   });
 }
-
-export default function TetrahedronAnimation() {
-  const [angle, setAngle] = useState(0);
-  const dragging = useRef(false);
-  const lastX = useRef(0);
-
-  // Animate rotation
-  useEffect(() => {
+function TetrahedronAnimation() {
+  const [angle, setAngle] = React.useState(0);
+  const dragging = React.useRef(false);
+  const lastX = React.useRef(0);
+  React.useEffect(() => {
     let lastTime = performance.now();
     let raf;
     const animate = (now) => {
       if (!dragging.current) {
         const delta = now - lastTime;
-        setAngle(a => a + (delta * 0.02)); // ~2 deg per 16ms
+        setAngle(a => a + (delta * 0.02));
       }
       lastTime = now;
       raf = requestAnimationFrame(animate);
@@ -46,7 +42,6 @@ export default function TetrahedronAnimation() {
     raf = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(raf);
   }, []);
-
   const handleMouseDown = e => {
     dragging.current = true;
     lastX.current = e.clientX;
@@ -64,10 +59,7 @@ export default function TetrahedronAnimation() {
     window.removeEventListener("mousemove", handleMouseMove);
     window.removeEventListener("mouseup", handleMouseUp);
   };
-
-  // Center the tetrahedron at the top left (0, 32) just below the header
   const scale = 4;
-  // Find the center of the original tetrahedron
   const cx = 150, cy = 150;
   const offsetX = 0 - cx * scale;
   const offsetY = 32 - cy * scale;
@@ -75,7 +67,6 @@ export default function TetrahedronAnimation() {
     x: p.x * scale + offsetX,
     y: p.y * scale + offsetY
   }));
-
   return (
     <svg
       className="tetrahedron-bg"
@@ -91,7 +82,6 @@ export default function TetrahedronAnimation() {
         </clipPath>
       </defs>
       <g clipPath="url(#tetra-clip)">
-        {/* Edges */}
         {edges.map(([a, b], i) => (
           <line
             key={i}
@@ -104,7 +94,6 @@ export default function TetrahedronAnimation() {
             opacity="0.7"
           />
         ))}
-        {/* Nodes */}
         {rotated.map((p, i) => (
           <circle
             key={i}
@@ -119,5 +108,60 @@ export default function TetrahedronAnimation() {
         ))}
       </g>
     </svg>
+  );
+}
+
+export default function About({ sidebarWidth, terminalHeight, rightSidebarOffset, headerHeight }) {
+  const [portfolioInfo, setPortfolioInfo] = React.useState("");
+  React.useEffect(() => {
+    fetch("/portfolio-information.md")
+      .then(res => res.text())
+      .then(setPortfolioInfo);
+  }, []);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: headerHeight,
+        left: sidebarWidth,
+        right: rightSidebarOffset,
+        bottom: terminalHeight,
+        width: `calc(100vw - ${sidebarWidth + rightSidebarOffset}px)`,
+        height: `calc(100vh - ${headerHeight + terminalHeight}px)`,
+        overflow: "auto",
+        zIndex: 1
+      }}
+    >
+      <TetrahedronAnimation />
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background: "rgba(24,24,31,0.55)",
+          color: "#b5cea8",
+          zIndex: 2,
+          pointerEvents: "none",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{
+          width: "100%",
+          height: "100%",
+          margin: 0,
+          padding: 32,
+          borderRadius: 16,
+          background: "rgba(35,35,43,0.7)",
+          boxShadow: "0 4px 32px #0006",
+          pointerEvents: "auto"
+        }}>
+          <ReactMarkdown>{portfolioInfo}</ReactMarkdown>
+        </div>
+      </div>
+    </div>
   );
 } 

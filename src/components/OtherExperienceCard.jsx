@@ -364,14 +364,4 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
       </div>
     </div>
   );
-}
-
-// Renders a page title and description for the extracurricular experiences page
-export function pageTitle() {
-  return (
-    <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
-      <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem', color: '#b5cea8' }}>Extracurricular Experiences</h1>
-      <div style={{ fontSize: '1.15rem', color: '#d4d4d4', maxWidth: 700 }}>{titleDescription}</div>
-    </div>
-  );
 } 

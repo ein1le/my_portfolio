@@ -12,7 +12,7 @@ const sidebarItems = [
 
 export default function StaticSidebar({ activeSidebar, onSidebarIconClick }) {
   return (
-    <div className="w-14 bg-card border-r border-[#222] flex flex-col items-center pt-12 h-screen fixed left-0 top-0 z-[200]">
+    <div className="w-14 bg-card border-r border-[#222] flex flex-col items-center pt-12 h-screen fixed left-0 top-0 z-[200]" style={{ background: 'var(--tab_color)' }}>
       {sidebarItems.map((item, idx) => (
         <button
           key={item.label}

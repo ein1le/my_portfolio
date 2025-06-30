@@ -1,12 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import Explorer from "./components/Explorer.jsx";
 import Editor from "./components/Editor.jsx";
-import StatusBar from "./components/StatusBar.jsx";
 import ProjectCard from "./components/ProjectCard.jsx";
 import HeaderBar from "./components/HeaderBar.jsx";
 import EducationCard from "./components/EducationCard.jsx";
 import TimelineGitStyle from "./components/TimelineGitStyle.jsx";
-import TetrahedronAnimation from "./components/TetrahedronAnimation.jsx";
 import { FaPython, FaReact, FaHtml5, FaGithub, FaExternalLinkAlt, FaCertificate, FaCalendarAlt, FaMapMarkerAlt, FaChevronDown, FaChevronUp, FaPlus, FaTrash, FaEllipsisH, FaTimes, FaCommentDots, FaLinkedin, FaTelegram, FaEnvelope, FaPhone } from "react-icons/fa";
 import { VscFiles, VscSearch, VscSourceControl, VscRunAll, VscExtensions, VscTerminalPowershell, VscChevronDown, VscChevronUp, VscSplitHorizontal } from "react-icons/vsc";
 import { SiKaggle, SiDiscord } from "react-icons/si";
@@ -25,7 +23,7 @@ import SkillsSQLTable from "./components/SkillsSQLTable.jsx";
 import ReactMarkdown from "react-markdown";
 import tangleSlime from './assets/tangleslime.png';
 import projects from "./constants/projects";
-import OtherExperienceCard, { pageTitle as ExtracurricularPageTitle } from "./components/OtherExperienceCard";
+import OtherExperienceCard from "./components/OtherExperienceCard";
 import UserInfoCard from "./components/UserInfoCard";
 import TerminalWindow from "./components/TerminalWindow";
 import ChatbotSidebar from "./components/ChatbotSidebar";
@@ -39,6 +37,9 @@ import { titleDescription as AcademicTitleDescription } from "./constants/academ
 import { titleDescription as ProfessionalTitleDescription } from "./constants/professional_exp";
 import { titleDescription as VolunteeringTitleDescription } from "./constants/volunteering__exp";
 import { titleDescription as ExtracurricularTitleDescription } from "./constants/extracurricular_exp";
+import SidebarPanelTitle from './components/SidebarPanelTitle';
+import About from "./components/About";
+import ExperienceHeader from "./components/ExperienceHeader";
 
 const files = [
   "about.md",
@@ -79,10 +80,7 @@ function EducationPage() {
 function ExperiencesPage() {
   return (
     <div>
-      <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem', color: '#b5cea8' }}>Professional Experiences</h1>
-        <div style={{ fontSize: '1.25rem', color: '#d4d4d4', maxWidth: 700, fontWeight: 600 }}>{ProfessionalTitleDescription}</div>
-      </div>
+      <ExperienceHeader title="Professional Experiences" description={ProfessionalTitleDescription} />
       {professionalExperiences.map((exp, idx) => (
         <ProfessionalExperienceCard key={idx} {...exp} />
       ))}
@@ -93,10 +91,7 @@ function ExperiencesPage() {
 function OtherExperiencesPage() {
   return (
     <div>
-      <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem', color: '#b5cea8' }}>Academic Experiences</h1>
-        <div style={{ fontSize: '1.25rem', color: '#d4d4d4', maxWidth: 700, fontWeight: 600 }}>{AcademicTitleDescription}</div>
-      </div>
+      <ExperienceHeader title="Academic Experiences" description={AcademicTitleDescription} />
       {academicExperiences.map((exp, idx) => (
         <OtherExperienceCard key={idx} {...exp} />
       ))}
@@ -107,10 +102,7 @@ function OtherExperiencesPage() {
 function ExtracurricularExperiencesPage() {
   return (
     <div>
-      <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem', color: '#b5cea8' }}>Extracurricular Experiences</h1>
-        <div style={{ fontSize: '1.25rem', color: '#d4d4d4', maxWidth: 700, fontWeight: 600 }}>{ExtracurricularTitleDescription}</div>
-      </div>
+      <ExperienceHeader title="Extracurricular Experiences" description={ExtracurricularTitleDescription} />
       {extracurricularExperiences.map((exp, idx) => (
         <OtherExperienceCard key={idx} {...exp} />
       ))}
@@ -121,73 +113,15 @@ function ExtracurricularExperiencesPage() {
 function VolunteeringExperiencesPage() {
   return (
     <div>
-      <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem', color: '#b5cea8' }}>Volunteering Experiences</h1>
-        <div style={{ fontSize: '1.25rem', color: '#d4d4d4', maxWidth: 700, fontWeight: 600 }}>{VolunteeringTitleDescription}</div>
-      </div>
+      <ExperienceHeader title="Volunteering Experiences" description={VolunteeringTitleDescription} />
       <TechWireframeMap height={"100vh"} data={volunteeringData} />
-    </div>
-  );
-}
-
-function AboutMarkdownOverlay({ sidebarWidth, terminalHeight, rightSidebarOffset, headerHeight }) {
-  const [portfolioInfo, setPortfolioInfo] = React.useState("");
-  React.useEffect(() => {
-    fetch("/src/components/portfolio-information.md")
-      .then(res => res.text())
-      .then(setPortfolioInfo);
-  }, []);
-  return (
-    <div
-      style={{
-        position: "absolute",
-        top: headerHeight,
-        left: sidebarWidth,
-        right: rightSidebarOffset,
-        bottom: terminalHeight,
-        width: `calc(100vw - ${sidebarWidth + rightSidebarOffset}px)`,
-        height: `calc(100vh - ${headerHeight + terminalHeight}px)`,
-        overflow: "auto",
-        zIndex: 1
-      }}
-    >
-      <TetrahedronAnimation />
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background: "rgba(24,24,31,0.55)",
-          color: "#b5cea8",
-          zIndex: 2,
-          pointerEvents: "none",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <div style={{
-          maxWidth: 600,
-          width: "90%",
-          margin: "0 auto",
-          padding: 32,
-          borderRadius: 16,
-          background: "rgba(35,35,43,0.7)",
-          boxShadow: "0 4px 32px #0006",
-          pointerEvents: "auto"
-        }}>
-          <ReactMarkdown>{portfolioInfo}</ReactMarkdown>
-        </div>
-      </div>
     </div>
   );
 }
 
 const fileContents = {
   "about.md": (props) => (
-    <AboutMarkdownOverlay
+    <About
       sidebarWidth={props.sidebarWidth}
       terminalHeight={props.terminalHeight}
       rightSidebarOffset={props.rightSidebarOffset}
@@ -395,7 +329,7 @@ export default function App() {
             className={`sidebar ${activeSidebar}-sidebar`}
             style={{
               width: currentSidebarWidth,
-              background: '#23232b',
+              background: 'var(--sidebar_color)',
               display: "flex",
               flexDirection: "column",
               position: "absolute",
@@ -406,12 +340,15 @@ export default function App() {
               zIndex: 101,
               borderRight: activeSidebar === "git" ? '1.5px solid #222' : undefined,
               transition: 'width 0.1s, height 0.1s',
+              padding: activeSidebar === 'contact' ? '24px 38px 24px 24px' : activeSidebar === 'user' ? '20px 48px 24px 24px' : activeSidebar === 'git' ? 0 : '16px 0',
+              gap: activeSidebar === 'git' ? 0 : 18,
+              overflowY: activeSidebar === 'user' ? 'auto' : undefined
             }}
           >
             {activeSidebar === "explorer" && <Explorer selected={selected} onSelect={setSelected} />}
             {activeSidebar === "git" && (
               <>
-                <div style={{ padding: 24, color: '#b5cea8', fontWeight: 600, fontSize: 18 }}>Git</div>
+                <SidebarPanelTitle>Git</SidebarPanelTitle>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
                   <GithubCalendarSection />
                   <GithubActivity />
@@ -421,13 +358,13 @@ export default function App() {
               </>
             )}
             {activeSidebar === "search" && (
-              <div style={{ padding: 24, color: '#b5cea8', fontWeight: 600, fontSize: 18 }}>Search (Coming Soon)</div>
+              <SidebarPanelTitle>Search (Coming Soon)</SidebarPanelTitle>
             )}
             {activeSidebar === "contact" && (
-              <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '24px 38px 24px 24px', gap: 18 }}>
+              <>
                 <div style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
                   <img src={tangleSlime} alt="Tangle Slime" style={{ width: 24, height: 24, marginRight: 8 }} />
-                  <div style={{ color: '#b5cea8', fontWeight: 600, fontSize: 20 }}>Drop me an email!</div>
+                  <SidebarPanelTitle>Drop me an email!</SidebarPanelTitle>
                 </div>
                 <textarea
                   placeholder="Type your message..."
@@ -445,18 +382,11 @@ export default function App() {
                     resize: 'vertical',
                   }}
                 />
-              </div>
+              </>
             )}
             {activeSidebar === "user" && (
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                flex: 1,
-                padding: '20px 48px 24px 24px',
-                gap: 18,
-                overflowY: 'auto'
-              }}>
-                <div style={{ color: '#b5cea8', fontWeight: 600, fontSize: 20, marginBottom: 8 }}>User Info</div>
+              <>
+                <SidebarPanelTitle>User Info</SidebarPanelTitle>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                   {userInfo.map((info, idx) => (
                     <UserInfoCard
@@ -468,7 +398,7 @@ export default function App() {
                     />
                   ))}
                 </div>
-              </div>
+              </>
             )}
             {/* Add more sidebar types as needed */}
             <div
@@ -503,7 +433,6 @@ export default function App() {
               headerHeight={headerHeight}
             />
           </div>
-          <StatusBar />
         </div>
         <TerminalWindow
           height={terminalHeight}

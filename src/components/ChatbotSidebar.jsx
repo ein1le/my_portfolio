@@ -53,7 +53,7 @@ export default function ChatbotSidebar({ width, onResizeStart, onClose, headerHe
         right: 0,
         width,
         height: `calc(100vh - ${headerHeight}px)`,
-        background: '#23232b',
+        background: 'var(--sidebar_color)',
         borderLeft: '1.5px solid #222',
         zIndex: 201,
         display: 'flex',
@@ -62,11 +62,11 @@ export default function ChatbotSidebar({ width, onResizeStart, onClose, headerHe
         transition: 'width 0.1s',
       }}
     >
-      <div style={{ height: 48, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', borderBottom: '1.5px solid #31313a', color: '#b5cea8', fontWeight: 600, fontSize: 17 }}>
+      <div style={{ height: 48, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', borderBottom: '1.5px solid #31313a', color: '#b5cea8', fontWeight: 600, fontSize: 17, flexShrink: 0 }}>
         Chatbot
         <FaTimes style={{ cursor: 'pointer', color: '#b5cea8' }} onClick={onClose} />
       </div>
-      <div style={{ flex: 1, overflowY: 'auto', padding: '18px 12px 70px 12px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ flex: 1, overflowY: 'auto', padding: '18px 12px', display: 'flex', flexDirection: 'column', minHeight: 0 }}>
         {messages.map((msg, idx) => (
           msg.sender === 'bot' ? (
             <div key={idx} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginBottom: 8 }}>
@@ -109,16 +109,13 @@ export default function ChatbotSidebar({ width, onResizeStart, onClose, headerHe
       <form
         onSubmit={handleSend}
         style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          bottom: 0,
-          padding: '10px 12px',
-          background: '#23232b',
-          borderTop: '1.5px solid #31313a',
           display: 'flex',
           alignItems: 'center',
-          zIndex: 202
+          padding: '10px 12px',
+          background: 'var(--sidebar_color)',
+          borderTop: '1.5px solid #31313a',
+          zIndex: 202,
+          flexShrink: 0
         }}
       >
         <input

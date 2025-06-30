@@ -34,7 +34,7 @@ export default function GithubActivity() {
           listStyle: "none",
           padding: 0,
           margin: 0,
-          background: "#23232b",
+          background: 'var(--sidebar_color)',
           borderRadius: 8,
           boxShadow: "0 1px 4px #0002",
           border: "1.5px solid #31313a"
@@ -62,10 +62,10 @@ export default function GithubActivity() {
                 <FaClock style={{ color: "#007acc" }} />
                 {new Date(event.created_at).toLocaleString()}
               </span>
-                        </li>
-                      ))}
-                    </ul>
-            )}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

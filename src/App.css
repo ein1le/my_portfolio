@@ -6,11 +6,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global color variables */
+:root {
+  --tab_color: #23232b;           /* For header, static sidebar, terminal header */
+  --sidebar_color: #18181f;       /* Darker, for active dynamic explorer sidebars and chatbot panel */
+  --background_color: #111016;    /* For background window */
+  --accent: #007acc;
+  --accent2: #b5cea8;
+  --border: #31313a;
+  --text: #d4d4d4;
+}
+
 body {
   margin: 0;
   font-family: 'Fira Mono', 'Consolas', 'monospace';
-  background: #111016;
-  color: #d4d4d4;
+  background: var(--background_color);
+  color: var(--text);
   font-size: 16px;
 }
 
@@ -23,11 +34,11 @@ body {
 .main-content {
   display: flex;
   flex: 1;
-  background: #111016;
+  background: var(--background_color);
 }
 
 .sidebar {
-  background: #2c2c32;
+  background: var(--tab_color);
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -41,7 +52,7 @@ body {
 
 .explorer {
   width: 200px;
-  background: #23232b;
+  background: var(--sidebar_color);
   padding: 16px 0;
 }
 

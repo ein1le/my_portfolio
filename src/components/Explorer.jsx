@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaChevronRight, FaChevronDown } from "react-icons/fa";
+import SidebarPanelTitle from './SidebarPanelTitle';
 
 const explorerStructure = [
   {
@@ -74,8 +75,8 @@ export default function Explorer({ selected, onSelect }) {
   };
 
   return (
-    <div className="w-[200px] bg-card py-4 border-r border-[#222] text-text">
-      <h4 className="m-0 mb-2 ml-4 text-xl text-accent2 tracking-wide">EXPLORER</h4>
+    <div className="w-[200px] bg-card border-r border-[#222] text-text" style={{ background: 'var(--sidebar_color)' }}>
+      <SidebarPanelTitle>EXPLORER</SidebarPanelTitle>
       <div className="flex items-center cursor-pointer py-1 pl-2 pr-0 text-text font-bold select-none transition-colors duration-200 hover:bg-[#31313a]" onClick={() => setPortfolioOpen(o => !o)}>
         {portfolioOpen ? <FaChevronDown /> : <FaChevronRight />} <span className="ml-1 text-xl">Portfolio</span>
       </div>

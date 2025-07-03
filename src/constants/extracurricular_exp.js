@@ -22,17 +22,23 @@ const extracurricularExperiences = [
     "contributors_link": [],
     "logo": "https://media.licdn.com/dms/image/v2/C560BAQH86m_MEK4yyQ/company-logo_100_100/company-logo_100_100/0/1631359978573?e=1755734400&v=beta&t=ERQ26ocADWl_42dA4mronMJr-z84KdC4Zvnm7rpKTEQ",
     "links": [
+      {
+        type: "medal",
+        label_name: "Group of the Month October 2024",
+        link: "https://assets.prod.unioncloud-internal.com/group_award/photos/3813/medium/GOTM_Kitemark.png",
+        asset: ""
+      },
         {
-          type: "certificate",
-          label_name: "Group of the Month",
-          link: null,
+          type: "medal",
+          label_name: "Gold Accreditation 2025",
+          link: "https://assets.prod.unioncloud-internal.com/group_award/photos/4374/medium/Gold_Accreditation_Kitemark_2025.png",
           asset: ""
         },
         {
           type: "certificate",
-          label_name: "Gold Accreditation",
-          link: null,
-          asset: ""
+          label_name: "Group of the Month",
+          link: "",
+          asset: "/MSSA_GOTM.png"
         },
         {
           type: "linktree",
@@ -42,7 +48,7 @@ const extracurricularExperiences = [
           },
         {
          type: "github",
-         label_name: "API Repository",
+         label_name: "Repository",
          link: "https://github.com/ein1le/MSSA_famscheme"
         },
     ]
@@ -85,9 +91,9 @@ const extracurricularExperiences = [
     "contributors_link": [],
     "links": [
       {
-        type: "certificate",
+        type: "medal",
         label_name: "Gold Accreditation",
-        link: null,
+        link: "https://assets.prod.unioncloud-internal.com/group_award/photos/4374/medium/Gold_Accreditation_Kitemark_2025.png",
         asset: ""
       },
       {
@@ -99,8 +105,39 @@ const extracurricularExperiences = [
       {
        type: "website",
        label_name: "MechSoc Website",
-       link: ""
+       link: "https://uobmechsoc.wixsite.com/home"
       },
+    ]
+  },
+  {
+    "title": "Bristol MechElec Soc",
+    "subtitle": "Executive Committee 24/25",
+    "date": "Mar 2024 - May 2025",
+    "location": "Bristol, UK",
+    "skills": [],
+    "languages": [],
+    "logo": "https://ugc.production.linktr.ee/VzjKU4RAy6xeNprAXPBQ_6wB6gre4VWYs9SeH?io=true&size=avatar-v3_0",
+    "description": "Description",
+    "responsibilities": [
+      "Responsibility 1",
+      "Responsibility 2",
+      "Responsibility 3"
+    ],
+    "contributors": [],
+    "contributors_link": [],
+    "links": [
+      {
+        type: "medal",
+        label_name: "Bronze Accreditation",
+        link: "https://assets.prod.unioncloud-internal.com/group_award/photos/4376/medium/Bronze_Accreditation_Kitemark_2025.png",
+        asset: ""
+      },
+      {
+        type: "linktree",
+        label_name: "MechElec Soc LinkTree",
+        link: "https://linktr.ee/uobmechelec",
+        asset: null
+        }
     ]
   },
   {
@@ -110,7 +147,7 @@ const extracurricularExperiences = [
     "location": "Bristol, UK",
     "skills": [],
     "languages": [],
-    "logo": null,
+    "logo": "https://ugc.production.linktr.ee/1aa94abc-e5e7-49c1-a699-5acc6a170343_image.jpeg?io=true&size=avatar-v3_0",
     "description": "Description",
     "responsibilities": [
       {
@@ -124,11 +161,22 @@ const extracurricularExperiences = [
         "role_contributors_link": [],
         "role_links": [
           {
-            "type": null,   // e.g., "image" or "link"
-            "src": null,    // for images
-            "href": null,   // for links
-            "label": null,  // for links
-            "icon": null    // optional, for links
+            "type": "youtube",
+            "label_name": "MSNight 2025",
+            "link": "https://youtu.be/NvHxVUN_TMw?si=DJKeWxRMo5yqQilU",
+            "asset": null
+          },
+          {
+            "type": "link",
+            "label_name": "MSNight 2025 Gallery",
+            "link": "https://drive.google.com/drive/folders/1ufb3r5-jnClTObkbseHbbTqNXzxnWLus",
+            "asset": null
+          },
+          {
+            "type": "link",
+            "label_name": "MSNight 2025 Booklet",
+            "link": "https://heyzine.com/flip-book/32882555d5.html",
+            "asset": ""
           }
         ]
       },
@@ -143,18 +191,28 @@ const extracurricularExperiences = [
         "role_contributors_link": [],
         "role_links": [
           {
-            "type": "link",   // e.g., "image" or "link"
-            "src": null,    // for images
-            "href": "https://epigram.org.uk/review-waiting-for-your-return-by-bristol-ms-night/", 
-            "label": "Epigram Review",  // for links
-            "icon": null    // optional, for links
+            "type": "youtube",
+            "label_name": "MSNight 2024",
+            "link": "https://drive.google.com/file/d/1QIAq2I6yaEuGOK-mZ3si-BUczamtSYS5/view?usp=sharing",
+            "asset": null
           },
           {
-            "type": "link",   // e.g., "image" or "link"
-            "src": null,    // for images
-            "href": "themarcusliew.pic-time.com/-bristolmsnight20243march2024/gallery?scrollPos=0", 
-            "label": "Gallery",  // for links
-            "icon": null    // optional, for links
+            "type": "link",
+            "label_name": "Epigram Review",
+            "link": "https://epigram.org.uk/review-waiting-for-your-return-by-bristol-ms-night/",
+            "asset": null
+          },
+          {
+            "type": "link",
+            "label_name": "MSnight 2024 Gallery",
+            "link": "themarcusliew.pic-time.com/-bristolmsnight20243march2024/gallery?scrollPos=0",
+            "asset": null
+          },
+          {
+            "type": "link",
+            "label_name": "MSNight 2024 Booklet",
+            "link": "https://www.canva.com/design/DAF6h1hpbcY/1OTBnmAQEn97vt0icIRYGQ/",
+            "asset": ""
           }
         ]
       },
@@ -169,11 +227,16 @@ const extracurricularExperiences = [
         "role_contributors_link": [],
         "role_links": [
           {
-            "type": null,   // e.g., "image" or "link"
-            "src": null,    // for images
-            "href": null,   // for links
-            "label": null,  // for links
-            "icon": null    // optional, for links
+            "type": "youtube",
+            "label_name": "MSNight 2023",
+            "link": "https://youtu.be/I-wEYdwdmq4",
+            "asset": null
+          },
+          {
+            "type": "link",
+            "label_name": "MSNight 2023 Gallery",
+            "link": "https://themarcusliew.pic-time.com/-bristolmsnight202323march2022/gallery?invitePToken2=AAAAAJkAAAA9T1WNjcgb6deOeQ",
+            "asset": null
           }
         ]
       }
@@ -236,7 +299,14 @@ const extracurricularExperiences = [
     ],
     "contributors": "Nely Georgiou",
     "contributors_link": [],
-    "links": []
+    "links": [
+      {
+        type: "certificate",
+        label_name: "Course Representative Certificate",
+        link: "",
+        asset: "/CourseRep.png"
+      }
+    ]
   },
   {
     "title": "Bristol Elevate Society",

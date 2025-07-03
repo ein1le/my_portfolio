@@ -18,7 +18,7 @@ const professionalExperiences = [
   },
   {
     title: "Flare Network",
-    subheader: "Flare Time-Series Oracle (FTSO) Developer",
+    subheader: "Flare Time-Series Oracle (FTSO) Analyst",
     date: "Jan 2025 - Present",
     location: "Remote, UK",
     type: "contract",
@@ -35,7 +35,7 @@ const professionalExperiences = [
   },
   {
     title: "KKP Financial Group",
-    subheader: "Summer Analyst",
+    subheader: "Data Science and Strategy Intern",
     date: "July 2024 - August 2024",
     location: "Bangkok, Thailand",
     type: "internship",

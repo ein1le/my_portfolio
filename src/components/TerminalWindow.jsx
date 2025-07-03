@@ -5,6 +5,8 @@ export default function TerminalWindow({ height, onResizeStart, sidebarOffset, r
   const [currentLine, setCurrentLine] = useState(0);
   const [cursorPos, setCursorPos] = useState(0);
   const [blink, setBlink] = useState(true);
+  const [pyodide, setPyodide] = useState(null);
+  const [pyodideLoading, setPyodideLoading] = useState(false);
   const termRef = useRef(null);
 
   useEffect(() => {
@@ -17,6 +19,24 @@ export default function TerminalWindow({ height, onResizeStart, sidebarOffset, r
       termRef.current.scrollTop = termRef.current.scrollHeight;
     }
   }, [lines, currentLine]);
+
+  // Load Pyodide on mount
+  useEffect(() => {
+    if (!window.loadPyodide) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js';
+      script.onload = () => loadPy();
+      document.body.appendChild(script);
+    } else {
+      loadPy();
+    }
+    async function loadPy() {
+      setPyodideLoading(true);
+      const py = await window.loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.25.1/full/' });
+      setPyodide(py);
+      setPyodideLoading(false);
+    }
+  }, []);
 
   // Keyboard input logic
   useEffect(() => {
@@ -61,15 +81,44 @@ export default function TerminalWindow({ height, onResizeStart, sidebarOffset, r
         });
         e.preventDefault();
       } else if (e.key === "Enter") {
-        setLines(lines => [...lines, { text: "", prompt: true }]);
+        const inputLine = lines[currentLine].text;
+        if (inputLine.startsWith('py ')) {
+          // Run Python code
+          const code = inputLine.slice(3);
+          if (pyodide) {
+            let result;
+            try {
+              result = pyodide.runPython(code);
+            } catch (err) {
+              result = err.toString();
+            }
+            setLines(lines => [
+              ...lines,
+              { text: result?.toString() ?? '', prompt: false },
+              { text: '', prompt: true }
+            ]);
+            setCurrentLine(line => line + 2);
+            setCursorPos(0);
+          } else {
+            setLines(lines => [
+              ...lines,
+              { text: '[Pyodide not loaded yet]', prompt: false },
+              { text: '', prompt: true }
+            ]);
+            setCurrentLine(line => line + 2);
+            setCursorPos(0);
+          }
+        } else {
+          setLines(lines => [...lines, { text: '', prompt: true }]);
         setCurrentLine(line => line + 1);
         setCursorPos(0);
+        }
         e.preventDefault();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentLine, cursorPos]);
+  }, [currentLine, cursorPos, pyodide]);
 
   return (
     <div
@@ -165,6 +214,9 @@ export default function TerminalWindow({ height, onResizeStart, sidebarOffset, r
             </div>
           );
         })}
+        {pyodideLoading && (
+          <div style={{ color: '#a259f7', marginTop: 8 }}>[Loading Python interpreter... Please wait]</div>
+        )}
       </div>
     </div>
   );

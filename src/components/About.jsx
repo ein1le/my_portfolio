@@ -1,5 +1,7 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
+import "./markdown.css";
 
 // TetrahedronAnimation component moved here
 const tetraPoints = [
@@ -61,8 +63,9 @@ function TetrahedronAnimation() {
   };
   const scale = 4;
   const cx = 150, cy = 150;
-  const offsetX = 0 - cx * scale;
-  const offsetY = 32 - cy * scale;
+  const svgWidth = 1200, svgHeight = 800;
+  const offsetX = svgWidth - cx * scale;
+  const offsetY = 0 - cy * scale;
   const rotated = rotate2D(tetraPoints, angle).map(p => ({
     x: p.x * scale + offsetX,
     y: p.y * scale + offsetY
@@ -71,14 +74,14 @@ function TetrahedronAnimation() {
     <svg
       className="tetrahedron-bg"
       viewBox="0 0 1200 800"
-      width="100%"
-      height="100%"
-      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0, pointerEvents: "auto" }}
+      width={1200}
+      height={800}
+      style={{ position: "absolute", top: 0, right: 0, left: "auto", zIndex: 0, pointerEvents: "auto" }}
       onMouseDown={handleMouseDown}
     >
       <defs>
         <clipPath id="tetra-clip">
-          <rect x="0" y="32" width="1200" height="768" />
+          <rect x="0" y="0" width="1200" height="800" />
         </clipPath>
       </defs>
       <g clipPath="url(#tetra-clip)">
@@ -113,11 +116,32 @@ function TetrahedronAnimation() {
 
 export default function About({ sidebarWidth, terminalHeight, rightSidebarOffset, headerHeight }) {
   const [portfolioInfo, setPortfolioInfo] = React.useState("");
+  const [typedTitle, setTypedTitle] = React.useState("");
+  const [showCursor, setShowCursor] = React.useState(true);
+  const fullTitle = "Ein-Devfolio";
   React.useEffect(() => {
     fetch("/portfolio-information.md")
       .then(res => res.text())
       .then(setPortfolioInfo);
   }, []);
+  React.useEffect(() => {
+    setTypedTitle("");
+    let i = 0;
+    const interval = setInterval(() => {
+      setTypedTitle(fullTitle.slice(0, i + 1));
+      i++;
+      if (i >= fullTitle.length) clearInterval(interval);
+    }, 90);
+    return () => clearInterval(interval);
+  }, []);
+  React.useEffect(() => {
+    if (typedTitle.length === fullTitle.length) {
+      const blink = setInterval(() => setShowCursor(c => !c), 500);
+      return () => clearInterval(blink);
+    } else {
+      setShowCursor(true);
+    }
+  }, [typedTitle, fullTitle.length]);
   return (
     <div
       style={{
@@ -133,34 +157,16 @@ export default function About({ sidebarWidth, terminalHeight, rightSidebarOffset
       }}
     >
       <TetrahedronAnimation />
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background: "rgba(24,24,31,0.55)",
-          color: "#b5cea8",
-          zIndex: 2,
-          pointerEvents: "none",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <div style={{
-          width: "100%",
-          height: "100%",
-          margin: 0,
-          padding: 32,
-          borderRadius: 16,
-          background: "rgba(35,35,43,0.7)",
-          boxShadow: "0 4px 32px #0006",
-          pointerEvents: "auto"
-        }}>
-          <ReactMarkdown>{portfolioInfo}</ReactMarkdown>
-        </div>
+      <div className="markdown-content" style={{ padding: 32, position: 'relative', zIndex: 2, pointerEvents: 'auto' }}>
+        <h1 style={{
+          fontSize: '2.8em',
+          fontWeight: 900,
+          margin: '0 0 1.2em 0',
+          letterSpacing: '0.01em',
+          color: '#b5cea8',
+          minHeight: '1.2em',
+        }}>{typedTitle}<span className="typewriter-cursor" style={{ color: '#b5cea8', opacity: 0.7 }}>{showCursor ? '|' : ' '}</span></h1>
+        <ReactMarkdown>{portfolioInfo}</ReactMarkdown>
       </div>
     </div>
   );

@@ -72,17 +72,23 @@ export default function TimelineGitStyle({ sidebarWidth = 220 }) {
   // For each event, calculate its vertical percent position in the reversed order
   function getEventPositionDesc(event, monthsDesc) {
     const eventDate = new Date(event.date);
+    
     // If event is after the most recent month, clamp to top
-    if (eventDate > monthsDesc[0]) return 0;
+    if (eventDate > monthsDesc[0]) {
+      return 0;
+    }
     // If event is before Jan 2023, place at the bottom node (Jan 2023)
-    if (eventDate < monthsDesc[monthsDesc.length - 1]) return 1;
+    if (eventDate < monthsDesc[monthsDesc.length - 1]) {
+      return 1;
+    }
     for (let i = 0; i < monthsDesc.length - 1; i++) {
       const start = monthsDesc[i];
       const end = monthsDesc[i + 1];
       if (eventDate <= start && eventDate > end) {
         const total = start - end;
         const part = start - eventDate;
-        return (i + part / total) / (monthsDesc.length - 1);
+        const position = (i + part / total) / (monthsDesc.length - 1);
+        return position;
       }
     }
     return 1;
@@ -138,7 +144,7 @@ export default function TimelineGitStyle({ sidebarWidth = 220 }) {
         {/* Render nodes for each month (descending) */}
         {monthsDesc.map((month, idx) => (
           <div
-            key={getMonthKey(month)}
+            key={`month-${getMonthKey(month)}-${idx}`}
             className="absolute left-1/2 w-[22px] h-[22px] bg-card border-4 border-accent rounded-full -translate-x-1/2 z-20 shadow-md"
             style={{ top: `calc(${monthPositions[idx] * 100}% - 11px)` }}
           />
@@ -148,7 +154,7 @@ export default function TimelineGitStyle({ sidebarWidth = 220 }) {
           const percent = eventPositions[idx];
           return (
             <TimelineCard
-              key={event.label + event.date}
+              key={`${event.type}-${event.label}-${event.date}-${idx}`}
               event={event}
               sidebarWidth={sidebarWidth}
               percent={percent}
@@ -159,7 +165,7 @@ export default function TimelineGitStyle({ sidebarWidth = 220 }) {
         {/* Render earlier cards at the bottom node (Jan 2023), stacked */}
         {beforeStart.map((event, idx) => (
           <TimelineCard
-            key={event.label + event.date}
+            key={`before-${event.type}-${event.label}-${event.date}-${idx}`}
             event={event}
             sidebarWidth={sidebarWidth}
             percent={beforeStartOffsets[idx]}

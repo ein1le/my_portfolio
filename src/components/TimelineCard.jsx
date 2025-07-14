@@ -7,22 +7,30 @@ export default function TimelineCard({ event, sidebarWidth = 220, percent, cardW
     icon = <FaMedal className="text-accent2 text-[26px] mr-2" />;
   }
 
-  // Shared card layout for Course and Event
-  if (event.type === "Course" || event.type === "Event") {
+  // Shared card layout for Course, Event, and Book
+  if (event.type === "Course" || event.type === "Event" || event.type === "Book") {
     return (
       <div
-        className={`absolute z-30 flex ${event.side === 'left' ? 'justify-end' : 'justify-start'} pointer-events-auto`}
+        className={`absolute ${event.type === 'Book' ? 'z-50' : 'z-30'} flex ${event.side === 'left' ? 'justify-end' : 'justify-start'} pointer-events-auto`}
         style={{
           left: event.side === 'left'
             ? `calc(${Math.max(sidebarWidth, 0)}px + 8px)`
             : `calc(100% - ${cardWidth}px)`,
-          top: `calc(${percent * 100}% - 30px)`,
+          top: `calc(${percent * 100}% + ${percent === 0 ? (event.type === 'Book' ? 10 : 20) : -30}px)`,
           width: cardWidth,
         }}
       >
         <div className="bg-card border border-border rounded-xl shadow-card flex flex-row items-center gap-4 w-full max-w-[420px] p-5 transition-all duration-200 hover:shadow-lg hover:border-accent overflow-hidden">
           {event.image && (
-            <img src={event.image} alt="event" className="w-14 h-14 object-cover rounded-full bg-white flex-shrink-0 block" />
+            event.type === 'Book' ? (
+              <img 
+                src={event.image} 
+                alt="book cover" 
+                className="w-20 h-28 object-cover rounded-md bg-white flex-shrink-0 block" 
+              />
+            ) : (
+              <img src={event.image} alt="event" className="w-14 h-14 object-cover rounded-full bg-white flex-shrink-0 block" />
+            )
           )}
           <div className="flex-1 min-w-0 flex flex-col justify-center overflow-hidden">
             <div className={`font-semibold text-[17px] whitespace-normal text-ellipsis overflow-hidden break-words ${event.type === 'Event' ? 'text-accent' : 'text-accent2'}`}>{event.label}</div>
@@ -35,8 +43,8 @@ export default function TimelineCard({ event, sidebarWidth = 220, percent, cardW
             {event.type === "Event" && event.description && (
               <div className="text-text text-[14px] mb-2 whitespace-normal break-words">{event.description}</div>
             )}
-            {event.type === "Course" && event.id && (
-              <div className="text-accent2 text-[13px] mb-2 whitespace-normal break-words">Credential ID {event.id}</div>
+            {event.id && (
+              <div className="text-accent2 text-[13px] mb-2 whitespace-normal break-words">{event.id}</div>
             )}
             {event.ref_link && (
               <a href={event.ref_link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-card text-white border border-border rounded px-4 py-1.5 font-semibold text-[15px] no-underline mt-1 transition-colors duration-150 hover:bg-accent hover:text-white max-w-full overflow-hidden text-ellipsis">
@@ -44,6 +52,9 @@ export default function TimelineCard({ event, sidebarWidth = 220, percent, cardW
               </a>
             )}
             {event.type === "Course" && event.institution && (
+              <div className="text-accent2 text-[14px] mt-1 whitespace-normal break-words">{event.institution}</div>
+            )}
+            {event.type === "Book" && event.institution && (
               <div className="text-accent2 text-[14px] mt-1 whitespace-normal break-words">{event.institution}</div>
             )}
           </div>

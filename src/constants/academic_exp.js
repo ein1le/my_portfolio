@@ -2,6 +2,37 @@
 
 const academicExperiences = [
   {
+    "title": "VoizAI Reskilling",
+    "subtitle": "Associate",
+    "date": "July 2025 - Present",
+    "location": "London, UK",
+    "skills": ["Skills 1", "Skills 2", "Skills 3"],
+    "languages": ["Python"],
+    "logo": "https://media.licdn.com/dms/image/v2/D4D0BAQFYSpoy6jWxVg/company-logo_100_100/B4DZY5Io9GHwAQ-/0/1744715289141?e=1755129600&v=beta&t=GQyCAYgAebm1L7qTfvco0qAil6DM1OaaDHp_coq0UHc",
+    "description": "Description",
+    "responsibilities": [
+      "Responsibility 1",
+      "Responsibility 2",
+      "Responsibility 3"
+    ],
+    "contributors": [""],
+    "contributors_link": [""],
+    "links": [
+      {
+        "type": "github",
+        "label_name": "GitHub",
+        "link": "https://github.com/ein1le/headstart-carbontracc",
+        "asset": "",
+      },
+      {
+        "type": "link",
+        "label": "Website",
+        "link": "https://carbontrac.io",
+        "asset": ""
+      },
+    ]
+  },
+  {
     "title": "NexusKCG",
     "subtitle": "MLOps Platform Engineer",
     "date": "Jun 2025 - Present",
@@ -101,9 +132,9 @@ const academicExperiences = [
     "links": []
   },
   {
-    "title": "Headstart CarbonTrac",
+    "title": "CarbonTrac",
     "subtitle": "Project Lead",
-    "date": "Jan 2025 - Present",
+    "date": "Jan 2025 - June 2025",
     "location": "Bristol, UK",
     "skills": ["Skills 1", "Skills 2", "Skills 3"],
     "languages": ["Python"],

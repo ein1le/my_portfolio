@@ -138,27 +138,19 @@ const education = [
       {
         title: "Extended Project Qualification",
         course: "SCI101",
-        authors: "Emily Chan, Michael Lee",
-        description: "Presented at Harrow Science Fair 2020, this project won first place.",
+        authors: "",
+        description: "",
         date: "Mar 2020",
         pdfUrl: "/pdfs/harrow-science.pdf"
       },
       {
         title: "Internal Research Project",
-        course: "MATH201",
-        authors: "Sophie Tan, Daniel Kim",
-        description: "Awarded at International Math Olympiad for innovative problem solving.",
+        course: "",
+        authors: "",
+        description: "",
         date: "Jul 2019",
         pdfUrl: "/pdfs/harrow-math.pdf"
       },
-      {
-        title: "Internal Research Project",
-        course: "MATH201",
-        authors: "Sophie Tan, Daniel Kim",
-        description: "Awarded at International Math Olympiad for innovative problem solving.",
-        date: "Jul 2019",
-        pdfUrl: "/pdfs/harrow-math.pdf"
-      }
     ],
     awards: ["Harrow Prize Distinction", "Sixth Form Mathematics Prize", "Sixth Form House Prize","Gold Scholarship","Duke of Edinburgh Silver Award"]
   }

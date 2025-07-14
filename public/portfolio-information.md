@@ -1,7 +1,5 @@
 
 
-## 👋 Introduction
-
 Hi there! I'm **Ein**, an integrated master's student in Engineering, driven by a passion for continuous learning and staying at the forefront of digital transformation. With a strong foundation in problem-solving and project-based work in academia, I've developed a deep interest in the intersection of **Data Science, Generative AI Engineering, MLOps, and Data-driven Infrastructure** with a sprinkle of **Full-stack Web Development** and **UI/UX design** from side projects along the way.
 
 Despite my engineering background, I am always working in projects in these areas of interest, taking a wide approach to a diverse range of topics. I'm actively seeking **off-cycle**, **internship**, and **graduate** opportunities in London. 

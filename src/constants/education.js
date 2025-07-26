@@ -7,7 +7,7 @@ const education = [
     subheader: "Integrated Masters, Mechanical Engineering [4MECH002U]",
     date: "2021 - 2025",
     location: "Bristol, UK",
-    grade: "First Class Honours (Expected)",
+    grade: "Second Class Honours First Division",
     logo: "https://media.licdn.com/dms/image/v2/D4E0BAQHpcDl5zEb2Og/company-logo_100_100/company-logo_100_100/0/1708951303888/university_of_bristol_logo?e=1756339200&v=beta&t=CaGrBwmsc-1iqvk5Baueq9slBLTyKP4WzMdaVrTferQ",
     hoverImage: UOB_Banner,
     modules: [
@@ -138,27 +138,19 @@ const education = [
       {
         title: "Extended Project Qualification",
         course: "SCI101",
-        authors: "Emily Chan, Michael Lee",
-        description: "Presented at Harrow Science Fair 2020, this project won first place.",
+        authors: "",
+        description: "",
         date: "Mar 2020",
         pdfUrl: "/pdfs/harrow-science.pdf"
       },
       {
         title: "Internal Research Project",
-        course: "MATH201",
-        authors: "Sophie Tan, Daniel Kim",
-        description: "Awarded at International Math Olympiad for innovative problem solving.",
+        course: "",
+        authors: "",
+        description: "",
         date: "Jul 2019",
         pdfUrl: "/pdfs/harrow-math.pdf"
       },
-      {
-        title: "Internal Research Project",
-        course: "MATH201",
-        authors: "Sophie Tan, Daniel Kim",
-        description: "Awarded at International Math Olympiad for innovative problem solving.",
-        date: "Jul 2019",
-        pdfUrl: "/pdfs/harrow-math.pdf"
-      }
     ],
     awards: ["Harrow Prize Distinction", "Sixth Form Mathematics Prize", "Sixth Form House Prize","Gold Scholarship","Duke of Edinburgh Silver Award"]
   }

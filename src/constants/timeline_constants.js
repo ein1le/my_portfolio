@@ -1,5 +1,15 @@
 const timelineData = [
   {
+    type: "Course",
+    side: "right",
+    label: "Building Recommender Systems with Machine Learning and AI",
+    date: "2025-07-14",
+    id: "C3A18NM818QD",
+    ref_link: "https://www.coursera.org/account/accomplishments/certificate/HR0O8FN0I5PZ",
+    image: "https://media.licdn.com/dms/image/v2/C4E0BAQHQJ2HdIyeLWg/company-logo_100_100/company-logo_100_100/0/1653389017535/packt_publishing_logo?e=1753920000&v=beta&t=grp2BjaxZEbyO9-F465ZuODYdoEkFyae3g_hefnnbH4",
+    institution: "Packt",
+  },
+  {
     type: "Event",
     side: "right",
     label: "United Airlines Case Competition",
@@ -16,26 +26,6 @@ const timelineData = [
     date: "2024-01-19",
     description: "HTML, CSS, and JavaScript Arcade game coding workshop",
     company: "boolean",
-    image: "",
-    ref_link: ""
-  },
-  {
-    type: "Event",
-    side: "right",
-    label: "Boolean Coding Week",
-    date: "2024-01-19",
-    description: "HTML, CSS, and JavaScript Arcade game coding workshop",
-    company: "boolean",
-    image: "",
-    ref_link: ""
-  },
-  {
-    type: "Event",
-    side: "right",
-    label: "Datathon 2024",
-    date: "2024-04-20",
-    description: "",
-    company: "Bristol Data Science Society",
     image: "",
     ref_link: ""
   },
@@ -178,6 +168,16 @@ const timelineData = [
     company: "AmplifyME",
     image: "https://media.licdn.com/dms/image/v2/D4E0BAQE_do1akGfjEg/company-logo_100_100/company-logo_100_100/0/1690370610710/amplifymeofficial_logo?e=1753920000&v=beta&t=I_NMA77FTRFKFiBox6hUrgc6GZmhI9iU7zISLHDJw2I",
     ref_link: "https://my.amplifyme.com/certificate/ffddcf70-b2b3-4678-9e5b-c0e7f77afa44"
+  },
+  {
+    type: "Course",
+    side: "left",
+    label: "Machine Learning using Amazon AWS Sagemaker Canvas",
+    date: "2025-07-03",
+    id: "HR0O8FN0I5PZ",
+    ref_link: "https://www.coursera.org/account/accomplishments/certificate/HR0O8FN0I5PZ",
+    image: "https://media.licdn.com/dms/image/v2/C4E0BAQHQJ2HdIyeLWg/company-logo_100_100/company-logo_100_100/0/1653389017535/packt_publishing_logo?e=1753920000&v=beta&t=grp2BjaxZEbyO9-F465ZuODYdoEkFyae3g_hefnnbH4",
+    institution: "Packt",
   },
   {
     type: "Course",
@@ -458,6 +458,16 @@ const timelineData = [
     ref_link: "https://www.coursera.org/account/accomplishments/specialization/YTCM3L27RHMV",
     image: "https://media.licdn.com/dms/image/v2/C4E0BAQHnbnsnJlBiZg/company-logo_100_100/company-logo_100_100/0/1630601168515/university_of_pennsylvania_logo?e=1753920000&v=beta&t=wo46I1jd0eKNz2MRLQlhr180TAEszK3pyfmO2c4bPNk",
     institution: "Wharton University of Pennsylvania",
+  },
+  {
+    type: "Book",
+    side: "right",
+    label: "Introduction to Machine Learning Interviews",
+    date: "2025-07-14",
+    id: "Chip Huyen",
+    ref_link: "https://github.com/chiphuyen/ml-interviews-book",
+    image: "https://github.com/chiphuyen/ml-interviews-book/raw/master/contents/images/mlib-cover.png",
+    institution: ""
   },
 ];
 

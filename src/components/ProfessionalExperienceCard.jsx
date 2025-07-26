@@ -72,20 +72,20 @@ export default function ProfessionalExperienceCard({ title, subheader, date, loc
         )}
         {/* Title and subtitle anchored to right of image, left-aligned */}
         <div className="flex flex-col items-start justify-center text-left ml-0 flex-1">
-          <div className="text-accent2 font-bold text-3xl" style={{ marginBottom: '2px', lineHeight: 1.1 }}>
+          <div className="text-accent2 font-bold" style={{ fontSize: '2.75rem', marginBottom: '2px', lineHeight: 1.1 }}>
             {titleDisplay}
             {showCursor && hovered && !expanded && <span className="inline-block animate-pulse ml-0.5">|</span>}
           </div>
-          <div className="text-text text-lg font-bold" style={{ marginTop: 0 }}>{subheaderDisplay}</div>
+          <div className="text-text font-bold" style={{ fontSize: '2rem', marginTop: 0 }}>{subheaderDisplay}</div>
         </div>
         <div className="flex flex-col items-end gap-2 min-w-[160px]">
-          <span className="flex items-center text-text text-lg font-semibold"><FaCalendarAlt className="mr-1" /> {date}</span>
-          <span className="flex items-center text-text text-lg font-semibold"><FaMapMarkerAlt className="mr-1" /> {location}</span>
+          <span className="flex items-center text-text font-semibold" style={{ fontSize: '1.75rem' }}><FaCalendarAlt className="mr-1" /> {date}</span>
+          <span className="flex items-center text-text font-semibold" style={{ fontSize: '1.75rem' }}><FaMapMarkerAlt className="mr-1" /> {location}</span>
           {/* Type field with icon */}
           {type && (
-            <span className="inline-flex items-center bg-card text-accent border border-border rounded px-3 py-1 font-semibold text-[14px] ml-2"><span className="mr-1">{typeIconMap[type] || <FaUser style={{ color: '#a259f7', marginRight: 4 }} />}</span>{type.charAt(0).toUpperCase() + type.slice(1)}</span>
+            <span className="inline-flex items-center bg-card text-accent border border-border rounded px-3 py-1 font-semibold ml-2" style={{ fontSize: '1.5rem' }}><span className="mr-1">{typeIconMap[type] || <FaUser style={{ color: '#a259f7', marginRight: 4 }} />}</span>{type.charAt(0).toUpperCase() + type.slice(1)}</span>
           )}
-          <span className="mt-2 text-accent2 text-lg">{expanded ? <FaChevronUp /> : <FaChevronDown />}</span>
+          <span className="mt-2 text-accent2" style={{ fontSize: '1.5rem' }}>{expanded ? <FaChevronUp /> : <FaChevronDown />}</span>
         </div>
       </div>
       {/* Expandable section */}
@@ -95,19 +95,19 @@ export default function ProfessionalExperienceCard({ title, subheader, date, loc
             {(skills && skills.length > 0) && (
               <div className="flex flex-wrap items-center gap-2 mb-3">
                 {skills.map((skill, idx) => (
-                  <span key={idx} className="bg-card border border-accent rounded-xl px-3 py-1 text-accent2 text-sm font-medium shadow-sm">{skill}</span>
+                  <span key={idx} className="bg-card border border-accent rounded-xl px-3 py-1 text-accent2 font-medium shadow-sm" style={{ fontSize: '1rem' }}>{skill}</span>
                 ))}
               </div>
             )}
             {(languages && languages.length > 0) && (
               <div className="flex items-center gap-3 mb-3 justify-end w-full">
                 {languages.map((lang, idx) => (
-                  <span key={idx} className="text-accent text-xl hover:text-accent2 transition-transform duration-200" title={lang.name}>{lang.icon}</span>
+                  <span key={idx} className="text-accent hover:text-accent2 transition-transform duration-200" title={lang.name} style={{ fontSize: '1rem' }}>{lang.icon}</span>
                 ))}
               </div>
             )}
             {description && (
-              <div className="text-text text-base mb-3 mx-1">{description}</div>
+              <div className="text-text mb-3 mx-1" style={{ maxWidth: '50%', fontSize: '1.5rem' }}>{description}</div>
             )}
             {Array.isArray(responsibilities) && responsibilities.length > 0 && (
               <div className="relative pl-8">
@@ -121,14 +121,14 @@ export default function ProfessionalExperienceCard({ title, subheader, date, loc
                         <span className="text-accent font-medium text-sm ml-4">{role.date}</span>
                       </div>
                       {role.bullets && (
-                        <ul className="ml-6 text-accent2 text-base list-disc">
+                        <ul className="ml-6 text-accent2 list-disc relative z-10" style={{ maxWidth: '60%', fontSize: '1.3rem' }}>
                           {role.bullets.map((b, bidx) => <li key={bidx}>{b}</li>)}
                         </ul>
                       )}
                     </div>
                   ))
                 ) : (
-                  <ul className="ml-6 text-accent2 text-base list-disc relative z-10">
+                  <ul className="ml-6 text-accent2 list-disc relative z-10" style={{ maxWidth: '60%', fontSize: '1.3rem' }}>
                     {responsibilities.map((item, idx) => (
                       <li key={idx}>{item}</li>
                     ))}
@@ -137,7 +137,7 @@ export default function ProfessionalExperienceCard({ title, subheader, date, loc
               </div>
             )}
             {(contributors || (links && links.length > 0)) && (
-              <div className="mt-4 ml-8 text-accent2 text-sm">
+              <div className="mt-4 ml-8 text-accent2" style={{ fontSize: '1.15rem' }}>
                 {contributors && (
                   <div className="italic mb-1">Contributors: {contributors}</div>
                 )}

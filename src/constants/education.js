@@ -7,7 +7,7 @@ const education = [
     subheader: "Integrated Masters, Mechanical Engineering [4MECH002U]",
     date: "2021 - 2025",
     location: "Bristol, UK",
-    grade: "First Class Honours (Expected)",
+    grade: "Second Class Honours First Division",
     logo: "https://media.licdn.com/dms/image/v2/D4E0BAQHpcDl5zEb2Og/company-logo_100_100/company-logo_100_100/0/1708951303888/university_of_bristol_logo?e=1756339200&v=beta&t=CaGrBwmsc-1iqvk5Baueq9slBLTyKP4WzMdaVrTferQ",
     hoverImage: UOB_Banner,
     modules: [

@@ -5,32 +5,47 @@ const professionalExperiences = [
     date: "Jan 2025- Present",
     location: "Remote, UK",
     type: "contract",
-    skills: ["Leadership", "Workflow Automation", "Team Management"],
-    languages: ["JavaScript", "Python"],
-    description: "Worked on blockchain scaling solutions and led a team of engineers to deliver new features.",
+    skills: ["Generative AI Engineering", "Agentic AI", "Blockchain Infrastructure"],
+    languages: ["R", "Python", "SQL"],
+    description: "Worked to implement Agentic Backend logic for Boba Network.",
     logo: "https://cryptologos.cc/logos/boba-network-boba-logo.png",
     image: "https://media.licdn.com/dms/image/v2/D4E0BAQGnFchJctgCoQ/company-logo_100_100/company-logo_100_100/0/1692728401192/bobanetwork_logo?e=1755734400&v=beta&t=IhEolbEk2niGAHAZc_43DP3nUH9_rBNAZRMzrd_b-zE",
     responsibilities: [
-      "Led a team of 5 engineers.",
-      "Developed a new workflow system.",
-      "Coordinated with cross-functional teams."
+
     ]
   },
   {
     title: "Flare Network",
-    subheader: "Flare Time-Series Oracle (FTSO) Analyst",
+    subheader: "Flare Time-Series Oracle (FTSO) Developer",
     date: "Jan 2025 - Present",
     location: "Remote, UK",
     type: "contract",
-    skills: ["DevOps", "CI/CD", "Mentoring"],
+    skills: ["Time Series Analysis", "Hybrid Model Forecasting", "Cryptocurrencies"],
     languages: ["Go", "Python"],
-    description: "Implemented CI/CD pipelines and mentored junior developers in a fast-paced environment.",
+    description: "",
     logo: "https://cryptologos.cc/logos/flare-flr-logo.png",
     image: "https://media.licdn.com/dms/image/v2/C4E0BAQG6QPjLZPygGQ/company-logo_100_100/company-logo_100_100/0/1678876879484/flarenetwork_logo?e=1755734400&v=beta&t=3YAJHICPfaJpbPrsFD_52SXm5hyPbidRoOAyxADm_Fk",
     responsibilities: [
-      "Managed project timelines and deliverables.",
-      "Implemented CI/CD pipelines.",
-      "Mentored junior developers."
+      "Conducted exploratory modeling using SARIMA and XGBoost for volatility prediction, comparing seasonal effects against LSTM baselines to evaluate model robustness across over a 5-year analysis period.",
+      "Automated feature engineering of pipelines and tracked experimental models for pricing time-series data using MLflow and Weights \& Biases, enabling integration into Flare’s decentralised Oracle network.",
+      "Fine-tuned EGARCH and LSTM hybrids for crypto volatility prediction, achieving a 2.7\% RMSE reduction against internal benchmarks. Improved short-horizon predictive stability for high-frequency trading scenarios."
+    ]
+  },
+  {
+    title: "University of Bristol School of Civil, Aerospace, and Design Engineering (CADE)",
+    subheader: "Co-Researcher",
+    date: "Jan 2025 - Present",
+    location: "Bristol, UK",
+    type: "student-job",
+    skills: [""],
+    languages: ["Go", "Python"],
+    description: "",
+    logo: "https://cryptologos.cc/logos/flare-flr-logo.png",
+    image: "https://media.licdn.com/dms/image/v2/D4D0BAQGXfzqLhIzlBw/company-logo_100_100/company-logo_100_100/0/1721832673455?e=1756339200&v=beta&t=R3uEsbUnY-rtYDcVWellnn-qSarXrnzQqKzBa5KJk08",
+    responsibilities: [
+      "Conducted exploratory modeling using SARIMA and XGBoost for volatility prediction, comparing seasonal effects against LSTM baselines to evaluate model robustness across over a 5-year analysis period.",
+      "Automated feature engineering of pipelines and tracked experimental models for pricing time-series data using MLflow and Weights \& Biases, enabling integration into Flare’s decentralised Oracle network.",
+      "Fine-tuned EGARCH and LSTM hybrids for crypto volatility prediction, achieving a 2.7\% RMSE reduction against internal benchmarks. Improved short-horizon predictive stability for high-frequency trading scenarios."
     ]
   },
   {
@@ -45,9 +60,9 @@ const professionalExperiences = [
     logo: "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg",
     image: "https://media.licdn.com/dms/image/v2/D560BAQEVEV8ua7W3IA/company-logo_100_100/company-logo_100_100/0/1736392277185?e=1755734400&v=beta&t=I8-31vGe7RAUhPlwW80fqGIozYCq-XgNn--Yd_ZA1XQ",
     responsibilities: [
-      "Designed scalable backend systems.",
-      "Optimized database queries.",
-      "Presented findings to stakeholders."
+      "Applied PySpark and SQL at scale to analyse over 40 million transactions. Used Pandas and NumPy to  perform ETL and client segmentation for large scale pattern identification to support reliable, mobile app recommender systems.",
+      "Facilitated automation of data ingestion workflows via Databricks Auto Loader, and orchestrated via Apache Airflow, reducing ingestion latency by 33\% and ensuring system scalability for advanced analytics and reporting.",
+      "Designed and delivered executive-level Power BI dashboards within 4 weeks, performing customer segmentation on demographic and transactional data to visualise branch-specific investor trends."
     ]
   },
   {
@@ -62,9 +77,6 @@ const professionalExperiences = [
     logo: "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg",
     image: null,
     responsibilities: [
-      "Built customer-facing dashboards.",
-      "Integrated third-party APIs.",
-      "Conducted code reviews."
     ]
   },
   {
@@ -121,16 +133,13 @@ const professionalExperiences = [
     subheader: "Role at Company 4",
     date: "June 2019 - June 2019",
     location: "Bangkok, Thailand",
-    type: "contract",
-    skills: ["Healthcare IT", "Deployment"],
-    languages: ["Python", "SQL"],
+    type: "student-job",
+    skills: ["Healthcare", "Medicine"],
+    languages: [],
     description: "Deployed IT solutions for hospital management and patient care.",
     logo: "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg",
     image: null,
     responsibilities: [
-      "Built customer-facing dashboards.",
-      "Integrated third-party APIs.",
-      "Conducted code reviews."
     ]
   }
 ];

@@ -259,16 +259,16 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
           )}
           {/* Title and subtitle anchored to right of image, left-aligned */}
           <div className="flex flex-col items-start justify-center text-left ml-0 flex-1">
-            <div className="text-accent2 font-bold text-3xl" style={{ marginBottom: '2px', lineHeight: 1.1 }}>
+            <div className="text-accent2 font-bold" style={{ fontSize: '2.75rem', marginBottom: '2px', lineHeight: 1.1 }}>
               {titleDisplay}
               {showCursor && hovered && !expanded && <span className="inline-block animate-pulse ml-0.5">|</span>}
             </div>
-            <div className="text-text text-lg font-bold" style={{ marginTop: 0 }}>{subtitleDisplay}</div>
+            <div className="text-text font-bold" style={{ fontSize: '2rem', marginTop: 0 }}>{subtitleDisplay}</div>
           </div>
           <div className="flex flex-col items-end gap-2 min-w-[120px]">
-            <span className="text-text text-lg font-semibold">{date}</span>
-            <span className="text-text text-lg font-semibold">{location}</span>
-            <span className="mt-2 text-accent2 text-lg">{expanded ? <FaChevronUp /> : <FaChevronDown />}</span>
+            <span className="text-text font-semibold" style={{ fontSize: '1.75rem' }}>{date}</span>
+            <span className="text-text font-semibold" style={{ fontSize: '1.75rem' }}>{location}</span>
+            <span className="mt-2 text-accent2" style={{ fontSize: '1.5rem' }}>{expanded ? <FaChevronUp /> : <FaChevronDown />}</span>
           </div>
         </div>
         {/* Expandable section */}
@@ -279,7 +279,7 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
                 <div className="flex items-center mb-3 w-full">
                   <div className="flex flex-nowrap items-center gap-2 flex-1 min-w-0">
                     {skills.map((skill, idx) => (
-                      <span key={idx} className="bg-card border border-accent rounded-xl px-3 py-1 text-accent2 text-sm font-medium shadow-sm">{skill}</span>
+                      <span key={idx} className="bg-card border border-accent rounded-xl px-3 py-1 text-accent2 font-medium shadow-sm" style={{ fontSize: '1rem' }}>{skill}</span>
                     ))}
                   </div>
                   {languages.length > 0 && (
@@ -288,9 +288,7 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
                         const name = typeof lang === 'string' ? lang : lang.name;
                         const icon = languageIconMap[name];
                         return (
-                          <span key={idx} className="text-accent text-xl hover:text-accent2 transition-transform duration-200" title={name}>
-                            {icon ? icon : name}
-                          </span>
+                          <span key={idx} className="text-accent hover:text-accent2 transition-transform duration-200" title={name} style={{ fontSize: '1rem' }}>{icon ? icon : name}</span>
                         );
                       })}
                     </div>
@@ -299,7 +297,7 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
               )}
               {/* Description under skills/languages */}
               {description && (
-                <div className="text-text text-base mb-3 mx-1">{description}</div>
+                <div className="text-text mb-3 mx-1" style={{ maxWidth: '50%', fontSize: '1.5rem' }}>{description}</div>
               )}
               {/* RESPONSIBILITIES SECTION */}
               {Array.isArray(responsibilities) && responsibilities.length > 0 && (
@@ -321,7 +319,7 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
                           </div>
                           {bullets.length > 0 ? (
                             <>
-                              <ul className="ml-6 text-accent2 text-base list-disc">
+                              <ul className="ml-6 text-accent2 list-disc relative z-10" style={{ maxWidth: '60%', fontSize: '1.3rem' }}>
                                 {bullets.map((item, bidx) => (
                                   <li key={bidx}>{item}</li>
                                 ))}
@@ -362,7 +360,7 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
                             </>
                           ) : (
                             // fallback for old format: treat role as a string
-                            <ul className="ml-6 text-accent2 text-base list-disc relative z-10">
+                            <ul className="ml-6 text-accent2 list-disc relative z-10" style={{ maxWidth: '60%', fontSize: '1.3rem' }}>
                               <li>{typeof role === 'string' ? role : ''}</li>
                             </ul>
                           )}
@@ -371,7 +369,7 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
                     })
                   ) : (
                     // Simple bullets only, no role titles
-                    <ul className="ml-6 text-accent2 text-base list-disc relative z-10">
+                    <ul className="ml-6 text-accent2 list-disc relative z-10" style={{ maxWidth: '60%', fontSize: '1.3rem' }}>
                       {responsibilities.map((item, idx) => (
                         <li key={idx}>{item}</li>
                       ))}
@@ -381,7 +379,7 @@ export default function OtherExperienceCard({ title, subtitle, date, location, s
               )}
               {/* CONTRIBUTORS & LINKS/MEDIA SECTION */}
               {(contributors || (links && links.length > 0)) && (
-                <div className="mt-4 text-accent2 text-sm flex items-center gap-2">
+                <div className="mt-4 text-accent2 flex items-center gap-2" style={{ fontSize: '1.15rem' }}>
                   {typeof contributors === 'string' && contributors && (
                     <div className="flex items-center gap-1">
                       {contributors.split(',').map((name, idx) => {

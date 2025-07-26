@@ -12,9 +12,10 @@ const extracurricularExperiences = [
     "languages": [],
     "description": "Description",
     "responsibilities": [
-      "Responsibility 1",
-      "Responsibility 2",
-      "Responsibility 3"
+      "Spearheaded the digital transformation of a 1000+ member student society, deploying a custom-built scalable CMS on Swift and React Native, and digitising membership card systems for vendor discounts.",
+      "Developed a lightweight NLP tokeniser using spaCy, clustering student family groups by demographic features and interest sentiment via feature encoding  UMAP clustering, automating groupings for future committees.",
+      "Automated society-wide newsletters using Gmail API and Apps Script, pulling dynamic event data from a custom SQLite-based CRM for personalized HTML email blasts based on existing templates.",
+      "Created an AI-powered support chatbot for the MSSA app using LangChain, OpenAI API, and RAG architecture over a ChromaDB database with tool injection, enabling scalable student query resolutions.",
     ],
     "contributors": [
         "Yasmin de Silva","Amanda Yong","Alicia Low","Brahmjoth Singh","Elijah Lim","Magdalene Khor","Leanne Huang","Ethan Lock","Christine Choong","Natalie Ong"

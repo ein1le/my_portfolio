@@ -1,8 +1,15 @@
 import React from "react";
-import { FaPython, FaReact, FaHtml5, FaJs, FaNodeJs, FaJava, FaDatabase, FaGithub, FaCss3, FaRProject, FaGit, FaFigma, FaSwift, FaBox } from "react-icons/fa";
-import { SiVite, SiVercel, SiFlutter, SiDart, SiCmake, SiTailwindcss, SiJupyter, SiCplusplus, SiThreedotjs } from "react-icons/si";
+import {
+  FaPython, FaReact, FaHtml5, FaJs, FaNodeJs, FaJava, FaDatabase, FaGithub,
+  FaCss3, FaRProject, FaGit, FaFigma, FaSwift, FaBox
+} from "react-icons/fa";
+import {
+  SiVite, SiVercel, SiFlutter, SiDart, SiCmake, SiTailwindcss,
+  SiJupyter, SiCplusplus, SiThreedotjs
+} from "react-icons/si";
 import { motion } from "framer-motion";
 
+// Language icons map
 const languageIconMap = {
   python: <FaPython style={{ color: '#3572A5' }} />,
   react: <FaReact style={{ color: '#61dafb' }} />,
@@ -28,15 +35,32 @@ const languageIconMap = {
   threejs: <SiThreedotjs style={{ color: '#000' }} />,
   parcel: <FaBox style={{ color: '#f9c646' }} />
 };
-export default function ProjectCard({ title, description, link, languages = [], contributors = [], image }) {
+
+// Progress stage map
+const progressStageMap = {
+  "Early Stage Planning": { color: "#e74c3c", label: "E" },
+  "Functional Development": { color: "#e67e22", label: "D" },
+  "Scaling and Testing": { color: "#f1c40f", label: "S" },
+  "CD Deployment": { color: "#2c3e50", label: "D" }
+};
+
+export default function ProjectCard({
+  title,
+  description,
+  link,
+  languages = [],
+  contributors = [],
+  image,
+  progress
+}) {
   const [isHovered, setIsHovered] = React.useState(false);
-  // Helper to get initials from a name
+
   function getInitials(name) {
     const parts = name.trim().split(/\s+/);
     if (parts.length === 1) return parts[0][0]?.toUpperCase() || '';
     return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
   }
-  // Helper to generate a color from a string
+
   function stringToColor(str) {
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
@@ -45,6 +69,7 @@ export default function ProjectCard({ title, description, link, languages = [], 
     const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
     return "#" + "00000".substring(0, 6 - c.length) + c;
   }
+
   return (
     <motion.div
       className="min-h-[420px] max-w-[400px] flex flex-col justify-between items-stretch bg-card border border-border rounded-xl p-6 mb-6 shadow-card transition-all duration-200 hover:shadow-cardHover hover:border-accent"
@@ -64,6 +89,7 @@ export default function ProjectCard({ title, description, link, languages = [], 
           {title}
         </motion.h3>
       </div>
+
       <div className="w-full flex justify-center items-center mb-3.5" style={{ paddingTop: isHovered ? 36 : 0 }}>
         <img
           src={image || "https://placehold.co/400x220/23232b/7ec699?text=Project+Image"}
@@ -71,21 +97,46 @@ export default function ProjectCard({ title, description, link, languages = [], 
           className="w-full max-w-[340px] h-[180px] object-cover rounded-lg bg-[#18181f] border border-border"
         />
       </div>
-      <div className="flex flex-wrap gap-2 mb-2">
-        {languages.length > 0 ? languages.map((lang, idx) => (
-          <span key={idx} className="flex items-center bg-[#18181f] rounded-lg px-2.5 py-1 text-accent2 text-base font-medium gap-1.5">
-            {languageIconMap[lang.toLowerCase()] || lang}
-          </span>
-        )) : null}
+
+      {/* Language icons and progress */}
+      <div className="flex justify-between items-center flex-wrap gap-2 mb-2">
+        <div className="flex flex-wrap gap-2">
+          {languages.length > 0 &&
+            languages.map((lang, idx) => (
+              <span
+                key={idx}
+                className="flex items-center bg-[#18181f] rounded-lg px-2.5 py-1 text-accent2 text-base font-medium gap-1.5"
+              >
+                {languageIconMap[lang.toLowerCase()] || lang}
+              </span>
+            ))}
+        </div>
+
+        {/* Progress Circle Icon */}
+        {progress && progressStageMap[progress] && (
+          <div
+            className="w-7 h-7 rounded-full flex items-center justify-center text-white font-bold text-sm border"
+            style={{
+              backgroundColor: progressStageMap[progress].color,
+              borderColor: progressStageMap[progress].color,
+              minWidth: 28,
+              cursor: "default"
+            }}
+            title={progress}
+          >
+            {progressStageMap[progress].label}
+          </div>
+        )}
       </div>
-      {/* Contributors bubbles */}
+
+      {/* Contributor Circles */}
       {contributors && contributors.length > 0 && (
         <div className="flex items-center gap-1.5 my-2">
           {contributors.map((contrib, idx) => {
             const name = typeof contrib === 'string' ? contrib : contrib.name;
             const link = typeof contrib === 'object' && contrib.link ? contrib.link : undefined;
             const initials = getInitials(name);
-            const circle = (
+            return (
               <span
                 key={idx}
                 title={name.trim()}
@@ -93,19 +144,29 @@ export default function ProjectCard({ title, description, link, languages = [], 
                 style={{
                   background: stringToColor(name),
                   marginLeft: idx === 0 ? 0 : -10,
-                  cursor: link ? 'pointer' : 'default',
+                  cursor: link ? 'pointer' : 'default'
                 }}
                 onClick={link ? (e) => { e.stopPropagation(); window.open(link, '_blank'); } : undefined}
               >
                 {initials}
               </span>
             );
-            return circle;
           })}
         </div>
       )}
+
       <p className="my-3 text-text">{description}</p>
-      {link && <a href={link} target="_blank" rel="noopener noreferrer" className="inline-block bg-accent text-white rounded-lg px-4 py-2 font-semibold text-[15px] cursor-pointer no-underline mt-6 transition-colors duration-150 hover:bg-[#005fa3]">View Project</a>}
+
+      {link && (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-accent text-white rounded-lg px-4 py-2 font-semibold text-[15px] cursor-pointer no-underline mt-6 transition-colors duration-150 hover:bg-[#005fa3]"
+        >
+          View Project
+        </a>
+      )}
     </motion.div>
   );
-} 
+}

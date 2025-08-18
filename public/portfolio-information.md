@@ -35,7 +35,7 @@ Have fun exploring the page!
 
 Feel free to reach out and see my contact page for more links!
 
-- **Email:** wishawin@gmail.com
+- **Email:** wlertnawapan@gmail.com
 - **GitHub:** [github.com/ein1le](https://github.com/ein1le)
 - **LinkedIn:** [linkedin.com/in/wishawin](https://linkedin.com/in/wishawin)
 

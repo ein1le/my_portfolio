@@ -2,6 +2,76 @@
 
 const academicExperiences = [
   {
+    "title": "Samaggi Smaggom",
+    "subtitle": "Chief Information Officer",
+    "date": "Aug 2021 - Present",
+    "location": "Remote, UK",
+    "skills": ["API Development", "Serverless Data Engineering","CRUD Operations"],
+    "languages": ["Python","AWS","DynamoDB"],
+    "logo": "https://media.licdn.com/dms/image/v2/D560BAQEnTdiqjmoy2Q/company-logo_100_100/B56ZYPStEjHQAQ-/0/1744013284616/samaggi_samagom_logo?e=1755734400&v=beta&t=HeEyVnpAJuggoCe11hZBCTCU_HlTmccJSnTMftqp33E",
+    "description": "Description",
+    "responsibilities": [
+      {
+        "role": "SS125 Chief Information Officer",
+        "date": "August 2025 - Present",
+        "bullets": [
+        ],
+        "role_contributors": [""],
+        "role_contributors_link": [""],
+        "role_links": [
+          {
+            "type": "",
+            "src": "",
+            "href": "",
+            "label": "",
+            "icon": ""
+          }
+        ]
+      },
+      {
+        "role": "SACC2023 Events Team",
+        "date": "January 2024 - February 2024",
+        "bullets": [
+        ],
+        "role_contributors": [""],
+        "role_contributors_link": [""],
+        "role_links": [
+          {
+            "type": "",
+            "src": "",
+            "href": "",
+            "label": "",
+            "icon": ""
+          }
+        ]
+      },
+      {
+        "role": "SS123 Python Developer",
+        "date": "August 2021 - September 2022",
+        "bullets": [
+          "Overhauled scalable backend solutions leveraging AWS Lambda and DynamoDB, managing efficient CRUD operations for data of over 6,000 active members in the UK's largest Thai student society.",
+          "Developed a robust backend pipeline for the flagship Samaggi Games event with 300+ participants UK-wide, implementing real-time ticketing, iOS scanner integration, and secure payment processing via Postix.",
+          "Collaborated closely with frontend developers to optimize a React-based UI for a secure staff portal featuring JWT-based authentication and centralized OAuth 2.0 SSO, alongside configuring controlled public access endpoints.",
+        ],
+        "role_contributors": [""],
+        "role_contributors_link": [""],
+        "role_links": [
+          {
+            "type": "",
+            "src": "",
+            "href": "",
+            "label": "",
+            "icon": ""
+          }
+        ]
+      }
+
+    ],
+    "contributors": [""],
+    "contributors_link": [""],
+    "links": []
+  },
+  {
     "title": "VoizAI Reskilling",
     "subtitle": "Associate",
     "date": "July 2025 - Present",
@@ -15,7 +85,7 @@ const academicExperiences = [
       "Responsibility 2",
       "Responsibility 3"
     ],
-    "contributors": ["Dhanashree Bhalekar, Thien, Pavani, Jason Cheng, Ben Hillier, Alex Bickley"],
+    "contributors": ["Dhanashree Bhalekar, Thien Nguyen, Pavani Batra, Jason Cheng, Ben Hillier, Alex Bickley"],
     "contributors_link": [""],
     "links": [
       {
@@ -29,7 +99,7 @@ const academicExperiences = [
   {
     "title": "NexusKCG",
     "subtitle": "MLOps Platform Engineer",
-    "date": "Jun 2025 - Present",
+    "date": "June 2025 - Present",
     "location": "London, UK",
     "skills": ["Qualitative Data","Data Pipelines","Business Analytics"],
     "languages": ["HTML","Python","JavaScript"],
@@ -54,8 +124,8 @@ const academicExperiences = [
 
   {
     "title": "United Kingdom Singapore Students Council (UKSSC27)",
-    "subtitle": "",
-    "date": "Mar 2025 - Present",
+    "subtitle": "Director of Technology",
+    "date": "March 2025 - Present",
     "location": "London, UK",
     "skills": ["Full Stack Development","CRM Systems","UIUX Design"],
     "languages": ["Figma"],
@@ -63,14 +133,32 @@ const academicExperiences = [
     "description": "Description",
     "responsibilities": [
       {
-        "role": "Technology Associate",
-        "date": "Mar 2025 - Present",
+        "role": "Director of Technology",
+        "date": "August 2025 - Present",
         "bullets": [
           "Rebuilt the society’s static Wix website into a functional CMS platform, supporting membership directories for over 2,000 Singaporean students across the UK by leveraging a MERN stack architecture.",
           "Implemented a secure, GDPR-compliant staff and member portal using JWT for persistent sessions and OAuth2.0 for SSOs protected by middleware. Designed a role-based access control framework protected by sensitive endpoints.",
           "Deployed a responsive front end using React.js with Tailwind CSS, based on Figma prototypes. Currently developing mobile-first UI components for event registration, announcements, and CRUD-based ticket management.",
         ],
         "role_contributors": [""],
+        "role_contributors_link": [""],
+        "role_links": [
+          {
+            "type": "",
+            "src": "",
+            "href": "",
+            "label": "",
+            "icon": ""
+          }
+        ]
+      },
+      {
+        "role": "Technology Associate",
+        "date": "March 2025 - August 2025",
+        "bullets": [
+          "BlastOff!2025 Flagship Event working committee."
+        ],
+        "role_contributors": ["Timothy Jon Low, Mirza Abdul Latiff"],
         "role_contributors_link": [""],
         "role_links": [
           {
@@ -97,7 +185,7 @@ const academicExperiences = [
   {
     "title": "University of Bristol Intelligent Systems Laboratory (ISL)",
     "subtitle": "Undergraduate Researcher",
-    "date": "Jan 2025 - Present",
+    "date": "January 2025 - August 2025",
     "location": "Bristol, UK",
     "skills": ["Graph Neural Networks", "Agent-Based Models", "Physics-Informed Neural Networks"],
     "languages": ["Python"],
@@ -115,7 +203,7 @@ const academicExperiences = [
   {
     "title": "CarbonTrac",
     "subtitle": "Project Lead",
-    "date": "Jan 2025 - June 2025",
+    "date": "January 2025 - June 2025",
     "location": "Bristol, UK",
     "skills": ["Skills 1", "Skills 2", "Skills 3"],
     "languages": ["Python"],
@@ -146,7 +234,7 @@ const academicExperiences = [
   {
     "title": "Bristol Investment Fund (BIF)",
     "subtitle": "Risk Analyst",
-    "date": "Jan 2025 - May 2025",
+    "date": "January 2025 - May 2025",
     "location": "Bristol, UK",
     "skills": ["Market Risk","Portfolio Management","VaR Simulation"],
     "languages": ["Python","Bloomberg Terminal"],
@@ -171,7 +259,7 @@ const academicExperiences = [
   {
     "title": "180 Degrees Consulting (180DC Bristol)",
     "subtitle": "",
-    "date": "Sep 2024 - Mar 2025",
+    "date": "September 2024 - March 2025",
     "location": "Bristol, UK",
     "skills": ["Stakeholder Management","Ripple Mapping","Data Visualisation"],
     "languages": [],
@@ -198,7 +286,7 @@ const academicExperiences = [
       },
       {
         "role": "Data Science Consultant",
-        "date": "Sep 2024 - Jan 2025",
+        "date": "September 2024 - January 2025",
         "bullets": [
           "Applied PCA and matrix factorisation methods to extract latent structures from organisation interaction data. Used K-Means clustering to segment the network of supported partners to inform ripple effect causal inference.",
           "Delivered actionable insights for REN’s Charity by leading biweekly stakeholder syncs and producing a 20-page analytics report; combined K-Means segmentation with trend analysis with Plotly dashboard to identify synergies.",
@@ -232,7 +320,7 @@ const academicExperiences = [
   {
     "title": "WorldQuant",
     "subtitle": "BRAIN® ITC Quantitative Researcher",
-    "date": "Nov 2024 - Present",
+    "date": "November 2024 - March 2025",
     "location": "Remote, UK",
     "skills": ["Algorithmic Trading", "Alpha Testing", "Alpha Generation"],
     "languages": ["FEL","Python"],
@@ -251,7 +339,7 @@ const academicExperiences = [
   {
     "title": "Bristol Trading Society (BTS)",
     "subtitle": "Quantitative Analyst - Derivatives",
-    "date": "Oct 2024 - May 2025",
+    "date": "October 2024 - May 2025",
     "location": "Bristol, UK",
     "skills": [""],
     "languages": ["Python","C++","QuantConnect"],
@@ -269,7 +357,7 @@ const academicExperiences = [
   {
     "title": "Learn2Innovate 2023 (L2I)",
     "subtitle": "Machine Learning Engineer - Biolytica",
-    "date": "Dec 2023 - Mar 2024",
+    "date": "December 2023 - March 2024",
     "location": "Bristol, UK",
     "skills": ["Generative Adversarial Networks","Computer Vision","Reinforcement Learning"],
     "languages": ["Python"],
@@ -294,7 +382,7 @@ const academicExperiences = [
   {
     "title": "UKSEDs Olympus Rover Trials 2024 (ORT)",
     "subtitle": "Vice Lead, Systems Engineer - Helios",
-    "date": "Oct 2023 - Jul 2024",
+    "date": "October 2023 - July 2024",
     "location": "Bristol, UK",
     "skills": ["Systems Engineering","Vibration Modelling","Robotics"],
     "languages": ["Fusion 360","Arduino","MATLAB"],
@@ -319,7 +407,7 @@ const academicExperiences = [
   {
     "title": "IMechE Unmanned Aerial Systems Challenge 2024 (UAS)",
     "subtitle": "Structural Lead - BUDS",
-    "date": "Sep 2023 - Feb 2024",
+    "date": "September 2023 - February 2024",
     "location": "Bristol, UK",
     "skills": [""],
     "languages": ["Fusion 360","Python","MATLAB"],
@@ -337,7 +425,7 @@ const academicExperiences = [
   {
     "title": "Greenpower Formula 24+ ",
     "subtitle": "Design Engineer, Steering Team - Bristol Racing",
-    "date": "Oct 2023 - Jun 2024",
+    "date": "October 2023 - June 2024",
     "location": "Bristol, UK",
     "skills": ["CAD","Finite Element Analysis","Metal Manufacturing"],
     "languages": [],
@@ -362,7 +450,7 @@ const academicExperiences = [
   {
     "title": "Thai Society Innovation Network (TSIN)",
     "subtitle": "Data and Research Analyst",
-    "date": "Apr 2023 - Nov 2023",
+    "date": "April 2023 - November 2023",
     "location": "Remote, UK",
     "skills": ["Marketing Analytics","Data Mining","Dashboarding"],
     "languages": ["Power BI","MySQL"],
@@ -385,27 +473,9 @@ const academicExperiences = [
     ]
   },
   {
-    "title": "Samaggi Smaggom 123",
-    "subtitle": "Python Developer",
-    "date": "Aug 2021 - Sep 2022",
-    "location": "Remote, UK",
-    "skills": ["API Development", "Serverless Data Engineering","CRUD Operations"],
-    "languages": ["Python","AWS","DynamoDB"],
-    "logo": "https://media.licdn.com/dms/image/v2/D560BAQEnTdiqjmoy2Q/company-logo_100_100/B56ZYPStEjHQAQ-/0/1744013284616/samaggi_samagom_logo?e=1755734400&v=beta&t=HeEyVnpAJuggoCe11hZBCTCU_HlTmccJSnTMftqp33E",
-    "description": "Description",
-    "responsibilities": [
-      "Overhauled scalable backend solutions leveraging AWS Lambda and DynamoDB, managing efficient CRUD operations for data of over 6,000 active members in the UK's largest Thai student society.",
-      "Developed a robust backend pipeline for the flagship Samaggi Games event with 300+ participants UK-wide, implementing real-time ticketing, iOS scanner integration, and secure payment processing via Postix.",
-      "Collaborated closely with frontend developers to optimize a React-based UI for a secure staff portal featuring JWT-based authentication and centralized OAuth 2.0 SSO, alongside configuring controlled public access endpoints.",
-    ],
-    "contributors": [""],
-    "contributors_link": [""],
-    "links": []
-  },
-  {
     "title": "F1 in Schools",
     "subtitle": "Design Engineer - MaTRiX Racing",
-    "date": "Sep 2019 - Jun 2021",
+    "date": "September 2019 - June 2021",
     "location": "Bangkok, Thailand",
     "skills": ["CFD", "3D Printing", "CAD"],
     "languages": ["StarCCM+","Fusion360"],

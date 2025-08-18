@@ -3,6 +3,17 @@ import Harrow_Banner from '../assets/Harrow_Banner.jpeg';
 
 const education = [
   {
+    title: "Incoming",
+    subheader: "MSc Data Science and Machine Learning",
+    date: "2026 - 2027",
+    location: "London, UK",
+    grade: "Applications pending at Imperial College London, London School of Economics, University College London, and King's College London",
+    logo: "",
+    hoverImage: "",
+    modules: [],
+    publications: [],
+  },
+  {
     title: "University of Bristol",
     subheader: "Integrated Masters, Mechanical Engineering [4MECH002U]",
     date: "2021 - 2025",

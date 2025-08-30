@@ -8,7 +8,7 @@ const extracurricularExperiences = [
     "subtitle": "Executive Committee 24/25",
     "date": "Mar 2024 - May 2025",
     "location": "Bristol, UK",
-    "skills": ["Organisation","Feedback Handling","Management"],
+    "skills": [],
     "languages": [],
     "description": "Description",
     "responsibilities": [
@@ -21,7 +21,7 @@ const extracurricularExperiences = [
         "Yasmin de Silva","Amanda Yong","Alicia Low","Brahmjoth Singh","Elijah Lim","Magdalene Khor","Leanne Huang","Ethan Lock","Christine Choong","Natalie Ong"
         ],
     "contributors_link": [],
-    "logo": "https://media.licdn.com/dms/image/v2/C560BAQH86m_MEK4yyQ/company-logo_100_100/company-logo_100_100/0/1631359978573?e=1755734400&v=beta&t=ERQ26ocADWl_42dA4mronMJr-z84KdC4Zvnm7rpKTEQ",
+    "logo": "MSSA.jpg",
     "links": [
       {
         type: "medal",
@@ -61,7 +61,7 @@ const extracurricularExperiences = [
     "location": "Bristol, UK",
     "skills": [],
     "languages": [],
-    "logo": "https://media.licdn.com/dms/image/v2/D4D0BAQEym2ZED7OT-Q/company-logo_100_100/company-logo_100_100/0/1699391996511/uobmechsoc_logo?e=1755734400&v=beta&t=MoTvqstFiaVhbrXgNnaik33F05erX09L_54wqEElKmk",
+    "logo": "MechSoc.jpg",
     "description": "Description",
     "responsibilities": [
       {
@@ -148,7 +148,7 @@ const extracurricularExperiences = [
     "location": "Bristol, UK",
     "skills": [],
     "languages": [],
-    "logo": "https://ugc.production.linktr.ee/1aa94abc-e5e7-49c1-a699-5acc6a170343_image.jpeg?io=true&size=avatar-v3_0",
+    "logo": "MSnight.jpg",
     "description": "Description",
     "responsibilities": [
       {
@@ -272,7 +272,7 @@ const extracurricularExperiences = [
     "location": "Bristol, UK",
     "skills": [],
     "languages": [],
-    "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQFMhjh_H3lpVA/company-logo_100_100/company-logo_100_100/0/1718352541738/university_of_bristol_engineering_logo?e=1755734400&v=beta&t=mStEv-IAGW3FFDs7sWygjYTqjhPx5eGwu7gfdu9bFio",
+    "logo": "EEME.jpg",
     "description": "Description",
     "responsibilities": [
       {
@@ -316,7 +316,7 @@ const extracurricularExperiences = [
     "location": "London, UK",
     "skills": [],
     "languages": [],
-    "logo": null,
+    "logo": "Elevate.png",
     "description" : "Description",
     "responsibilities": [
       "Responsibility 1",

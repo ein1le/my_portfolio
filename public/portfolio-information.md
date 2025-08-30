@@ -1,10 +1,10 @@
 
 
-Hi there! I'm **Ein**, an integrated master's student in Engineering, driven by a passion for continuous learning and staying at the forefront of digital transformation. With a strong foundation in problem-solving and project-based work in academia, I've developed a deep interest in the intersection of **Data Science, Generative AI Engineering, MLOps, and Data-driven Infrastructure** with a sprinkle of **Full-stack Web Development** and **UI/UX design** from side projects along the way.
+Hi there! I'm **Ein**, an integrated master's student in Engineering, driven by a passion for continuous learning and staying at the forefront of digital transformation. With a strong foundation in problem-solving and project-based work in academia, I've developed a deep interest in the intersection of **Data Science, Macine Learning, and Data-driven Infrastructure** with a sprinkle of **Full-stack Web Development** and **AI Engineering** from side projects along the way.
 
 Despite my engineering background, I am always working in projects in these areas of interest, taking a wide approach to a diverse range of topics. I'm actively seeking **off-cycle**, **internship**, and **graduate** opportunities in London. 
 
-I'm especially keen to explore operational and infrastructure roles in the **financial** and **technology** sectors, such as Quantitative Research, Risk Management, and Agentic Design.
+I'm especially keen to explore analyst and research roles in the **financial** and **technology** sectors, such as Quantitative Research, Risk Management, and Software Engineering.
 
 If you're working on something exciting, I'd love to connect!
 
@@ -35,7 +35,7 @@ Have fun exploring the page!
 
 Feel free to reach out and see my contact page for more links!
 
-- **Email:** wishawin@gmail.com
+- **Email:** wlertnawapan@gmail.com
 - **GitHub:** [github.com/ein1le](https://github.com/ein1le)
 - **LinkedIn:** [linkedin.com/in/wishawin](https://linkedin.com/in/wishawin)
 

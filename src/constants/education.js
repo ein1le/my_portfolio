@@ -3,12 +3,34 @@ import Harrow_Banner from '../assets/Harrow_Banner.jpeg';
 
 const education = [
   {
+    title: "Incoming",
+    subheader: "MSc Data Science and Machine Learning",
+    date: "2026 - 2027",
+    location: "London, UK",
+    grade: "Applications pending at Imperial College London, London School of Economics, University College London, and King's College London",
+    logo: "",
+    hoverImage: "",
+    modules: [],
+    publications: [],
+  },
+  {
+    title: "WorldQuant University",
+    subheader: "MScFE Financial Engineering",
+    date: "2025 - 2027",
+    location: "Online, UK",
+    grade: "",
+    logo: "WQU.jpeg",
+    hoverImage: "WQUBanner.png",
+    modules: [],
+    publications: [],
+  },
+  {
     title: "University of Bristol",
     subheader: "Integrated Masters, Mechanical Engineering [4MECH002U]",
     date: "2021 - 2025",
     location: "Bristol, UK",
     grade: "Second Class Honours First Division",
-    logo: "https://media.licdn.com/dms/image/v2/D4E0BAQHpcDl5zEb2Og/company-logo_100_100/company-logo_100_100/0/1708951303888/university_of_bristol_logo?e=1756339200&v=beta&t=CaGrBwmsc-1iqvk5Baueq9slBLTyKP4WzMdaVrTferQ",
+    logo: "Bristol.png",
     hoverImage: UOB_Banner,
     modules: [
       "Year 4: Data Driven Physical Modelling, Multivariable and Non-linear Control, AT Generative Design, AT Quantum Information and Photonic Engineering, AT Design in a Constrained World, AT Machine Thinking in Smart Manufacturing, Group Industrial Project, Renewable Energy for a Sustainable Future, AT Biomechanics",
@@ -126,7 +148,7 @@ const education = [
     date: "2011 - 2021",
     location: "Bangkok, Thailand",
     grade: "A-Levels: A*A*A*, IGCSEs: 12A*s",
-    logo: "https://media.licdn.com/dms/image/v2/D4E0BAQF9R3ETIKNOOQ/company-logo_100_100/company-logo_100_100/0/1695058617344/harrowschool_logo?e=1756339200&v=beta&t=pwseqxifqgkfXlfTFOGHFKrr8lFRBsh7JxPMd3xRtE4",
+    logo: "Harrow.jpg",
     hoverImage: Harrow_Banner,
     modules: [
       "A Levels: Mathematics, Physics, Biology",

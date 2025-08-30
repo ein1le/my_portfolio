@@ -2,11 +2,32 @@ const timelineData = [
   {
     type: "Course",
     side: "right",
+    label: "BEM1105x Pricing Options with Mathematical Models",
+    date: "2025-08-05",
+    id: "K6FZT2I31N85",
+    ref_link: "https://www.coursera.org/account/accomplishments/certificate/K6FZT2I31N85",
+    image: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Seal_of_the_California_Institute_of_Technology.svg/250px-Seal_of_the_California_Institute_of_Technology.svg.png",
+    institution: "CalTech",
+  },
+  {
+    type: "Course",
+    side: "left",
+    label: "SQLBolt",
+    date: "2025-07-28",
+    id: "",
+    ref_link: "",
+    image: "https://sqlbolt.com/cs/images/favicon.png",
+    institution: "SQLBolt",
+  },
+
+  {
+    type: "Course",
+    side: "right",
     label: "Building Recommender Systems with Machine Learning and AI",
     date: "2025-07-14",
     id: "C3A18NM818QD",
     ref_link: "https://www.coursera.org/account/accomplishments/certificate/HR0O8FN0I5PZ",
-    image: "https://media.licdn.com/dms/image/v2/C4E0BAQHQJ2HdIyeLWg/company-logo_100_100/company-logo_100_100/0/1653389017535/packt_publishing_logo?e=1753920000&v=beta&t=grp2BjaxZEbyO9-F465ZuODYdoEkFyae3g_hefnnbH4",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS63cpoIxXwM9VRWNwOgy8r3oksuoE3qntHiw&s",
     institution: "Packt",
   },
   {
@@ -176,7 +197,7 @@ const timelineData = [
     date: "2025-07-03",
     id: "HR0O8FN0I5PZ",
     ref_link: "https://www.coursera.org/account/accomplishments/certificate/HR0O8FN0I5PZ",
-    image: "https://media.licdn.com/dms/image/v2/C4E0BAQHQJ2HdIyeLWg/company-logo_100_100/company-logo_100_100/0/1653389017535/packt_publishing_logo?e=1753920000&v=beta&t=grp2BjaxZEbyO9-F465ZuODYdoEkFyae3g_hefnnbH4",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS63cpoIxXwM9VRWNwOgy8r3oksuoE3qntHiw&s",
     institution: "Packt",
   },
   {
@@ -396,7 +417,7 @@ const timelineData = [
     date: "2025-05-22",
     id: "3C0CY99N3BL3",
     ref_link: "https://www.coursera.org/account/accomplishments/specialization/certificate/3C0CY99N3BL3",
-    image: "https://media.licdn.com/dms/image/v2/C4E0BAQHQJ2HdIyeLWg/company-logo_100_100/company-logo_100_100/0/1653389017535/packt_publishing_logo?e=1753920000&v=beta&t=grp2BjaxZEbyO9-F465ZuODYdoEkFyae3g_hefnnbH4",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS63cpoIxXwM9VRWNwOgy8r3oksuoE3qntHiw&s",
     institution: "Packt",
   },
   {
@@ -416,7 +437,7 @@ const timelineData = [
     date: "2025-04-22",
     id: "ACJBDUHG22TM",
     ref_link: "https://www.coursera.org/account/accomplishments/certificate/ACJBDUHG22TM",
-    image: "https://media.licdn.com/dms/image/v2/C4E0BAQHQJ2HdIyeLWg/company-logo_100_100/company-logo_100_100/0/1653389017535/packt_publishing_logo?e=1753920000&v=beta&t=grp2BjaxZEbyO9-F465ZuODYdoEkFyae3g_hefnnbH4",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS63cpoIxXwM9VRWNwOgy8r3oksuoE3qntHiw&s",
     institution: "Packt",
   },
   {
@@ -426,7 +447,7 @@ const timelineData = [
     date: "2025-06-10",
     id: "DWM3GAH4R07I",
     ref_link: "https://www.coursera.org/account/accomplishments/certificate/DWM3GAH4R07I",
-    image: "https://media.licdn.com/dms/image/v2/C4E0BAQHQJ2HdIyeLWg/company-logo_100_100/company-logo_100_100/0/1653389017535/packt_publishing_logo?e=1753920000&v=beta&t=grp2BjaxZEbyO9-F465ZuODYdoEkFyae3g_hefnnbH4",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS63cpoIxXwM9VRWNwOgy8r3oksuoE3qntHiw&s",
     institution: "Packt",
   },
   {

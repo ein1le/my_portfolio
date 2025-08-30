@@ -1,23 +1,9 @@
 const professionalExperiences = [
-  {
-    title: "BOBA Network",
-    subheader: "Generative AI Engineer",
-    date: "Jan 2025- Present",
-    location: "Remote, UK",
-    type: "contract",
-    skills: ["Generative AI Engineering", "Agentic AI", "Blockchain Infrastructure"],
-    languages: ["R", "Python", "SQL"],
-    description: "Worked to implement Agentic Backend logic for Boba Network.",
-    logo: "https://cryptologos.cc/logos/boba-network-boba-logo.png",
-    image: "https://media.licdn.com/dms/image/v2/D4E0BAQGnFchJctgCoQ/company-logo_100_100/company-logo_100_100/0/1692728401192/bobanetwork_logo?e=1755734400&v=beta&t=IhEolbEk2niGAHAZc_43DP3nUH9_rBNAZRMzrd_b-zE",
-    responsibilities: [
 
-    ]
-  },
   {
     title: "Flare Network",
     subheader: "Flare Time-Series Oracle (FTSO) Developer",
-    date: "Jan 2025 - Present",
+    date: "Jan 2025 - July 2025",
     location: "Remote, UK",
     type: "contract",
     skills: ["Time Series Analysis", "Hybrid Model Forecasting", "Cryptocurrencies"],
@@ -34,7 +20,7 @@ const professionalExperiences = [
   {
     title: "University of Bristol School of Civil, Aerospace, and Design Engineering (CADE)",
     subheader: "Co-Researcher",
-    date: "Jan 2025 - Present",
+    date: "Jan 2025 - June 2025",
     location: "Bristol, UK",
     type: "student-job",
     skills: [""],
@@ -43,11 +29,25 @@ const professionalExperiences = [
     logo: "https://cryptologos.cc/logos/flare-flr-logo.png",
     image: "https://media.licdn.com/dms/image/v2/D4D0BAQGXfzqLhIzlBw/company-logo_100_100/company-logo_100_100/0/1721832673455?e=1756339200&v=beta&t=R3uEsbUnY-rtYDcVWellnn-qSarXrnzQqKzBa5KJk08",
     responsibilities: [
-      "Conducted exploratory modeling using SARIMA and XGBoost for volatility prediction, comparing seasonal effects against LSTM baselines to evaluate model robustness across over a 5-year analysis period.",
-      "Automated feature engineering of pipelines and tracked experimental models for pricing time-series data using MLflow and Weights \& Biases, enabling integration into Flare’s decentralised Oracle network.",
-      "Fine-tuned EGARCH and LSTM hybrids for crypto volatility prediction, achieving a 2.7\% RMSE reduction against internal benchmarks. Improved short-horizon predictive stability for high-frequency trading scenarios."
+
     ]
   },
+  {
+    title: "BOBA Network",
+    subheader: "Generative AI Engineer",
+    date: "Jan 2025- April 2025",
+    location: "Remote, UK",
+    type: "contract",
+    skills: ["Generative AI Engineering", "Agentic AI", "Blockchain Infrastructure"],
+    languages: ["R", "Python", "SQL"],
+    description: "",
+    logo: "https://cryptologos.cc/logos/boba-network-boba-logo.png",
+    image: "https://media.licdn.com/dms/image/v2/D4E0BAQGnFchJctgCoQ/company-logo_100_100/company-logo_100_100/0/1692728401192/bobanetwork_logo?e=1755734400&v=beta&t=IhEolbEk2niGAHAZc_43DP3nUH9_rBNAZRMzrd_b-zE",
+    responsibilities: [
+
+    ]
+  },
+
   {
     title: "KKP Financial Group",
     subheader: "Data Science and Strategy Intern",

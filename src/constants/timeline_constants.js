@@ -1,4 +1,26 @@
 const timelineData = [
+// React Dev (22/10/2025)
+// The Business Show
+  {
+    type: "Event",
+    side: "left",
+    label: "Big Data LDN 2025",
+    date: "2025-09-24",
+    description: "",
+    company: "Big Data LDN",
+    image: "",
+    ref_link: ""
+  },
+  { 
+    type: "Event",
+    side: "right",
+    label: "London Analytics Meetup X",
+    date: "2025-09-25",
+    description: "",
+    company: "Google UK",
+    image: "",
+    ref_link: ""
+  },
   {
     type: "Course",
     side: "right",

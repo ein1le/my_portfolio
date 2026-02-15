@@ -1,5 +1,5 @@
 name,type,proficiency,libraries,description
-Python,Programming Language,Advanced,pandas;pyTorch;TorchVision;TensorFlow;Keras;Xarray;LangChain;Flask;Django;FastAPI;HuggingFace;OpenCV;Jupyter;scikit;surprise;huggingface;optuna;pySpark;tslearn;QuantLib;;SciPy;streamlit;Dash;plotly;chromadb;Spacy;yfinance;MLflow;pyTorch Lightning;modal;QuantConnect;Quant-Lib, "Extensively for data analysis, machine learning, and web development."
+Python,Programming Language,Advanced,pandas;pyTorch;TorchVision;TensorFlow;Keras;Xarray;LangChain;Flask;Django;FastAPI;HuggingFace;OpenCV;Jupyter;scikit;surprise;huggingface;optuna;pySpark;tslearn;QuantLib;;SciPy;streamlit;Dash;plotly;chromadb;Spacy;yfinance;MLflow;pyTorch Lightning;modal;QuantConnect;Quant-Lib;pickle;uvicorn;scrapy, "Extensively for data analysis, machine learning, and web development."
 JavaScript,Programming Language,Intermediate,React;Three.js;Express.js;Vite;Parcel;Fabric.js;JWT;GSAP, "React projects for building portfolio websites, society websites, and simple webapps."
 C++,Programming Language,Intermediate,QuantLib;Boost;Eigen;ROS;Gazebo;ONNX Runtime;CMake;Armadillo,"Used for algorithmic trading with libraries like QuantLib and Boost, and control system simulation. Main language for learning Data Structures and Algorithms."
 SQL,Database,Advanced,SQLite;MySQL;PostgreSQL;MariaDB;SQLAlchemy;GraphQL, ""
